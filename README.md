@@ -1,4 +1,4 @@
-my_project
+Clean Symfony Template
 ==========
 
-A Symfony project created on January 10, 2016, 1:40 am.
+A clean and working Symfony 3 project ready for development purposes
