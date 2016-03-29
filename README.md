@@ -6,7 +6,7 @@ A clean and working Symfony 3 project ready for development purposes
 How to use it
 --------
 
-Run the following command to create your parameters.yml file and install the assets of the project bundles (it works totally offline :+1:)
+Run the following command to create your [parameters.yml](app/config/parameters.yml.dist) file and install the assets of the project bundles (it works :100:% offline)
 
 ```bash
 cd "route/to/your/project"
