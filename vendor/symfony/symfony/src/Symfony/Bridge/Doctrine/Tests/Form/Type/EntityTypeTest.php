@@ -753,6 +753,79 @@ class EntityTypeTest extends TypeTestCase
         $this->assertSame('2', $field->getViewData());
     }
 
+    public function testOverrideChoicesValues()
+    {
+        $entity1 = new SingleIntIdEntity(1, 'Foo');
+        $entity2 = new SingleIntIdEntity(2, 'Bar');
+
+        $this->persist(array($entity1, $entity2));
+
+        $field = $this->factory->createNamed('name', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', null, array(
+            'em' => 'default',
+            'class' => self::SINGLE_IDENT_CLASS,
+            'choice_label' => 'name',
+            'choice_value' => 'name',
+        ));
+
+        $field->submit('Bar');
+
+        $this->assertEquals(array('Foo' => new ChoiceView($entity1, 'Foo', 'Foo'), 'Bar' => new ChoiceView($entity2, 'Bar', 'Bar')), $field->createView()->vars['choices']);
+        $this->assertTrue($field->isSynchronized(), 'Field should be synchronized.');
+        $this->assertSame($entity2, $field->getData(), 'Entity should be loaded by custom value.');
+        $this->assertSame('Bar', $field->getViewData());
+    }
+
+    public function testOverrideChoicesValuesWithCallable()
+    {
+        $entity1 = new GroupableEntity(1, 'Foo', 'BazGroup');
+        $entity2 = new GroupableEntity(2, 'Bar', 'BooGroup');
+
+        $this->persist(array($entity1, $entity2));
+
+        $field = $this->factory->createNamed('name', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', null, array(
+            'em' => 'default',
+            'class' => self::ITEM_GROUP_CLASS,
+            'choice_label' => 'name',
+            'choice_value' => function (GroupableEntity $entity) {
+                return $entity->groupName.'/'.$entity->name;
+            },
+        ));
+
+        $field->submit('BooGroup/Bar');
+
+        $this->assertEquals(array(
+            'BazGroup/Foo' => new ChoiceView($entity1, 'BazGroup/Foo', 'Foo'),
+            'BooGroup/Bar' => new ChoiceView($entity2, 'BooGroup/Bar', 'Bar'),
+            ), $field->createView()->vars['choices']);
+        $this->assertTrue($field->isSynchronized(), 'Field should be synchronized.');
+        $this->assertSame($entity2, $field->getData(), 'Entity should be loaded by custom value.');
+        $this->assertSame('BooGroup/Bar', $field->getViewData());
+    }
+
+    public function testChoicesForValuesOptimization()
+    {
+        $entity1 = new SingleIntIdEntity(1, 'Foo');
+        $entity2 = new SingleIntIdEntity(2, 'Bar');
+
+        $this->persist(array($entity1, $entity2));
+
+        $field = $this->factory->createNamed('name', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', null, array(
+            'em' => 'default',
+            'class' => self::SINGLE_IDENT_CLASS,
+            'choice_label' => 'name',
+        ));
+
+        $this->em->clear();
+
+        $field->submit(1);
+
+        $unitOfWorkIdentityMap = $this->em->getUnitOfWork()->getIdentityMap();
+        $managedEntitiesNames = array_map('strval', $unitOfWorkIdentityMap['Symfony\Bridge\Doctrine\Tests\Fixtures\SingleIntIdEntity']);
+
+        $this->assertContains((string) $entity1, $managedEntitiesNames);
+        $this->assertNotContains((string) $entity2, $managedEntitiesNames);
+    }
+
     public function testGroupByChoices()
     {
         $item1 = new GroupableEntity(1, 'Foo', 'Group1');
@@ -1107,6 +1180,69 @@ class EntityTypeTest extends TypeTestCase
             'class' => self::SINGLE_IDENT_CLASS,
             'query_builder' => function (EntityRepository $repo) {
                 return $repo->createQueryBuilder('e')->where('e.id IN (1, 2)');
+            },
+        ));
+
+        $form = $formBuilder->getForm();
+
+        $form->submit(array(
+            'property1' => 1,
+            'property2' => 1,
+            'property3' => 2,
+        ));
+
+        $choiceLoader1 = $form->get('property1')->getConfig()->getOption('choice_loader');
+        $choiceLoader2 = $form->get('property2')->getConfig()->getOption('choice_loader');
+        $choiceLoader3 = $form->get('property3')->getConfig()->getOption('choice_loader');
+
+        $this->assertInstanceOf('Symfony\Component\Form\ChoiceList\Loader\ChoiceLoaderInterface', $choiceLoader1);
+        $this->assertSame($choiceLoader1, $choiceLoader2);
+        $this->assertSame($choiceLoader1, $choiceLoader3);
+    }
+
+    public function testLoaderCachingWithParameters()
+    {
+        $entity1 = new SingleIntIdEntity(1, 'Foo');
+        $entity2 = new SingleIntIdEntity(2, 'Bar');
+        $entity3 = new SingleIntIdEntity(3, 'Baz');
+
+        $this->persist(array($entity1, $entity2, $entity3));
+
+        $repo = $this->em->getRepository(self::SINGLE_IDENT_CLASS);
+
+        $entityType = new EntityType(
+            $this->emRegistry,
+            PropertyAccess::createPropertyAccessor()
+        );
+
+        $entityTypeGuesser = new DoctrineOrmTypeGuesser($this->emRegistry);
+
+        $factory = Forms::createFormFactoryBuilder()
+            ->addType($entityType)
+            ->addTypeGuesser($entityTypeGuesser)
+            ->getFormFactory();
+
+        $formBuilder = $factory->createNamedBuilder('form', 'Symfony\Component\Form\Extension\Core\Type\FormType');
+
+        $formBuilder->add('property1', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', array(
+            'em' => 'default',
+            'class' => self::SINGLE_IDENT_CLASS,
+            'query_builder' => $repo->createQueryBuilder('e')->where('e.id = :id')->setParameter('id', 1),
+        ));
+
+        $formBuilder->add('property2', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', array(
+            'em' => 'default',
+            'class' => self::SINGLE_IDENT_CLASS,
+            'query_builder' => function (EntityRepository $repo) {
+                return $repo->createQueryBuilder('e')->where('e.id = :id')->setParameter('id', 1);
+            },
+        ));
+
+        $formBuilder->add('property3', 'Symfony\Bridge\Doctrine\Form\Type\EntityType', array(
+            'em' => 'default',
+            'class' => self::SINGLE_IDENT_CLASS,
+            'query_builder' => function (EntityRepository $repo) {
+                return $repo->createQueryBuilder('e')->where('e.id = :id')->setParameter('id', 1);
             },
         ));
 

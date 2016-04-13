@@ -46,9 +46,10 @@ class TranslationUpdateCommand extends ContainerAwareCommand
                 new InputOption('clean', null, InputOption::VALUE_NONE, 'Should clean not found messages'),
             ))
             ->setDescription('Updates the translation file')
-            ->setHelp(<<<EOF
-The <info>%command.name%</info> command extract translation strings from templates
+            ->setHelp(<<<'EOF'
+The <info>%command.name%</info> command extracts translation strings from templates
 of a given bundle or the app folder. It can display them or merge the new ones into the translation files.
+
 When new translation strings are found it can automatically add a prefix to the translation
 message.
 
@@ -150,6 +151,8 @@ EOF
             return;
         }
 
+        $resultMessage = 'Translation files were successfully updated';
+
         // show compiled list of messages
         if (true === $input->getOption('dump-messages')) {
             $extractedMessagesCount = 0;
@@ -204,12 +207,10 @@ EOF
             $writer->writeTranslations($operation->getResult(), $input->getOption('output-format'), array('path' => $bundleTransPath, 'default_locale' => $this->getContainer()->getParameter('kernel.default_locale')));
 
             if (true === $input->getOption('dump-messages')) {
-                $resultMessage .= ' and translation files were updated.';
-            } else {
-                $resultMessage = 'Translation files were successfully updated.';
+                $resultMessage .= ' and translation files were updated';
             }
         }
 
-        $io->success($resultMessage);
+        $io->success($resultMessage.'.');
     }
 }

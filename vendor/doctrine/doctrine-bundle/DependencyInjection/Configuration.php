@@ -203,6 +203,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('port')->defaultNull()->end()
                 ->scalarNode('user')->defaultValue('root')->end()
                 ->scalarNode('password')->defaultNull()->end()
+                ->scalarNode('application_name')->end()
                 ->scalarNode('charset')->end()
                 ->scalarNode('path')->end()
                 ->booleanNode('memory')->end()
@@ -228,6 +229,12 @@ class Configuration implements ConfigurationInterface
                     ->info(
                         'Determines whether or with what priority a SSL TCP/IP connection will be negotiated with '.
                         'the server for PostgreSQL.'
+                    )
+                ->end()
+                ->scalarNode('sslrootcert')
+                    ->info(
+                        'The name of a file containing SSL certificate authority (CA) certificate(s). '.
+                        'If the file exists, the server\'s certificate will be verified to be signed by one of these authorities.'
                     )
                 ->end()
                 ->booleanNode('pooled')->info('True to use a pooled server with the oci8/pdo_oracle driver')->end()

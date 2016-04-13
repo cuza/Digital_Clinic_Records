@@ -517,6 +517,25 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
         );
     }
 
+    public function testSelectWithSizeBiggerThanOneCanBeRequired()
+    {
+        $form = $this->factory->createNamed('name', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', null, array(
+            'choices' => array('a', 'b'),
+            'multiple' => false,
+            'expanded' => false,
+            'attr' => array('size' => 2),
+        ));
+
+        $this->assertWidgetMatchesXpath($form->createView(), array(),
+'/select
+    [@name="name"]
+    [@required="required"]
+    [@size="2"]
+    [count(./option)=2]
+'
+        );
+    }
+
     public function testSingleChoiceWithoutTranslation()
     {
         $form = $this->factory->createNamed('name', 'Symfony\Component\Form\Extension\Core\Type\ChoiceType', '&a', array(
@@ -943,6 +962,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
             'multiple' => false,
             'expanded' => true,
             'choice_translation_domain' => false,
+            'placeholder' => 'Placeholder&Not&Translated',
         ));
 
         $this->assertWidgetMatchesXpath($form->createView(), array(),
@@ -989,6 +1009,7 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
             'multiple' => false,
             'expanded' => true,
             'placeholder' => 'Test&Me',
+            'required' => false,
         ));
 
         $this->assertWidgetMatchesXpath($form->createView(), array(),
@@ -1013,7 +1034,8 @@ abstract class AbstractLayoutTest extends \Symfony\Component\Form\Test\FormInteg
             'choices' => array('Choice&A' => '&a', 'Choice&B' => '&b'),
             'multiple' => false,
             'expanded' => true,
-            'translation_domain' => false,
+            'required' => false,
+            'choice_translation_domain' => false,
             'placeholder' => 'Placeholder&Not&Translated',
         ));
 
