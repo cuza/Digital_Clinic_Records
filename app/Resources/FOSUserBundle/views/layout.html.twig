@@ -6,31 +6,21 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/backend.css') }}">
 
 {% endblock %}
-
 {% block javascripts %}
     <script src="{{ asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('bower_components/metisMenu/dist/metisMenu.min.js') }}"></script>
     <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 {% endblock %}
-
-
-
 {% block body %}
-
-
     <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
         <div class="navbar-header">
             <a class="navbar-brand" href="{{ path('homepage') }}"><i class="fa fa-plus text-danger"></i> Regístros médicos</a>
         </div>
-
-
         <ul class="nav navbar-top-links navbar-right">
-
-
             <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">hola
+                    <i class="fa fa-user fa-fw"></i><i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-messages">
                     <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -44,35 +34,9 @@
             </li>
         </ul>
     </nav>
-
-
-    {#<div>#}
-    {#{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}#}
-    {#{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |#}
-    {#<a href="{{ path('fos_user_security_logout') }}">#}
-    {#{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}#}
-    {#</a>#}
-    {#{% else %}#}
-    {#<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>#}
-    {#{% endif %}#}
-    {#</div>#}
-
-    {#{% if app.request.hasPreviousSession %}#}
-    {#{% for type, messages in app.session.flashbag.all() %}#}
-    {#{% for message in messages %}#}
-    {#<div class="flash-{{ type }}">#}
-    {#{{ message }}#}
-    {#</div>#}
-    {#{% endfor %}#}
-    {#{% endfor %}#}
-    {#{% endif %}#}
-
     <div>
         {% block fos_user_content %}
         {% endblock fos_user_content %}
     </div>
-
-
-
 {% endblock %}
 
