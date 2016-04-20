@@ -37,6 +37,13 @@ class ResidenteUser extends User
     /**
      * @var int
      *
+     * @ORM\Column(name="ano", type="integer")
+     */
+    private $ano;
+
+    /**
+     * @var int
+     *
      * @ORM\Column(name="doctor_id", type="integer", unique=true)
      */
     private $doctorId;
@@ -63,6 +70,30 @@ class ResidenteUser extends User
     public function getEspecialidad()
     {
         return $this->especialidad;
+    }
+
+    /**
+     * Set ano
+     *
+     * @param integer $ano
+     *
+     * @return ResidenteUser
+     */
+    public function setAno($ano)
+    {
+        $this->ano = $ano;
+
+        return $this;
+    }
+
+    /**
+     * Get ano
+     *
+     * @return integer
+     */
+    public function getAno()
+    {
+        return $this->ano;
     }
 
     /**
