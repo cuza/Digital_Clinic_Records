@@ -17,7 +17,13 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             //3rd Party Bundles
+            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
+//            new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
+//            new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new \Knp\Bundle\TimeBundle\KnpTimeBundle(),
+
+
             //My Bundles
             new BackendBundle\BackendBundle(),
             new FrontendBundle\FrontendBundle(),

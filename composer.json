@@ -30,7 +30,10 @@
         "friendsofsymfony/rest-bundle": "@dev",
         "jms/serializer-bundle": "@dev",
         "nelmio/api-doc-bundle": "@dev",
-        "friendsofsymfony/user-bundle": "@dev"
+        "friendsofsymfony/user-bundle": "@dev",
+        "pugx/multi-user-bundle": "3.0.*@dev",
+        "knplabs/knp-time-bundle": "^1.5",
+        "jordillonch/crud-generator": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

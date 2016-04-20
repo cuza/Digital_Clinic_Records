@@ -40,6 +40,9 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+#    form:
+#        resources:
+#            - LexikFormFilterBundle:Form:form_div_layout.html.twig
 
 # Doctrine Configuration
 doctrine:
@@ -73,3 +76,8 @@ fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
     user_class: BackendBundle\Entity\User
+
+twig:
+    form:
+        resources:
+            - LexikFormFilterBundle:Form:form_div_layout.html.twig

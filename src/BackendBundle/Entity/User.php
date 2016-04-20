@@ -2,16 +2,16 @@
 
 namespace BackendBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
  *
- * @ORM\Table(name="`user`")
+ * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\UserRepository")
  */
-class User extends BaseUser
+abstract class User extends BaseUser
 {
     /**
      * @var int
@@ -21,6 +21,20 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Nombre", type="string", length=255)
+     */
+    private $nombre;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="c_id", type="integer", unique=true)
+     */
+    private $cId;
 
 
     /**
@@ -33,10 +47,52 @@ class User extends BaseUser
         return $this->id;
     }
 
-    public function __construct()
+    /**
+     * Set nombre
+     *
+     * @param string $nombre
+     *
+     * @return User
+     */
+    public function setNombre($nombre)
     {
-        parent::__construct();
-        // your own logic
+        $this->nombre = $nombre;
+
+        return $this;
     }
 
+    /**
+     * Get nombre
+     *
+     * @return string
+     */
+    public function getNombre()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set cId
+     *
+     * @param integer $cId
+     *
+     * @return User
+     */
+    public function setCId($cId)
+    {
+        $this->cId = $cId;
+
+        return $this;
+    }
+
+    /**
+     * Get cId
+     *
+     * @return int
+     */
+    public function getCId()
+    {
+        return $this->cId;
+    }
 }
+
