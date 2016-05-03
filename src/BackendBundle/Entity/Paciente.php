@@ -15,7 +15,7 @@ class Paciente
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer", name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -24,126 +24,126 @@ class Paciente
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombre", type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Nombre")
      */
     private $nombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Primer_Apellido", type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Primer_Apellido")
      */
     private $primerApellido;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Segundo_Apellido", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Segundo_Apellido")
      */
     private $segundoApellido;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Sexo", type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Sexo")
      */
     private $sexo;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_nacimiento", type="datetime")
+     * @ORM\Column(type="datetime", nullable=true, name="fecha_nacimiento")
      */
     private $fechaNacimiento;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="c_id", type="integer", unique=true)
+     * @ORM\Column(type="integer", unique=true, nullable=true, name="c_id")
      */
     private $cId;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Color_Piel", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Color_Piel")
      */
     private $colorPiel;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Estado_Conyugal", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Estado_Conyugal")
      */
     private $estadoConyugal;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Pais_Nacimiento", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Pais_Nacimiento")
      */
     private $paisNacimiento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Provincia_Nacimiento", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Provincia_Nacimiento")
      */
     private $provinciaNacimiento;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Municipio_Nacimiento", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Municipio_Nacimiento")
      */
     private $municipioNacimiento;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="telefono", type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=true, name="telefono")
      */
     private $telefono;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Direccion_Calle", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Direccion_Calle")
      */
     private $direccionCalle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Direccion_Casa_No", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Direccion_Casa_No")
      */
     private $direccionCasaNo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Direccion_EntreCalles", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Direccion_EntreCalles")
      */
     private $direccionEntreCalles;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Direccion_Localidad", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Direccion_Localidad")
      */
     private $direccionLocalidad;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Direccion_Municipio", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Direccion_Municipio")
      */
     private $direccionMunicipio;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Direccion_Provincia", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Direccion_Provincia")
      */
     private $direccionProvincia;
 
@@ -151,84 +151,84 @@ class Paciente
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombre_centro_trabajo", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Nombre_centro_trabajo")
      */
     private $nombreCentroTrabajo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Direccion_centro_trabajo", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Direccion_centro_trabajo")
      */
     private $direccionCentroTrabajo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Emergencias_nombre", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_nombre")
      */
     private $EmergenciasNombre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Emergencias_primer_apellido", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_primer_apellido")
      */
     private $EmergenciasPrimerApellido;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Emergencias_segundo_apellido", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_segundo_apellido")
      */
     private $EmergenciasSegundoApellido;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="Emrgencias_telefono", type="integer", nullable=true)
+     * @ORM\Column(type="integer", nullable=true, name="Emrgencias_telefono")
      */
     private $Emergenciastelefono;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Emergencias_Direccion_Calle", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_Direccion_Calle")
      */
     private $emergenciasDireccionCalle;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Emergencias_Direccion_Casa_No", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_Direccion_Casa_No")
      */
     private $emergenciasDireccionCasaNo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Emergencias_Direccion_EntreCalles", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_Direccion_EntreCalles")
      */
     private $emergenciasDireccionEntreCalles;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Emergencias_Direccion_Localidad", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_Direccion_Localidad")
      */
     private $emergenciasDireccionLocalidad;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Emergencias_Direccion_Municipio", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_Direccion_Municipio")
      */
     private $emergenciasDireccionMunicipio;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Emergencias_Direccion_Provincia", type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_Direccion_Provincia")
      */
     private $emergenciasDireccionProvincia;
 

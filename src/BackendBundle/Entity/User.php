@@ -16,7 +16,7 @@ abstract class User extends BaseUser
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer", name="id")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -25,14 +25,14 @@ abstract class User extends BaseUser
     /**
      * @var string
      *
-     * @ORM\Column(name="Nombre", type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Nombre")
      */
     private $nombre;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="c_id", type="integer", unique=true)
+     * @ORM\Column(type="integer", unique=true, nullable=true, name="c_id")
      */
     private $cId;
 

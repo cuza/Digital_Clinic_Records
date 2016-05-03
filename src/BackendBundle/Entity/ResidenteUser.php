@@ -12,39 +12,39 @@ use Doctrine\ORM\Mapping as ORM;
 use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 
 /**
- * @ORM\Entity
- * @ORM\Table(name="ResidenteUser")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\ResidenteUserRepository")
+ * @ORM\Table(name="ResidenteUser")
+ * 
  * @UniqueEntity(fields = "username", targetClass = "BackendBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "BackendBundle\Entity\User", message="fos_user.email.already_used")
  */
 class ResidenteUser extends User
 {
     /**
-     * @ORM\Id
-     * @ORM\Column(type="integer")
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * 
+     * 
+     * 
      */
     protected $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Especialidad", type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true, name="Especialidad")
      */
     private $especialidad;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="ano", type="integer")
+     * @ORM\Column(type="integer", nullable=true, name="ano")
      */
     private $ano;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="doctor_id", type="integer", unique=true)
+     * @ORM\Column(type="integer", unique=true, nullable=true, name="doctor_id")
      */
     private $doctorId;
 
