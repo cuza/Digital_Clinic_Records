@@ -31,8 +31,12 @@ class ComposerStaticInitdea5e600c850af581d53037a1c45eafa
             'Symfony\\Bundle\\SwiftmailerBundle\\' => 33,
             'Symfony\\Bundle\\MonologBundle\\' => 29,
             'Symfony\\Bundle\\' => 15,
+            'Symfony\\Bridge\\Twig\\' => 20,
+            'Symfony\\Bridge\\Swiftmailer\\' => 27,
+            'Symfony\\Bridge\\ProxyManager\\' => 28,
             'Symfony\\Bridge\\PhpUnit\\' => 23,
-            'Symfony\\Bridge\\' => 15,
+            'Symfony\\Bridge\\Monolog\\' => 23,
+            'Symfony\\Bridge\\Doctrine\\' => 24,
             'Sensio\\Bundle\\GeneratorBundle\\' => 30,
             'Sensio\\Bundle\\FrameworkExtraBundle\\' => 35,
             'Sensio\\Bundle\\DistributionBundle\\' => 33,
@@ -101,13 +105,29 @@ class ComposerStaticInitdea5e600c850af581d53037a1c45eafa
         array (
             0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bundle',
         ),
+        'Symfony\\Bridge\\Twig\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bridge/Twig',
+        ),
+        'Symfony\\Bridge\\Swiftmailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bridge/Swiftmailer',
+        ),
+        'Symfony\\Bridge\\ProxyManager\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bridge/ProxyManager',
+        ),
         'Symfony\\Bridge\\PhpUnit\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/phpunit-bridge',
         ),
-        'Symfony\\Bridge\\' => 
+        'Symfony\\Bridge\\Monolog\\' => 
         array (
-            0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bridge',
+            0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bridge/Monolog',
+        ),
+        'Symfony\\Bridge\\Doctrine\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/symfony/src/Symfony/Bridge/Doctrine',
         ),
         'Sensio\\Bundle\\GeneratorBundle\\' => 
         array (

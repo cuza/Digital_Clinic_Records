@@ -191,6 +191,7 @@ class PropertyAccessor implements PropertyAccessorInterface
                     if ($propertyPath->isIndex($i)) {
                         if ($overwrite = !isset($zval[self::REF])) {
                             $ref = &$zval[self::REF];
+                            $ref = $zval[self::VALUE];
                         }
                         $this->writeIndex($zval, $property, $value);
                         if ($overwrite) {
@@ -372,10 +373,11 @@ class PropertyAccessor implements PropertyAccessorInterface
                     }
 
                     if ($i + 1 < $propertyPath->getLength()) {
-                        $zval[self::VALUE][$property] = array();
-
                         if (isset($zval[self::REF])) {
+                            $zval[self::VALUE][$property] = array();
                             $zval[self::REF] = $zval[self::VALUE];
+                        } else {
+                            $zval[self::VALUE] = array($property => array());
                         }
                     }
                 }
