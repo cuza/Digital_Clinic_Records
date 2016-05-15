@@ -8,7 +8,7 @@ class AppKernel extends Kernel
     public function registerBundles()
     {
         $bundles = [
-            //Symfony standar version Bundles
+            //Symfony standard version Bundles
             new Symfony\Bundle\FrameworkBundle\FrameworkBundle(),
             new Symfony\Bundle\SecurityBundle\SecurityBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
@@ -16,13 +16,16 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
-            //3rd Party Bundles
-            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
-//            new JordiLlonch\Bundle\CrudGeneratorBundle\JordiLlonchCrudGeneratorBundle(),
-//            new Lexik\Bundle\FormFilterBundle\LexikFormFilterBundle(),
+
+            //3rd Party API App Bundles
+            new \FOS\RestBundle\FOSRestBundle(),
+            new \JMS\SerializerBundle\JMSSerializerBundle(),
+            new \Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+
+            //3rd Party Web App Bundles
+//            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new \Knp\Bundle\TimeBundle\KnpTimeBundle(),
-
 
             //My Bundles
             new BackendBundle\BackendBundle(),

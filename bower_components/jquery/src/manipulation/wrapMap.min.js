@@ -1,0 +1,1 @@
+define(function(){var a={option:[1,"<select multiple='multiple'>","</select>"],thead:[1,"<table>","</table>"],col:[2,"<table><colgroup>","</colgroup></table>"],tr:[2,"<table><tbody>","</tbody></table>"],td:[3,"<table><tbody><tr>","</tr></tbody></table>"],_default:[0,"",""]};a.optgroup=a.option;a.tbody=a.tfoot=a.colgroup=a.caption=a.thead;a.th=a.td;return a});

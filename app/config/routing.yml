@@ -1,3 +1,99 @@
+backend_sexo:
+    resource: "@BackendBundle/Controller/SexoController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
+backend_user:
+    resource: "@BackendBundle/Controller/UserController.php"
+    type:     annotation
+
 api:
     resource: "@APIBundle/Controller/"
     type:     annotation

@@ -1,0 +1,1 @@
+define(function(){return function(a){return a.nodeType===1||a.nodeType===9||!(+a.nodeType)}});

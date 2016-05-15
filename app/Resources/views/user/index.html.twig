@@ -1,0 +1,47 @@
+    {% extends ':default:backend.html.twig' %}
+
+    {% block BackendContent %}
+    <h1>Lista de User</h1>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Cid</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+        <tr>
+                    <td>
+                        <a href="{{ path('user_show', { 'id': user.id }) }}">{{ user.id }}</a>
+                    </td>
+                    <td>{{ user.nombre }}</td>
+                    <td>{{ user.cId }}</td>
+                    <td>
+
+                        <div class="btn-group" role="group" aria-label="...">
+                                                                    <a role="button" class="btn btn-primary"
+                                       href="{{ path('user_show', { 'id': user.id }) }}"><i
+                                                class="fa fa-list"></i> show</a>
+
+                                
+                                                                    <a role="button" class="btn btn-success"
+                                       href="{{ path('user_edit', { 'id': user.id }) }}"><i
+                                                class="fa fa-edit"></i> edit</a>
+
+                                
+                        </div>
+
+                    </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+            <a class="btn btn-info" href="{{ path('user_new') }}"><i class="fa fa-plus"></i> Crear un nuevo/a User</a>
+        </div>
+    {% endblock %}

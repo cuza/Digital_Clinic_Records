@@ -14,18 +14,19 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 /**
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\DoctorUserRepository")
  * @ORM\Table(name="DoctorUser")
- * 
+ *
  * @UniqueEntity(fields = "username", targetClass = "BackendBundle\Entity\User", message="fos_user.username.already_used")
  * @UniqueEntity(fields = "email", targetClass = "BackendBundle\Entity\User", message="fos_user.email.already_used")
  */
 class DoctorUser extends User
 {
     /**
-     * 
-     * 
-     * 
+     *
+     *
+     *
      */
     protected $id;
+
 
     /**
      * @var string

@@ -1,12 +1,12 @@
 {% block extends %}
-{{ "{% extends 'base.html.twig' %}" }}
+    {{ "{% extends ':default:backend.html.twig' %}" }}
 {% endblock extends %}
 
 {% block body %}
-{{ "{% block body %}" }}
+    {{ "{% block BackendContent %}" }}
     <h1>{{ entity }}</h1>
 
-    <table>
+    <table class="table table-bordered">
         <tbody>
         {%- for field, metadata in fields %}
 

@@ -8,10 +8,10 @@ use FOS\UserBundle\Model\User as BaseUser;
 /**
  * User
  *
- * @ORM\Table(name="user")
+ * @ORM\Table(name="User")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\UserRepository")
  */
-abstract class User extends BaseUser
+class User extends BaseUser
 {
     /**
      * @var int
@@ -35,6 +35,14 @@ abstract class User extends BaseUser
      * @ORM\Column(type="integer", unique=true, nullable=true, name="c_id")
      */
     private $cId;
+
+    /**
+     * @ORM\ManyToOne(
+     *     targetEntity="Sexo",
+     *     inversedBy="User"
+     * )
+     */
+    private $sexo;
 
 
     /**
@@ -94,5 +102,28 @@ abstract class User extends BaseUser
     {
         return $this->cId;
     }
-}
 
+    /**
+     * Set sexo
+     *
+     * @param \BackendBundle\Entity\sexo $sexo
+     *
+     * @return User
+     */
+    public function setSexo(\BackendBundle\Entity\sexo $sexo = null)
+    {
+        $this->sexo = $sexo;
+
+        return $this;
+    }
+
+    /**
+     * Get sexo
+     *
+     * @return \BackendBundle\Entity\sexo
+     */
+    public function getSexo()
+    {
+        return $this->sexo;
+    }
+}

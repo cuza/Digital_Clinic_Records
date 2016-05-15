@@ -1,0 +1,1 @@
+define(["./document"],function(a){return a.documentElement});

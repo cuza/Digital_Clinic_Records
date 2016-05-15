@@ -1,0 +1,1 @@
+define(["../data/var/dataPriv"],function(a){function b(d,f){var e=0,c=d.length;for(;e<c;e++){a.set(d[e],"globalEval",!f||a.get(f[e],"globalEval"))}}return b});
