@@ -1,0 +1,9 @@
+{
+  "config": {
+    "secure-http": "false"
+  },
+  "repositories": [
+    {"type": "composer", "url": "http://toran.brightsoft.com/repo/packagist/"},
+    {"packagist": false}
+  ]
+}

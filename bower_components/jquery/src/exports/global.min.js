@@ -1,0 +1,1 @@
+var _jQuery=window.jQuery,_$=window.$;jQuery.noConflict=function(a){if(window.$===jQuery){window.$=_$}if(a&&window.jQuery===jQuery){window.jQuery=_jQuery}return jQuery};if(!noGlobal){window.jQuery=window.$=jQuery};

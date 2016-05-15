@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Paciente
  *
- * @ORM\Table(name="paciente")
+ * @ORM\Table(name="Paciente")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\PacienteRepository")
  */
 class Paciente
@@ -43,9 +43,10 @@ class Paciente
     private $segundoApellido;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string", length=255, nullable=true, name="Sexo")
+     * @ORM\ManyToOne(
+     *     targetEntity="Sexo",
+     *     inversedBy="Paciente"
+     * )
      */
     private $sexo;
 

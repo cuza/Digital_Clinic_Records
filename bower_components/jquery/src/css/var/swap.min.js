@@ -1,0 +1,1 @@
+define(function(){return function(f,e,g,d){var c,b,a={};for(b in e){a[b]=f.style[b];f.style[b]=e[b]}c=g.apply(f,d||[]);for(b in e){f.style[b]=a[b]}return c}});
