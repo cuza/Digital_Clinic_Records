@@ -38,7 +38,7 @@ class User extends BaseUser
 
     /**
      * @ORM\ManyToOne(
-     *     targetEntity="Sexo",
+     *     targetEntity="BackendBundle\Entity\Sexo",
      *     inversedBy="User"
      * )
      */

@@ -44,7 +44,7 @@ class Paciente
 
     /**
      * @ORM\ManyToOne(
-     *     targetEntity="Sexo",
+     *     targetEntity="BackendBundle\Entity\Sexo",
      *     inversedBy="Paciente"
      * )
      */

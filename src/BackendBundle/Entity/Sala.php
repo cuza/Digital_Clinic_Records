@@ -37,7 +37,7 @@ class Sala
 
     /**
      * @ORM\ManyToOne(
-     *     targetEntity="Sexo",
+     *     targetEntity="BackendBundle\Entity\Sexo",
      *     inversedBy="Sala"
      * )
      */

@@ -17,15 +17,20 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-            //3rd Party API App Bundles
-            new \FOS\RestBundle\FOSRestBundle(),
-            new \JMS\SerializerBundle\JMSSerializerBundle(),
-            new \Nelmio\ApiDocBundle\NelmioApiDocBundle(),
+//            API Bundles
+//            new \FOS\RestBundle\FOSRestBundle(),
+//            new \JMS\SerializerBundle\JMSSerializerBundle(),
+//            new \Nelmio\ApiDocBundle\NelmioApiDocBundle(),
 
-            //3rd Party Web App Bundles
+//            Web App Bundles
 //            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
+            new \FOS\UserBundle\FOSUserBundle(),
             new \Knp\Bundle\TimeBundle\KnpTimeBundle(),
+
+//            Sonata Admin Bundles
+//            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
+//            new \Sonata\CoreBundle\SonataCoreBundle(),
+//            new \Sonata\AdminBundle\SonataAdminBundle(),
 
             //My Bundles
             new BackendBundle\BackendBundle(),
