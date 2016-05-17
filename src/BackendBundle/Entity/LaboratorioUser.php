@@ -40,19 +40,6 @@ class LaboratorioUser extends User
      */
     private $especialidad;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer", nullable=true, name="ano")
-     */
-    private $ano;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer", unique=true, nullable=true, name="doctor_id")
-     */
-    private $doctorId;
 
     /**
      * Set especialidad

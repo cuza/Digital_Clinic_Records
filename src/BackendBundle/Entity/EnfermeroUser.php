@@ -115,4 +115,72 @@ class EnfermeroUser extends User
     {
         return $this->datos2;
     }
+
+    /**
+     * Add hojasEnfermeria1
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria $hojasEnfermeria1
+     *
+     * @return EnfermeroUser
+     */
+    public function addHojasEnfermeria1(\BackendBundle\Entity\HojaEnfermeria $hojasEnfermeria1)
+    {
+        $this->hojasEnfermeria1[] = $hojasEnfermeria1;
+
+        return $this;
+    }
+
+    /**
+     * Remove hojasEnfermeria1
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria $hojasEnfermeria1
+     */
+    public function removeHojasEnfermeria1(\BackendBundle\Entity\HojaEnfermeria $hojasEnfermeria1)
+    {
+        $this->hojasEnfermeria1->removeElement($hojasEnfermeria1);
+    }
+
+    /**
+     * Get hojasEnfermeria1
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHojasEnfermeria1()
+    {
+        return $this->hojasEnfermeria1;
+    }
+
+    /**
+     * Add hojasEnfermeria2
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria2 $hojasEnfermeria2
+     *
+     * @return EnfermeroUser
+     */
+    public function addHojasEnfermeria2(\BackendBundle\Entity\HojaEnfermeria2 $hojasEnfermeria2)
+    {
+        $this->hojasEnfermeria2[] = $hojasEnfermeria2;
+
+        return $this;
+    }
+
+    /**
+     * Remove hojasEnfermeria2
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria2 $hojasEnfermeria2
+     */
+    public function removeHojasEnfermeria2(\BackendBundle\Entity\HojaEnfermeria2 $hojasEnfermeria2)
+    {
+        $this->hojasEnfermeria2->removeElement($hojasEnfermeria2);
+    }
+
+    /**
+     * Get hojasEnfermeria2
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHojasEnfermeria2()
+    {
+        return $this->hojasEnfermeria2;
+    }
 }
