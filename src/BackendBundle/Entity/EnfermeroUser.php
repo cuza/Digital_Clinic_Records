@@ -34,6 +34,13 @@ class EnfermeroUser extends User
     protected $id;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(type="boolean", nullable=true, name="licenciatura")
+     */
+    private $licenciatura;
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria", mappedBy="enfermero")
@@ -182,5 +189,29 @@ class EnfermeroUser extends User
     public function getHojasEnfermeria2()
     {
         return $this->hojasEnfermeria2;
+    }
+
+    /**
+     * Set licenciatura
+     *
+     * @param boolean $licenciatura
+     *
+     * @return EnfermeroUser
+     */
+    public function setLicenciatura($licenciatura)
+    {
+        $this->licenciatura = $licenciatura;
+
+        return $this;
+    }
+
+    /**
+     * Get licenciatura
+     *
+     * @return boolean
+     */
+    public function getLicenciatura()
+    {
+        return $this->licenciatura;
     }
 }

@@ -20,6 +20,7 @@ class EnfermeroUserRegistrationType extends AbstractType
         ->add('nombre')
         ->add('cId')
         ->add('sexo')
+        ->add('licenciatura')
     ;
     }
     
