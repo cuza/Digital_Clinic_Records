@@ -232,6 +232,13 @@ class Paciente
      */
     private $emergenciasDireccionProvincia;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Complementario", mappedBy="paciente")
+     */
+    private $complemetarios;
+
 
     /**
      * Get id
@@ -961,5 +968,46 @@ class Paciente
     public function getEmergenciasDireccionProvincia()
     {
         return $this->emergenciasDireccionProvincia;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->complemetarios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add complemetario
+     *
+     * @param \BackendBundle\Entity\Complementario $complemetario
+     *
+     * @return Paciente
+     */
+    public function addComplemetario(\BackendBundle\Entity\Complementario $complemetario)
+    {
+        $this->complemetarios[] = $complemetario;
+
+        return $this;
+    }
+
+    /**
+     * Remove complemetario
+     *
+     * @param \BackendBundle\Entity\Complementario $complemetario
+     */
+    public function removeComplemetario(\BackendBundle\Entity\Complementario $complemetario)
+    {
+        $this->complemetarios->removeElement($complemetario);
+    }
+
+    /**
+     * Get complemetarios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComplemetarios()
+    {
+        return $this->complemetarios;
     }
 }
