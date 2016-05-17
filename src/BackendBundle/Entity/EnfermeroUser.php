@@ -27,4 +27,86 @@ class EnfermeroUser extends User
      */
     protected $id;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria", mappedBy="enfermero")
+     */
+    private $datos1;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria2", mappedBy="enfermero")
+     */
+    private $datos2;
+
+
+    /**
+     * Add datos1
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria $datos1
+     *
+     * @return EnfermeroUser
+     */
+    public function addDatos1(\BackendBundle\Entity\HojaEnfermeria $datos1)
+    {
+        $this->datos1[] = $datos1;
+
+        return $this;
+    }
+
+    /**
+     * Remove datos1
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria $datos1
+     */
+    public function removeDatos1(\BackendBundle\Entity\HojaEnfermeria $datos1)
+    {
+        $this->datos1->removeElement($datos1);
+    }
+
+    /**
+     * Get datos1
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDatos1()
+    {
+        return $this->datos1;
+    }
+
+    /**
+     * Add datos2
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria2 $datos2
+     *
+     * @return EnfermeroUser
+     */
+    public function addDatos2(\BackendBundle\Entity\HojaEnfermeria2 $datos2)
+    {
+        $this->datos2[] = $datos2;
+
+        return $this;
+    }
+
+    /**
+     * Remove datos2
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria2 $datos2
+     */
+    public function removeDatos2(\BackendBundle\Entity\HojaEnfermeria2 $datos2)
+    {
+        $this->datos2->removeElement($datos2);
+    }
+
+    /**
+     * Get datos2
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getDatos2()
+    {
+        return $this->datos2;
+    }
 }
