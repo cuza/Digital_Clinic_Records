@@ -20,10 +20,16 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
  */
 class EstudianteUser extends User
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->roles=array("ROLE_ESTUDIANTE");
+    }
+
     /**
-     * 
-     * 
-     * 
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 

@@ -20,6 +20,12 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
  */
 class DoctorUser extends User
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->roles=array("ROLE_DOCTOR");
+    }
+
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
