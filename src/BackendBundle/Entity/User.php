@@ -30,21 +30,21 @@ abstract class User extends BaseUser
      *
      * @ORM\Column(type="string", length=255, nullable=true, name="Nombre")
      */
-    private $nombre;
+    protected $nombre;
 
     /**
      * @var int
      *
      * @ORM\Column(type="integer", unique=true, nullable=true, name="c_id")
      */
-    private $cId;
+    protected $cId;
 
     /**
      * @var string
      *
      * @ORM\Column(name="Sexo", type="string", nullable=true, length=255)
      */
-    private $sexo;
+    protected $sexo;
 
 
     /**
