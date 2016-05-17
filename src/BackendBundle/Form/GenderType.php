@@ -1,6 +1,5 @@
 <?php
-// src/AppBundle/Form/Type/GenderType.php
-namespace AppBundle\Form\Type;
+namespace BackendBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
