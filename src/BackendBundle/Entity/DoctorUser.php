@@ -21,9 +21,9 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 class DoctorUser extends User
 {
     /**
-     *
-     *
-     *
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
 

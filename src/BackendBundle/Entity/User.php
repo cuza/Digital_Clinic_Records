@@ -6,12 +6,15 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
- * User
- *
- * @ORM\Table(name="User")
+ * @ORM\Entity
+ * @ORM\Table(name="user")
+ * @ORM\InheritanceType("JOINED")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\UserRepository")
+ * @ORM\DiscriminatorColumn(name="type", type="string")
+ * @ORM\DiscriminatorMap({"doctor" = "DoctorUser"})
+ *
  */
-class User extends BaseUser
+abstract class User extends BaseUser
 {
     /**
      * @var int
@@ -105,21 +108,21 @@ class User extends BaseUser
     /**
      * Set sexo
      *
-     * @param \BackendBundle\Entity\sexo $sexo
+     * @param string $sexo
      *
      * @return User
      */
-    public function setSexo(\BackendBundle\Entity\sexo $sexo = null)
+    public function setSexo($sexo)
     {
         $this->sexo = $sexo;
-
+    
         return $this;
     }
 
     /**
      * Get sexo
      *
-     * @return \BackendBundle\Entity\sexo
+     * @return string
      */
     public function getSexo()
     {
