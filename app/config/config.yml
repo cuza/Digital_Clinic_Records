@@ -104,23 +104,73 @@ pugx_multi_user:
             type: BackendBundle\Form\DoctorUserProfileType
             name: fos_user_profile_form
             validation_groups:  [Profile, Default]
-#    user_two:
-#        entity:
-#          class: BackendBundle\Entity\ResidenteUser
-##        registration:
-##          form:
-##            type: Acme\UserBundle\Form\Type\RegistrationUserTwoFormType
-##          template: AcmeUserBundle:Registration:user_two.form.html.twig
-##        profile:
-##          form:
-##            type: Acme\UserBundle\Form\Type\ProfileUserTwoFormType
-#    user_three:
-#        entity:
-#          class: BackendBundle\Entity\EstudianteUser
-##        registration:
-##          form:
-##            type: Acme\UserBundle\Form\Type\RegistrationUserTwoFormType
-##          template: AcmeUserBundle:Registration:user_two.form.html.twig
-##        profile:
-##          form:
-##            type: Acme\UserBundle\Form\Type\ProfileUserTwoFormType
+    admin:
+        entity:
+          class: BackendBundle\Entity\AdminUser
+        registration:
+          form:
+            type: BackendBundle\Form\AdminUserRegistrationType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: BackendBundle:Registration:admin.form.html.twig
+        profile:
+          form:
+            type: BackendBundle\Form\AdminUserProfileType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+    laboratorio:
+        entity:
+          class: BackendBundle\Entity\LaboratorioUser
+        registration:
+          form:
+            type: BackendBundle\Form\LaboratorioUserRegistrationType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: BackendBundle:Registration:laboratorio.form.html.twig
+        profile:
+          form:
+            type: BackendBundle\Form\LaboratorioUserProfileType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+    estudiante:
+        entity:
+          class: BackendBundle\Entity\EstudianteUser
+        registration:
+          form:
+            type: BackendBundle\Form\EstudianteUserRegistrationType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: BackendBundle:Registration:estudiante.form.html.twig
+        profile:
+          form:
+            type: BackendBundle\Form\EstudianteUserProfileType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+    enfermero:
+        entity:
+          class: BackendBundle\Entity\EnfermeroUser
+        registration:
+          form:
+            type: BackendBundle\Form\EnfermeroUserRegistrationType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: BackendBundle:Registration:enfermero.form.html.twig
+        profile:
+          form:
+            type: BackendBundle\Form\EnfermeroUserProfileType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
+    residente:
+        entity:
+          class: BackendBundle\Entity\ResidenteUser
+        registration:
+          form:
+            type: BackendBundle\Form\ResidenteUserRegistrationType
+            name: fos_user_registration_form
+            validation_groups:  [Registration, Default]
+          template: BackendBundle:Registration:residente.form.html.twig
+        profile:
+          form:
+            type: BackendBundle\Form\ResidenteUserProfileType
+            name: fos_user_profile_form
+            validation_groups:  [Profile, Default]
