@@ -25,7 +25,7 @@ class HojaEnfermeria
      * @var EnfermeroUser
      *
      *
-     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\EnfermeroUser", inversedBy="datos1")
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\EnfermeroUser", inversedBy="hojasEnfermeria1")
      * @ORM\JoinColumn(name="enfermero_id", referencedColumnName="id")
      */
     private $enfermero;

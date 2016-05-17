@@ -38,14 +38,14 @@ class EnfermeroUser extends User
      *
      * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria", mappedBy="enfermero")
      */
-    private $datos1;
+    private $hojasEnfermeria1;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria2", mappedBy="enfermero")
      */
-    private $datos2;
+    private $hojasEnfermeria2;
 
 
     /**
