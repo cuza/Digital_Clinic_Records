@@ -23,9 +23,9 @@ class AppKernel extends Kernel
 //            new \Nelmio\ApiDocBundle\NelmioApiDocBundle(),
 
 //            Web App Bundles
-//            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
-            new \FOS\UserBundle\FOSUserBundle(),
-            new \Knp\Bundle\TimeBundle\KnpTimeBundle(),
+            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
+            new FOS\UserBundle\FOSUserBundle(),
+            new Knp\Bundle\TimeBundle\KnpTimeBundle(),
 
 //            Sonata Admin Bundles
 //            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),

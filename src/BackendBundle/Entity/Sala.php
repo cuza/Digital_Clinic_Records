@@ -36,10 +36,9 @@ class Sala
     private $servicio;
 
     /**
-     * @ORM\ManyToOne(
-     *     targetEntity="BackendBundle\Entity\Sexo",
-     *     inversedBy="Sala"
-     * )
+     * @var string
+     *
+     * @ORM\Column(name="Sexo", type="string", length=255)
      */
     private $sexo;
 

@@ -37,10 +37,9 @@ class User extends BaseUser
     private $cId;
 
     /**
-     * @ORM\ManyToOne(
-     *     targetEntity="BackendBundle\Entity\Sexo",
-     *     inversedBy="User"
-     * )
+     * @var string
+     *
+     * @ORM\Column(name="Sexo", type="string", length=255)
      */
     private $sexo;
 
