@@ -2,6 +2,7 @@
 
 namespace BackendBundle\Controller;
 
+use BackendBundle\Entity\AdminUser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -41,7 +42,7 @@ class UserController extends Controller
      */
     public function newAction(Request $request)
     {
-        $user = new User();
+        $user = new AdminUser();
         $form = $this->createForm('BackendBundle\Form\UserType', $user);
         $form->handleRequest($request);
 

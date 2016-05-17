@@ -11,10 +11,10 @@ namespace BackendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class RegistrationAdminController
+class RegistrationAdminController extends Controller
 {
     /**
-     * @Route("/register/admin"), name="admin-registration"
+     * @Route("/register/admin", name="admin-registration")
      */
     public function registerAction()
     {

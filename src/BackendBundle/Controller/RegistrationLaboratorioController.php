@@ -11,10 +11,10 @@ namespace BackendBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
-class RegistrationLaboratorioController
+class RegistrationLaboratorioController extends Controller
 {
     /**
-     * @Route("/register/laboratorio"), name="laboratorio-registration"
+     * @Route("/register/laboratorio", name="laboratorio-registration")
      */
     public function registerAction()
     {
