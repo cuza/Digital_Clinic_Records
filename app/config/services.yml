@@ -7,3 +7,10 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+  app.form.type.gender:
+      class: BackendBundle\Form\Type\GenderType
+          arguments:
+              - '%genders%'
+          tags:
+              - { name: form.type }
