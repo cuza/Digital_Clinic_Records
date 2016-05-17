@@ -23,7 +23,7 @@ class AppKernel extends Kernel
 //            new \Nelmio\ApiDocBundle\NelmioApiDocBundle(),
 
 //            Web App Bundles
-            new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
+           // new PUGX\MultiUserBundle\PUGXMultiUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
 
