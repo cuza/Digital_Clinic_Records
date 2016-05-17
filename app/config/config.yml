@@ -95,13 +95,13 @@ pugx_multi_user:
 #          factory:
         registration:
           form:
-#            type: Acme\UserBundle\Form\Type\RegistrationUserOneFormType
+            type: BackendBundle\Form\DoctorUserRegistrationType
             name: fos_user_registration_form
             validation_groups:  [Registration, Default]
-#          template: AcmeUserBundle:Registration:user_one.form.html.twig
+          template: BackendBundle:Registration:doctor.form.html.twig
         profile:
           form:
-#            type: Acme\UserBundle\Form\Type\ProfileUserOneFormType
+            type: BackendBundle\Form\DoctorUserProfileType
             name: fos_user_profile_form
             validation_groups:  [Profile, Default]
 #    user_two:

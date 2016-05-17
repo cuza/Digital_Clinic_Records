@@ -11,7 +11,7 @@ use FOS\UserBundle\Model\User as BaseUser;
  * @ORM\InheritanceType("JOINED")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\UserRepository")
  * @ORM\DiscriminatorColumn(name="type", type="string")
- * @ORM\DiscriminatorMap({"doctor" = "DoctorUser"})
+ * @ORM\DiscriminatorMap({"admin" = "AdminUser","doctor" = "DoctorUser","estudiante" = "EstudianteUser","enfermero" = "EnfermeroUser","laboratorio" = "LaboratorioUser","residente" = "ResidenteUser"})
  *
  */
 abstract class User extends BaseUser
