@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class DoctorUserRegistrationType extends AbstractType
+class DoctorUserProfileType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,8 +15,14 @@ class DoctorUserRegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('username')
+            ->add('email')
+            ->add('plainPassword')
             ->add('especialidad')
             ->add('doctorId')
+            ->add('nombre')
+            ->add('cId')
+            ->add('sexo')
         ;
     }
     

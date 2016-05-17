@@ -15,8 +15,14 @@ class DoctorUserRegistrationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('username')
+            ->add('email')
+            ->add('plainPassword')
             ->add('especialidad')
             ->add('doctorId')
+            ->add('nombre')
+            ->add('cId')
+            ->add('sexo')
         ;
     }
     

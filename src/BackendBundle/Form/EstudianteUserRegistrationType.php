@@ -6,14 +6,22 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class EnfermeroUserRegistrationType extends AbstractType
+class EstudianteUserRegistrationType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    {        $builder
+        ->add('username')
+        ->add('email')
+        ->add('plainPassword')
+        ->add('ano')
+        ->add('nombre')
+        ->add('cId')
+        ->add('sexo')
+    ;
     }
     
     /**
@@ -22,7 +30,7 @@ class EnfermeroUserRegistrationType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'BackendBundle\Entity\EnfermeroUser'
+            'data_class' => 'BackendBundle\Entity\EstudianteUser'
         ));
     }
 }

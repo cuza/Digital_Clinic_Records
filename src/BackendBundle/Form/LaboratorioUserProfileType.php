@@ -13,7 +13,15 @@ class LaboratorioUserProfileType extends AbstractType
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {
+    {        $builder
+        ->add('username')
+        ->add('email')
+        ->add('plainPassword')
+        ->add('especialidad')
+        ->add('nombre')
+        ->add('cId')
+        ->add('sexo')
+    ;
     }
     
     /**
