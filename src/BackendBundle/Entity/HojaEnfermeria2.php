@@ -58,6 +58,13 @@ class HojaEnfermeria2
      */
     private $date;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="ingresoId", type="string", length=255)
+     */
+    private $ingresoId;
+
 
     /**
      * Get id
@@ -187,5 +194,29 @@ class HojaEnfermeria2
     public function getEnfermero()
     {
         return $this->enfermero;
+    }
+
+    /**
+     * Set ingresoId
+     *
+     * @param string $ingresoId
+     *
+     * @return HojaEnfermeria2
+     */
+    public function setIngresoId($ingresoId)
+    {
+        $this->ingresoId = $ingresoId;
+
+        return $this;
+    }
+
+    /**
+     * Get ingresoId
+     *
+     * @return string
+     */
+    public function getIngresoId()
+    {
+        return $this->ingresoId;
     }
 }
