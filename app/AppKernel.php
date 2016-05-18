@@ -39,7 +39,6 @@ class AppKernel extends Kernel
 
             //My Bundles
             new AppBundle\AppBundle(),
-            new FrontendBundle\FrontendBundle(),
             new APIBundle\APIBundle(),
         ];
 

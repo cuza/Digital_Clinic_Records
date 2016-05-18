@@ -3,15 +3,10 @@ api:
     type:     annotation
     prefix:   /api
 
-frontend:
-    resource: "@FrontendBundle/Controller/"
-    type:     annotation
-    prefix:   /
-
 backend:
     resource: "@AppBundle/Controller/"
     type:     annotation
-    prefix:   /be
+    prefix:   /
 
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
