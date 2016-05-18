@@ -47,7 +47,7 @@ class Complementario
      *
      *
      * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\HojaMedico", inversedBy="complemetarios")
-     * @ORM\JoinColumn(name="paciente_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="hojamedico_id", referencedColumnName="id")
      */
     private $hojaMedico;
 
