@@ -1,0 +1,11 @@
+services:
+  app.admin.post:
+    class: BackendBundle\Admin\DoctorAdmin
+    tags:
+        - { name: sonata.admin, manager_type: orm, group: "Content", label: "Doctor" }
+    arguments:
+        - ~
+        - BackendBundle\Entity\Doctor
+        - ~
+    calls:
+        - [ setTranslationDomain, [BackendBundle]]
