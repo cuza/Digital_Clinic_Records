@@ -5,6 +5,7 @@ namespace BackendBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use BackendBundle\Form\GenderType;
 
 class AdminUserRegistrationType extends AbstractType
 {
@@ -19,7 +20,7 @@ class AdminUserRegistrationType extends AbstractType
         ->add('plainPassword')
         ->add('nombre')
         ->add('cId')
-        ->add('sexo')
+        ->add('sexo', GenderType::class)
     ;
     }
     

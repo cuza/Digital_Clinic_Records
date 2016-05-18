@@ -43,6 +43,8 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    form_themes:
+        - 'form/fields.html.twig'
 #    form:
 #        resources:
 #            - LexikFormFilterBundle:Form:form_div_layout.html.twig

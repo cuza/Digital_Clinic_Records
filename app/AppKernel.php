@@ -28,9 +28,9 @@ class AppKernel extends Kernel
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
 
 //            Sonata Admin Bundles
-//            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
-//            new \Sonata\CoreBundle\SonataCoreBundle(),
-//            new \Sonata\AdminBundle\SonataAdminBundle(),
+            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new \Sonata\CoreBundle\SonataCoreBundle(),
+            new \Sonata\AdminBundle\SonataAdminBundle(),
 
             //My Bundles
             new BackendBundle\BackendBundle(),
