@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Ingreso
 {
+    public function __toString(){
+        return $this->getPaciente().'';
+    }
     /**
      * @var int
      *

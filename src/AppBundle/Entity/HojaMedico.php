@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class HojaMedico
 {
+    public function __toString(){
+        return $this->getConsulta().''.$this->getIngreso();
+    }
     /**
      * @var int
      *
@@ -81,7 +84,7 @@ class HojaMedico
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingreso", inversedBy="hojasMedico")
      * @ORM\JoinColumn(name="ingreso_id", referencedColumnName="id")
      */
-    private $ingresos;
+    private $ingreso;
 
     /**
      * @var Consulta
@@ -90,7 +93,7 @@ class HojaMedico
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Consulta", inversedBy="hojasMedico")
      * @ORM\JoinColumn(name="consulta_id", referencedColumnName="id")
      */
-    private $consultas;
+    private $consulta;
     /**
      * Constructor
      */
@@ -288,50 +291,50 @@ class HojaMedico
     }
 
     /**
-     * Set ingresos
+     * Set ingreso
      *
-     * @param \AppBundle\Entity\Ingreso $ingresos
+     * @param \AppBundle\Entity\Ingreso $ingreso
      *
      * @return HojaMedico
      */
-    public function setIngresos(\AppBundle\Entity\Ingreso $ingresos = null)
+    public function setIngreso(\AppBundle\Entity\Ingreso $ingreso = null)
     {
-        $this->ingresos = $ingresos;
+        $this->ingreso = $ingreso;
 
         return $this;
     }
 
     /**
-     * Get ingresos
+     * Get ingreso
      *
      * @return \AppBundle\Entity\Ingreso
      */
-    public function getIngresos()
+    public function getIngreso()
     {
-        return $this->ingresos;
+        return $this->ingreso;
     }
 
     /**
-     * Set consultas
+     * Set consulta
      *
-     * @param \AppBundle\Entity\Consulta $consultas
+     * @param \AppBundle\Entity\Consulta $consulta
      *
      * @return HojaMedico
      */
-    public function setConsultas(\AppBundle\Entity\Consulta $consultas = null)
+    public function setConsultas(\AppBundle\Entity\Consulta $consulta = null)
     {
-        $this->consultas = $consultas;
+        $this->consulta = $consulta;
 
         return $this;
     }
 
     /**
-     * Get consultas
+     * Get consulta
      *
      * @return \AppBundle\Entity\Consulta
      */
-    public function getConsultas()
+    public function getConsulta()
     {
-        return $this->consultas;
+        return $this->consulta;
     }
 }

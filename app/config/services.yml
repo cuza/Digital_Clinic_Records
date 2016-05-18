@@ -16,92 +16,132 @@ services:
       - { name: form.type }
 
   app.admin.doctor:
-      class: AppBundle\Admin\DoctorAdmin
-      tags:
-          - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Doctor" }
-      arguments:
-          - ~
-          - AppBundle\Entity\DoctorUser
-          - ~
-      calls:
-          - [ setTranslationDomain, [AppBundle]]
+    class: AppBundle\Admin\DoctorAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Doctor" }
+    arguments:
+      - ~
+      - AppBundle\Entity\DoctorUser
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
   app.admin.admin:
-        class: AppBundle\Admin\AdminAdmin
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Admin" }
-        arguments:
-            - ~
-            - AppBundle\Entity\AdminUser
-            - ~
-        calls:
-            - [ setTranslationDomain, [AppBundle]]
+    class: AppBundle\Admin\AdminAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Admin" }
+    arguments:
+      - ~
+      - AppBundle\Entity\AdminUser
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
   app.admin.enfermero:
-          class: AppBundle\Admin\EnfermeroAdmin
-          tags:
-              - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Enfermero" }
-          arguments:
-              - ~
-              - AppBundle\Entity\EnfermeroUser
-              - ~
-          calls:
-              - [ setTranslationDomain, [AppBundle]]
+    class: AppBundle\Admin\EnfermeroAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Enfermero" }
+    arguments:
+      - ~
+      - AppBundle\Entity\EnfermeroUser
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
   app.admin.estudiante:
-            class: AppBundle\Admin\EstudianteAdmin
-            tags:
-                - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Estudiante" }
-            arguments:
-                - ~
-                - AppBundle\Entity\EstudianteUser
-                - ~
-            calls:
-                - [ setTranslationDomain, [AppBundle]]
+    class: AppBundle\Admin\EstudianteAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Estudiante" }
+    arguments:
+      - ~
+      - AppBundle\Entity\EstudianteUser
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
   app.admin.residente:
-            class: AppBundle\Admin\ResidenteAdmin
-            tags:
-                - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Residente" }
-            arguments:
-                - ~
-                - AppBundle\Entity\ResidenteUser
-                - ~
-            calls:
-                - [ setTranslationDomain, [AppBundle]]
+    class: AppBundle\Admin\ResidenteAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Residente" }
+    arguments:
+      - ~
+      - AppBundle\Entity\ResidenteUser
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
   app.admin.laboratorio:
-              class: AppBundle\Admin\LaboratorioAdmin
-              tags:
-                  - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Laboratorio" }
-              arguments:
-                  - ~
-                  - AppBundle\Entity\LaboratorioUser
-                  - ~
-              calls:
-                  - [ setTranslationDomain, [AppBundle]]
+    class: AppBundle\Admin\LaboratorioAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Laboratorio" }
+    arguments:
+      - ~
+      - AppBundle\Entity\LaboratorioUser
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
   app.admin.paciente:
-              class: AppBundle\Admin\PacienteAdmin
-              tags:
-                  - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Paciente" }
-              arguments:
-                  - ~
-                  - AppBundle\Entity\Paciente
-                  - ~
-              calls:
-                  - [ setTranslationDomain, [AppBundle]]
+    class: AppBundle\Admin\PacienteAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Paciente" }
+    arguments:
+      - ~
+      - AppBundle\Entity\Paciente
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
   app.admin.consulta:
-              class: AppBundle\Admin\ConsultaAdmin
-              tags:
-                  - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Consulta" }
-              arguments:
-                  - ~
-                  - AppBundle\Entity\Consulta
-                  - ~
-              calls:
-                  - [ setTranslationDomain, [AppBundle]]
+    class: AppBundle\Admin\ConsultaAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Consulta" }
+    arguments:
+      - ~
+      - AppBundle\Entity\Consulta
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
   app.admin.ingreso:
-                class: AppBundle\Admin\IngresoAdmin
-                tags:
-                    - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Ingreso" }
-                arguments:
-                    - ~
-                    - AppBundle\Entity\Ingreso
-                    - ~
-                calls:
-                    - [ setTranslationDomain, [AppBundle]]
+    class: AppBundle\Admin\IngresoAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Ingreso" }
+    arguments:
+      - ~
+      - AppBundle\Entity\Ingreso
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
+  app.admin.sala:
+    class: AppBundle\Admin\SalaAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Sala" }
+    arguments:
+      - ~
+      - AppBundle\Entity\Sala
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
+  app.admin.ingresosala:
+    class: AppBundle\Admin\IngresoSalaAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "IngresoSala" }
+    arguments:
+      - ~
+      - AppBundle\Entity\IngresoSala
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
+  app.admin.complementario:
+    class: AppBundle\Admin\ComplementarioAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Complementario" }
+    arguments:
+      - ~
+      - AppBundle\Entity\Complementario
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
+  app.admin.hojamedico:
+    class: AppBundle\Admin\HojaMedicoAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "HojaMedico" }
+    arguments:
+      - ~
+      - AppBundle\Entity\HojaMedico
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]

@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Sala
 {
+    public function __toString(){
+        return $this->getNombre();
+    }
     /**
      * @var int
      *

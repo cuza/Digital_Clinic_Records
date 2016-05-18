@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class IngresoSala
 {
+    public function __toString(){
+        return $this->getIngreso().'-'.$this->getSala();
+    }
     /**
      * @var int
      *
