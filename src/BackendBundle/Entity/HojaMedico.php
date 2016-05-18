@@ -60,7 +60,7 @@ class HojaMedico
      * @var DoctorUser
      *
      *
-     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\DoctorUser", inversedBy="hojasEnfermeria1")
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\DoctorUser", inversedBy="hojasMedico")
      * @ORM\JoinColumn(name="doctor_id", referencedColumnName="id")
      */
     private $doctor;
