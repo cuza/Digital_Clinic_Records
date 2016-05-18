@@ -47,6 +47,7 @@ class Users extends AbstractFixture implements OrderedFixtureInterface,
 
         $entity->setUsername('admin')
             ->setEmail("admin@gmail.com")
+            ->setNombre("Pepe Gonzalez")
             ->setPlainPassword('pp')
             ->setEnabled(true);
 
