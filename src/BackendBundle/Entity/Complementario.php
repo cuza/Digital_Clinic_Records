@@ -43,13 +43,13 @@ class Complementario
     private $datetime;
 
     /**
-     * @var Paciente
+     * @var HojaMedico
      *
      *
-     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Paciente", inversedBy="complemetarios")
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\HojaMedico", inversedBy="complemetarios")
      * @ORM\JoinColumn(name="paciente_id", referencedColumnName="id")
      */
-    private $paciente;
+    private $hojaMedico;
 
     /**
      * @var bool

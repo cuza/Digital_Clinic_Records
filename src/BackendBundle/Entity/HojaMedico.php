@@ -36,11 +36,11 @@ class HojaMedico
     private $examenFisico;
 
     /**
-     * @var string
+     * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\Column(name="Complementarios", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Complementario", mappedBy="paciente")
      */
-    private $complementarios;
+    private $complemetarios;
 
     /**
      * @var string
