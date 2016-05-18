@@ -14,3 +14,64 @@ services:
       - '%genders%'
     tags:
       - { name: form.type }
+
+  app.admin.doctor:
+      class: BackendBundle\Admin\DoctorAdmin
+      tags:
+          - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Doctor" }
+      arguments:
+          - ~
+          - BackendBundle\Entity\DoctorUser
+          - ~
+      calls:
+          - [ setTranslationDomain, [BackendBundle]]
+  app.admin.admin:
+        class: BackendBundle\Admin\AdminAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Admin" }
+        arguments:
+            - ~
+            - BackendBundle\Entity\AdminUser
+            - ~
+        calls:
+            - [ setTranslationDomain, [BackendBundle]]
+  app.admin.enfermero:
+          class: BackendBundle\Admin\EnfermeroAdmin
+          tags:
+              - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Enfermero" }
+          arguments:
+              - ~
+              - BackendBundle\Entity\EnfermeroUser
+              - ~
+          calls:
+              - [ setTranslationDomain, [BackendBundle]]
+  app.admin.estudiante:
+            class: BackendBundle\Admin\EstudianteAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Estudiante" }
+            arguments:
+                - ~
+                - BackendBundle\Entity\EstudianteUser
+                - ~
+            calls:
+                - [ setTranslationDomain, [BackendBundle]]
+  app.admin.residente:
+            class: BackendBundle\Admin\ResidenteAdmin
+            tags:
+                - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Residente" }
+            arguments:
+                - ~
+                - BackendBundle\Entity\ResidenteUser
+                - ~
+            calls:
+                - [ setTranslationDomain, [BackendBundle]]
+  app.admin.laboratorio:
+              class: BackendBundle\Admin\LaboratorioAdmin
+              tags:
+                  - { name: sonata.admin, manager_type: orm, group: "Usuarios", label: "Laboratorio" }
+              arguments:
+                  - ~
+                  - BackendBundle\Entity\LaboratorioUser
+                  - ~
+              calls:
+                  - [ setTranslationDomain, [BackendBundle]]

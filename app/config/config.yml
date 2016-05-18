@@ -103,12 +103,12 @@ pugx_multi_user:
         entity:
           class: BackendBundle\Entity\DoctorUser
 #          factory:
-        registration:
-          form:
-            type: BackendBundle\Form\DoctorUserRegistrationType
-            name: fos_user_registration_form
-            validation_groups:  [Registration, Default]
-          template: BackendBundle:Registration:doctor.form.html.twig
+#        registration:
+#          form:
+#            type: BackendBundle\Form\DoctorUserRegistrationType
+#            name: fos_user_registration_form
+#            validation_groups:  [Registration, Default]
+#          template: BackendBundle:Registration:doctor.form.html.twig
         profile:
           form:
             type: BackendBundle\Form\DoctorUserProfileType
@@ -117,12 +117,12 @@ pugx_multi_user:
     admin:
         entity:
           class: BackendBundle\Entity\AdminUser
-        registration:
-          form:
-            type: BackendBundle\Form\AdminUserRegistrationType
-            name: fos_user_registration_form
-            validation_groups:  [Registration, Default]
-          template: BackendBundle:Registration:admin.form.html.twig
+#        registration:
+#          form:
+#            type: BackendBundle\Form\AdminUserRegistrationType
+#            name: fos_user_registration_form
+#            validation_groups:  [Registration, Default]
+#          template: BackendBundle:Registration:admin.form.html.twig
         profile:
           form:
             type: BackendBundle\Form\AdminUserProfileType
@@ -131,12 +131,12 @@ pugx_multi_user:
     laboratorio:
         entity:
           class: BackendBundle\Entity\LaboratorioUser
-        registration:
-          form:
-            type: BackendBundle\Form\LaboratorioUserRegistrationType
-            name: fos_user_registration_form
-            validation_groups:  [Registration, Default]
-          template: BackendBundle:Registration:laboratorio.form.html.twig
+#        registration:
+#          form:
+#            type: BackendBundle\Form\LaboratorioUserRegistrationType
+#            name: fos_user_registration_form
+#            validation_groups:  [Registration, Default]
+#          template: BackendBundle:Registration:laboratorio.form.html.twig
         profile:
           form:
             type: BackendBundle\Form\LaboratorioUserProfileType
@@ -145,12 +145,12 @@ pugx_multi_user:
     estudiante:
         entity:
           class: BackendBundle\Entity\EstudianteUser
-        registration:
-          form:
-            type: BackendBundle\Form\EstudianteUserRegistrationType
-            name: fos_user_registration_form
-            validation_groups:  [Registration, Default]
-          template: BackendBundle:Registration:estudiante.form.html.twig
+#        registration:
+#          form:
+#            type: BackendBundle\Form\EstudianteUserRegistrationType
+#            name: fos_user_registration_form
+#            validation_groups:  [Registration, Default]
+#          template: BackendBundle:Registration:estudiante.form.html.twig
         profile:
           form:
             type: BackendBundle\Form\EstudianteUserProfileType
@@ -159,12 +159,12 @@ pugx_multi_user:
     enfermero:
         entity:
           class: BackendBundle\Entity\EnfermeroUser
-        registration:
-          form:
-            type: BackendBundle\Form\EnfermeroUserRegistrationType
-            name: fos_user_registration_form
-            validation_groups:  [Registration, Default]
-          template: BackendBundle:Registration:enfermero.form.html.twig
+#        registration:
+#          form:
+#            type: BackendBundle\Form\EnfermeroUserRegistrationType
+#            name: fos_user_registration_form
+#            validation_groups:  [Registration, Default]
+#          template: BackendBundle:Registration:enfermero.form.html.twig
         profile:
           form:
             type: BackendBundle\Form\EnfermeroUserProfileType
@@ -173,12 +173,12 @@ pugx_multi_user:
     residente:
         entity:
           class: BackendBundle\Entity\ResidenteUser
-        registration:
-          form:
-            type: BackendBundle\Form\ResidenteUserRegistrationType
-            name: fos_user_registration_form
-            validation_groups:  [Registration, Default]
-          template: BackendBundle:Registration:residente.form.html.twig
+#        registration:
+#          form:
+#            type: BackendBundle\Form\ResidenteUserRegistrationType
+#            name: fos_user_registration_form
+#            validation_groups:  [Registration, Default]
+#          template: BackendBundle:Registration:residente.form.html.twig
         profile:
           form:
             type: BackendBundle\Form\ResidenteUserProfileType

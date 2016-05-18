@@ -1,7 +1,3 @@
-backend_user:
-    resource: "@BackendBundle/Controller/UserController.php"
-    type:     annotation
-
 api:
     resource: "@APIBundle/Controller/"
     type:     annotation

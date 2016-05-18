@@ -16,12 +16,13 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
-class DoctorAdmin extends Admin
+class ResidenteAdmin extends Admin
 {
     // Fields to be shown on create/edit forms
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
+            ->add('ano')
             ->add('username')
             ->add('email')
             ->add('plainPassword',PasswordType::class)
@@ -37,6 +38,7 @@ class DoctorAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('ano')
             ->add('username')
             ->add('email')
              ->add('especialidad')
@@ -52,6 +54,7 @@ class DoctorAdmin extends Admin
     {
         $listMapper
             ->addIdentifier('doctorId')
+            ->add('ano')
             ->add('username')
             ->add('email')
             ->add('especialidad')
@@ -65,6 +68,7 @@ class DoctorAdmin extends Admin
     {
         $showMapper
             ->add('doctorId')
+            ->add('ano')
             ->add('username')
             ->add('email')
             ->add('especialidad')
