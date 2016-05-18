@@ -9,7 +9,7 @@ frontend:
     prefix:   /
 
 backend:
-    resource: "@BackendBundle/Controller/"
+    resource: "@AppBundle/Controller/"
     type:     annotation
     prefix:   /be
 
