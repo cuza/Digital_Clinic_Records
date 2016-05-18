@@ -21,6 +21,15 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
 class AdminUser extends User
 {
     /**
+     * AdminUser constructor.
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->roles=array("ROLE_ADMIN");
+    }
+
+    /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
