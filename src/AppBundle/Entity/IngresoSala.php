@@ -25,12 +25,8 @@ class IngresoSala
     /**
      * @var IngresoSala
      *
-     *
-     * @ORM\OneToOne(
-     *     targetEntity="AppBundle\Entity\Ingreso",
-     *     inversedBy="salas"
-     * )
-     * @ORM\JoinColumn(name="ingresoId", referencedColumnName="id", unique=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Ingreso", inversedBy="salas")
+     * @ORM\JoinColumn(name="ingreso_id", referencedColumnName="id")
      */
     private $ingreso;
 
@@ -38,11 +34,8 @@ class IngresoSala
      * @var IngresoSala
      *
      *
-     * @ORM\OneToOne(
-     *     targetEntity="AppBundle\Entity\Sala",
-     *     inversedBy="ingresos"
-     * )
-     * @ORM\JoinColumn(name="salaId", referencedColumnName="id", unique=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Sala", inversedBy="ingresos")
+     * @ORM\JoinColumn(name="sala_id", referencedColumnName="id")
      */
     private $sala;
 

@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Paciente
 {
+     public function __toString(){
+         return $this->getCId().'';
+     }
     /**
      * @var int
      *
@@ -59,7 +62,7 @@ class Paciente
     /**
      * @var int
      *
-     * @ORM\Column(type="integer", unique=true, nullable=true, name="c_id")
+     * @ORM\Column(type="integer", unique=true, nullable=false, name="c_id")
      */
     private $cId;
 

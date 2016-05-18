@@ -44,10 +44,7 @@ class Sala
 
     /**
      * @var Sala
-     * @ORM\OneToOne(
-     *     targetEntity="AppBundle\Entity\IngresoSala",
-     *     mappedBy="sala"
-     * )
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\IngresoSala", mappedBy="sala")
      */
     private $ingresos;
 

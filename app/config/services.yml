@@ -75,3 +75,33 @@ services:
                   - ~
               calls:
                   - [ setTranslationDomain, [AppBundle]]
+  app.admin.paciente:
+              class: AppBundle\Admin\PacienteAdmin
+              tags:
+                  - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Paciente" }
+              arguments:
+                  - ~
+                  - AppBundle\Entity\Paciente
+                  - ~
+              calls:
+                  - [ setTranslationDomain, [AppBundle]]
+  app.admin.consulta:
+              class: AppBundle\Admin\ConsultaAdmin
+              tags:
+                  - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Consulta" }
+              arguments:
+                  - ~
+                  - AppBundle\Entity\Consulta
+                  - ~
+              calls:
+                  - [ setTranslationDomain, [AppBundle]]
+  app.admin.ingreso:
+                class: AppBundle\Admin\IngresoAdmin
+                tags:
+                    - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Ingreso" }
+                arguments:
+                    - ~
+                    - AppBundle\Entity\Ingreso
+                    - ~
+                calls:
+                    - [ setTranslationDomain, [AppBundle]]
