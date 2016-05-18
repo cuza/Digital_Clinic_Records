@@ -52,49 +52,49 @@ class Ingreso
     /**
      * @var string
      *
-     * @ORM\Column(name="consulta", type="string", length=255)
+     * @ORM\Column(name="consulta", type="string", length=255, nullable=true)
      */
     private $consulta;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tipoIngreso", type="string", length=255)
+     * @ORM\Column(name="tipoIngreso", type="string", length=255, nullable=true)
      */
     private $tipoIngreso;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Procedencia", type="string", length=255)
+     * @ORM\Column(name="Procedencia", type="string", length=255, nullable=true)
      */
     private $procedencia;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="EstadoEgreso", type="string", length=255)
+     * @ORM\Column(name="EstadoEgreso", type="string", length=255, nullable=true)
      */
     private $estadoEgreso;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="RepercusionIncapacidadFisica", type="string", length=255)
-     */
-    private $repercusionIncapacidadFisica;
-
-    /**
      * @var bool
      *
-     * @ORM\Column(name="Necropsia", type="boolean")
+     * @ORM\Column(name="Necropsia", type="boolean", nullable=true)
      */
     private $necropsia;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="Seguimiento", type="string", length=255)
+     * @ORM\Column(name="RepercusionIncapacidadFisica", type="string", length=255, nullable=true)
+     */
+    private $repercusionIncapacidadFisica;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="Seguimiento", type="string", length=255, nullable=true)
      */
     private $seguimiento;
 
@@ -373,4 +373,3 @@ class Ingreso
         return $this->seguimiento;
     }
 }
-
