@@ -27,10 +27,15 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new Knp\Bundle\TimeBundle\KnpTimeBundle(),
 
-//            Sonata Admin Bundles
-            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
-            new \Sonata\CoreBundle\SonataCoreBundle(),
-            new \Sonata\AdminBundle\SonataAdminBundle(),
+            // These are the other bundles the SonataAdminBundle relies on
+            new Sonata\CoreBundle\SonataCoreBundle(),
+            new Sonata\BlockBundle\SonataBlockBundle(),
+            new Knp\Bundle\MenuBundle\KnpMenuBundle(),
+
+            // And finally, the storage and SonataAdminBundle
+            new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle(),
+            new Sonata\AdminBundle\SonataAdminBundle(),
+
 
             //My Bundles
             new BackendBundle\BackendBundle(),

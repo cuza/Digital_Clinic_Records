@@ -89,6 +89,14 @@ fos_user:
 #        resources:
 #            - LexikFormFilterBundle:Form:form_div_layout.html.twig
 
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        # ...
+
 pugx_multi_user:
   users:
     doctor:
