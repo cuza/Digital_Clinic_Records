@@ -5,12 +5,12 @@ namespace BackendBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Consultas
+ * Consulta
  *
- * @ORM\Table(name="consultas")
- * @ORM\Entity(repositoryClass="BackendBundle\Repository\ConsultasRepository")
+ * @ORM\Table(name="consulta")
+ * @ORM\Entity(repositoryClass="BackendBundle\Repository\ConsultaRepository")
  */
-class Consultas
+class Consulta
 {
     /**
      * @var int
@@ -43,14 +43,6 @@ class Consultas
     private $hojaMedico;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="Complementarios", type="string", length=255)
-     */
-    private $complementarios;
-
-
-    /**
      * Get id
      *
      * @return int
@@ -65,7 +57,7 @@ class Consultas
      *
      * @param string $servicio
      *
-     * @return Consultas
+     * @return Consulta
      */
     public function setServicio($servicio)
     {
@@ -89,7 +81,7 @@ class Consultas
      *
      * @param \DateTime $fecha
      *
-     * @return Consultas
+     * @return Consulta
      */
     public function setFecha($fecha)
     {
@@ -113,7 +105,7 @@ class Consultas
      *
      * @param string $hojaMedico
      *
-     * @return Consultas
+     * @return Consulta
      */
     public function setHojaMedico($hojaMedico)
     {
@@ -131,29 +123,4 @@ class Consultas
     {
         return $this->hojaMedico;
     }
-
-    /**
-     * Set complementarios
-     *
-     * @param string $complementarios
-     *
-     * @return Consultas
-     */
-    public function setComplementarios($complementarios)
-    {
-        $this->complementarios = $complementarios;
-
-        return $this;
-    }
-
-    /**
-     * Get complementarios
-     *
-     * @return string
-     */
-    public function getComplementarios()
-    {
-        return $this->complementarios;
-    }
 }
-

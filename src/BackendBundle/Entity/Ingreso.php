@@ -56,13 +56,6 @@ class Ingreso
     /**
      * @var string
      *
-     * @ORM\Column(name="consulta", type="string", length=255, nullable=true)
-     */
-    private $consulta;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="tipoIngreso", type="string", length=255, nullable=true)
      */
     private $tipoIngreso;
@@ -221,30 +214,6 @@ class Ingreso
     public function getSala()
     {
         return $this->sala;
-    }
-
-    /**
-     * Set consulta
-     *
-     * @param string $consulta
-     *
-     * @return Ingreso
-     */
-    public function setConsulta($consulta)
-    {
-        $this->consulta = $consulta;
-
-        return $this;
-    }
-
-    /**
-     * Get consulta
-     *
-     * @return string
-     */
-    public function getConsulta()
-    {
-        return $this->consulta;
     }
 
     /**

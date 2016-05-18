@@ -235,9 +235,9 @@ class Paciente
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Complementario", mappedBy="paciente")
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Consulta", mappedBy="paciente")
      */
-    private $complemetarios;
+    private $consultas;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -1050,5 +1050,39 @@ class Paciente
     public function getIngresos()
     {
         return $this->ingresos;
+    }
+
+    /**
+     * Add consulta
+     *
+     * @param \BackendBundle\Entity\Consulta $consulta
+     *
+     * @return Paciente
+     */
+    public function addConsulta(\BackendBundle\Entity\Consulta $consulta)
+    {
+        $this->consultas[] = $consulta;
+    
+        return $this;
+    }
+
+    /**
+     * Remove consulta
+     *
+     * @param \BackendBundle\Entity\Consulta $consulta
+     */
+    public function removeConsulta(\BackendBundle\Entity\Consulta $consulta)
+    {
+        $this->consultas->removeElement($consulta);
+    }
+
+    /**
+     * Get consultas
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getConsultas()
+    {
+        return $this->consultas;
     }
 }

@@ -186,5 +186,45 @@ class HojaMedico
     {
         return $this->tratamientoAntibioticos;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->complemetarios = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add complemetario
+     *
+     * @param \BackendBundle\Entity\Complementario $complemetario
+     *
+     * @return HojaMedico
+     */
+    public function addComplemetario(\BackendBundle\Entity\Complementario $complemetario)
+    {
+        $this->complemetarios[] = $complemetario;
+    
+        return $this;
+    }
+
+    /**
+     * Remove complemetario
+     *
+     * @param \BackendBundle\Entity\Complementario $complemetario
+     */
+    public function removeComplemetario(\BackendBundle\Entity\Complementario $complemetario)
+    {
+        $this->complemetarios->removeElement($complemetario);
+    }
+
+    /**
+     * Get complemetarios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComplemetarios()
+    {
+        return $this->complemetarios;
+    }
+}

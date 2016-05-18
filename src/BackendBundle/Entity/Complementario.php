@@ -220,4 +220,28 @@ class Complementario
     {
         return $this->paciente;
     }
+
+    /**
+     * Set hojaMedico
+     *
+     * @param \BackendBundle\Entity\HojaMedico $hojaMedico
+     *
+     * @return Complementario
+     */
+    public function setHojaMedico(\BackendBundle\Entity\HojaMedico $hojaMedico = null)
+    {
+        $this->hojaMedico = $hojaMedico;
+    
+        return $this;
+    }
+
+    /**
+     * Get hojaMedico
+     *
+     * @return \BackendBundle\Entity\HojaMedico
+     */
+    public function getHojaMedico()
+    {
+        return $this->hojaMedico;
+    }
 }
