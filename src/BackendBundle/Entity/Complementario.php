@@ -65,6 +65,15 @@ class Complementario
      */
     private $motivoCancelado;
 
+    /**
+     * @var LaboratorioUser
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\LaboratorioUser", inversedBy="complementarios")
+     * @ORM\JoinColumn(name="laboratorista_id", referencedColumnName="id")
+     */
+    private $laboratorista;
+
 
 
     /**
@@ -243,5 +252,29 @@ class Complementario
     public function getHojaMedico()
     {
         return $this->hojaMedico;
+    }
+
+    /**
+     * Set laboratorista
+     *
+     * @param \BackendBundle\Entity\LaboratorioUser $laboratorista
+     *
+     * @return Complementario
+     */
+    public function setLaboratorista(\BackendBundle\Entity\LaboratorioUser $laboratorista = null)
+    {
+        $this->laboratorista = $laboratorista;
+
+        return $this;
+    }
+
+    /**
+     * Get laboratorista
+     *
+     * @return \BackendBundle\Entity\LaboratorioUser
+     */
+    public function getLaboratorista()
+    {
+        return $this->laboratorista;
     }
 }

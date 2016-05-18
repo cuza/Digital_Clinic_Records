@@ -36,11 +36,21 @@ class Consulta
     private $fecha;
 
     /**
-     * @var string
+     * @var Paciente
      *
-     * @ORM\Column(name="hojaMedico", type="string", length=255)
+     *
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Paciente", inversedBy="consultas")
+     * @ORM\JoinColumn(name="paciente_id", referencedColumnName="id")
      */
-    private $hojaMedico;
+    private $paciente;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaMedico", mappedBy="consultas")
+     */
+    private $hojasMedico;
+
 
     /**
      * Get id
@@ -122,5 +132,70 @@ class Consulta
     public function getHojaMedico()
     {
         return $this->hojaMedico;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->hojasMedico = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add hojasMedico
+     *
+     * @param \BackendBundle\Entity\HojaMedico $hojasMedico
+     *
+     * @return Consulta
+     */
+    public function addHojasMedico(\BackendBundle\Entity\HojaMedico $hojasMedico)
+    {
+        $this->hojasMedico[] = $hojasMedico;
+
+        return $this;
+    }
+
+    /**
+     * Remove hojasMedico
+     *
+     * @param \BackendBundle\Entity\HojaMedico $hojasMedico
+     */
+    public function removeHojasMedico(\BackendBundle\Entity\HojaMedico $hojasMedico)
+    {
+        $this->hojasMedico->removeElement($hojasMedico);
+    }
+
+    /**
+     * Get hojasMedico
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHojasMedico()
+    {
+        return $this->hojasMedico;
+    }
+
+    /**
+     * Set paciente
+     *
+     * @param \BackendBundle\Entity\Paciente $paciente
+     *
+     * @return Consulta
+     */
+    public function setPaciente(\BackendBundle\Entity\Paciente $paciente = null)
+    {
+        $this->paciente = $paciente;
+
+        return $this;
+    }
+
+    /**
+     * Get paciente
+     *
+     * @return \BackendBundle\Entity\Paciente
+     */
+    public function getPaciente()
+    {
+        return $this->paciente;
     }
 }

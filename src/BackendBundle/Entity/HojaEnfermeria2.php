@@ -65,7 +65,7 @@ class HojaEnfermeria2
      * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Ingreso", inversedBy="hojasEnfermeria2")
      * @ORM\JoinColumn(name="ingreso_id", referencedColumnName="id")
      */
-    private $ingresoId;
+    private $ingreso;
 
 
     /**
@@ -220,5 +220,29 @@ class HojaEnfermeria2
     public function getIngresoId()
     {
         return $this->ingresoId;
+    }
+
+    /**
+     * Set ingreso
+     *
+     * @param \BackendBundle\Entity\Ingreso $ingreso
+     *
+     * @return HojaEnfermeria2
+     */
+    public function setIngreso(\BackendBundle\Entity\Ingreso $ingreso = null)
+    {
+        $this->ingreso = $ingreso;
+
+        return $this;
+    }
+
+    /**
+     * Get ingreso
+     *
+     * @return \BackendBundle\Entity\Ingreso
+     */
+    public function getIngreso()
+    {
+        return $this->ingreso;
     }
 }

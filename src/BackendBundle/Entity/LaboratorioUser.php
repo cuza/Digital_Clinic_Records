@@ -40,6 +40,13 @@ class LaboratorioUser extends User
      */
     private $especialidad;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Complementario", mappedBy="laboratorista")
+     */
+    private $complementarios;
+
 
     /**
      * Set especialidad
@@ -111,5 +118,39 @@ class LaboratorioUser extends User
     public function getDoctorId()
     {
         return $this->doctorId;
+    }
+
+    /**
+     * Add complementario
+     *
+     * @param \BackendBundle\Entity\Complementario $complementario
+     *
+     * @return LaboratorioUser
+     */
+    public function addComplementario(\BackendBundle\Entity\Complementario $complementario)
+    {
+        $this->complementarios[] = $complementario;
+
+        return $this;
+    }
+
+    /**
+     * Remove complementario
+     *
+     * @param \BackendBundle\Entity\Complementario $complementario
+     */
+    public function removeComplementario(\BackendBundle\Entity\Complementario $complementario)
+    {
+        $this->complementarios->removeElement($complementario);
+    }
+
+    /**
+     * Get complementarios
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComplementarios()
+    {
+        return $this->complementarios;
     }
 }

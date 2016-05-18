@@ -98,16 +98,23 @@ class Ingreso
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria", mappedBy="ingresoId")
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria", mappedBy="ingreso")
      */
     private $hojasEnfermeria1;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria2", mappedBy="ingresoId")
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria2", mappedBy="ingreso")
      */
     private $hojasEnfermeria2;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaMedico", mappedBy="ingresos")
+     */
+    private $hojasMedico;
 
 
     /**
@@ -458,5 +465,39 @@ class Ingreso
     public function getHojasEnfermeria2()
     {
         return $this->hojasEnfermeria2;
+    }
+
+    /**
+     * Add hojasMedico
+     *
+     * @param \BackendBundle\Entity\HojaMedico $hojasMedico
+     *
+     * @return Ingreso
+     */
+    public function addHojasMedico(\BackendBundle\Entity\HojaMedico $hojasMedico)
+    {
+        $this->hojasMedico[] = $hojasMedico;
+
+        return $this;
+    }
+
+    /**
+     * Remove hojasMedico
+     *
+     * @param \BackendBundle\Entity\HojaMedico $hojasMedico
+     */
+    public function removeHojasMedico(\BackendBundle\Entity\HojaMedico $hojasMedico)
+    {
+        $this->hojasMedico->removeElement($hojasMedico);
+    }
+
+    /**
+     * Get hojasMedico
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHojasMedico()
+    {
+        return $this->hojasMedico;
     }
 }

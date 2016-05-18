@@ -56,6 +56,42 @@ class HojaMedico
      */
     private $tratamientoAntibioticos;
 
+    /**
+     * @var DoctorUser
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\DoctorUser", inversedBy="hojasEnfermeria1")
+     * @ORM\JoinColumn(name="doctor_id", referencedColumnName="id")
+     */
+    private $doctor;
+
+    /**
+     * @var ResidenteUser
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\ResidenteUser", inversedBy="hojasMedico")
+     * @ORM\JoinColumn(name="residente_id", referencedColumnName="id")
+     */
+    private $residente;
+
+    /**
+     * @var Ingreso
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Ingreso", inversedBy="hojasMedico")
+     * @ORM\JoinColumn(name="ingreso_id", referencedColumnName="id")
+     */
+    private $ingresos;
+
+    /**
+     * @var Consulta
+     *
+     *
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Consulta", inversedBy="hojasMedico")
+     * @ORM\JoinColumn(name="consulta_id", referencedColumnName="id")
+     */
+    private $consultas;
+
 
     /**
      * Get id
@@ -226,5 +262,101 @@ class HojaMedico
     public function getComplemetarios()
     {
         return $this->complemetarios;
+    }
+
+    /**
+     * Set ingresos
+     *
+     * @param \BackendBundle\Entity\Ingreso $ingresos
+     *
+     * @return HojaMedico
+     */
+    public function setIngresos(\BackendBundle\Entity\Ingreso $ingresos = null)
+    {
+        $this->ingresos = $ingresos;
+
+        return $this;
+    }
+
+    /**
+     * Get ingresos
+     *
+     * @return \BackendBundle\Entity\Ingreso
+     */
+    public function getIngresos()
+    {
+        return $this->ingresos;
+    }
+
+    /**
+     * Set consultas
+     *
+     * @param \BackendBundle\Entity\Consulta $consultas
+     *
+     * @return HojaMedico
+     */
+    public function setConsultas(\BackendBundle\Entity\Consulta $consultas = null)
+    {
+        $this->consultas = $consultas;
+
+        return $this;
+    }
+
+    /**
+     * Get consultas
+     *
+     * @return \BackendBundle\Entity\Consulta
+     */
+    public function getConsultas()
+    {
+        return $this->consultas;
+    }
+
+    /**
+     * Set doctor
+     *
+     * @param \BackendBundle\Entity\DoctorUser $doctor
+     *
+     * @return HojaMedico
+     */
+    public function setDoctor(\BackendBundle\Entity\DoctorUser $doctor = null)
+    {
+        $this->doctor = $doctor;
+
+        return $this;
+    }
+
+    /**
+     * Get doctor
+     *
+     * @return \BackendBundle\Entity\DoctorUser
+     */
+    public function getDoctor()
+    {
+        return $this->doctor;
+    }
+
+    /**
+     * Set residente
+     *
+     * @param \BackendBundle\Entity\ResidenteUser $residente
+     *
+     * @return HojaMedico
+     */
+    public function setResidente(\BackendBundle\Entity\ResidenteUser $residente = null)
+    {
+        $this->residente = $residente;
+
+        return $this;
+    }
+
+    /**
+     * Get residente
+     *
+     * @return \BackendBundle\Entity\ResidenteUser
+     */
+    public function getResidente()
+    {
+        return $this->residente;
     }
 }

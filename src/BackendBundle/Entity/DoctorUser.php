@@ -49,6 +49,13 @@ class DoctorUser extends User
     private $doctorId;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaMedico", mappedBy="doctor")
+     */
+    private $hojasMedico;
+
+    /**
      * Set especialidad
      *
      * @param string $especialidad
@@ -94,5 +101,39 @@ class DoctorUser extends User
     public function getDoctorId()
     {
         return $this->doctorId;
+    }
+
+    /**
+     * Add hojasMedico
+     *
+     * @param \BackendBundle\Entity\HojaMedico $hojasMedico
+     *
+     * @return DoctorUser
+     */
+    public function addHojasMedico(\BackendBundle\Entity\HojaMedico $hojasMedico)
+    {
+        $this->hojasMedico[] = $hojasMedico;
+
+        return $this;
+    }
+
+    /**
+     * Remove hojasMedico
+     *
+     * @param \BackendBundle\Entity\HojaMedico $hojasMedico
+     */
+    public function removeHojasMedico(\BackendBundle\Entity\HojaMedico $hojasMedico)
+    {
+        $this->hojasMedico->removeElement($hojasMedico);
+    }
+
+    /**
+     * Get hojasMedico
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHojasMedico()
+    {
+        return $this->hojasMedico;
     }
 }
