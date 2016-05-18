@@ -59,9 +59,11 @@ class HojaEnfermeria2
     private $date;
 
     /**
-     * @var string
+     * @var Ingreso
      *
-     * @ORM\Column(name="ingresoId", type="string", length=255)
+     *
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Ingreso", inversedBy="hojasEnfermeria2")
+     * @ORM\JoinColumn(name="ingreso_id", referencedColumnName="id")
      */
     private $ingresoId;
 

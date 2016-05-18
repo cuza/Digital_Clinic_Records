@@ -239,6 +239,13 @@ class Paciente
      */
     private $complemetarios;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\Ingreso", mappedBy="paciente")
+     */
+    private $ingresos;
+
 
     /**
      * Get id
@@ -1009,5 +1016,39 @@ class Paciente
     public function getComplemetarios()
     {
         return $this->complemetarios;
+    }
+
+    /**
+     * Add ingreso
+     *
+     * @param \BackendBundle\Entity\Ingreso $ingreso
+     *
+     * @return Paciente
+     */
+    public function addIngreso(\BackendBundle\Entity\Ingreso $ingreso)
+    {
+        $this->ingresos[] = $ingreso;
+
+        return $this;
+    }
+
+    /**
+     * Remove ingreso
+     *
+     * @param \BackendBundle\Entity\Ingreso $ingreso
+     */
+    public function removeIngreso(\BackendBundle\Entity\Ingreso $ingreso)
+    {
+        $this->ingresos->removeElement($ingreso);
+    }
+
+    /**
+     * Get ingresos
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getIngresos()
+    {
+        return $this->ingresos;
     }
 }

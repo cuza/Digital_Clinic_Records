@@ -42,6 +42,15 @@ class Sala
      */
     private $sexo;
 
+    /**
+     * @var Sala
+     * @ORM\OneToOne(
+     *     targetEntity="BackendBundle\Entity\IngresoSala",
+     *     mappedBy="sala"
+     * )
+     */
+    private $ingresos;
+
 
     /**
      * Get id
@@ -123,5 +132,29 @@ class Sala
     public function getSexo()
     {
         return $this->sexo;
+    }
+
+    /**
+     * Set ingresos
+     *
+     * @param \BackendBundle\Entity\IngresoSala $ingresos
+     *
+     * @return Sala
+     */
+    public function setIngresos(\BackendBundle\Entity\IngresoSala $ingresos = null)
+    {
+        $this->ingresos = $ingresos;
+
+        return $this;
+    }
+
+    /**
+     * Get ingresos
+     *
+     * @return \BackendBundle\Entity\IngresoSala
+     */
+    public function getIngresos()
+    {
+        return $this->ingresos;
     }
 }

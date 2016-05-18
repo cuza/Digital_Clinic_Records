@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Ingreso
  *
- * @ORM\Table(name="ingreso")
+ * @ORM\Table(name="Ingreso")
  * @ORM\Entity(repositoryClass="BackendBundle\Repository\IngresoRepository")
  */
 class Ingreso
@@ -36,18 +36,22 @@ class Ingreso
     private $fechaSalida;
 
     /**
-     * @var string
+     * @var Paciente
      *
-     * @ORM\Column(name="paciente", type="string", length=255)
+     *
+     * @ORM\ManyToOne(targetEntity="BackendBundle\Entity\Paciente", inversedBy="ingresos")
+     * @ORM\JoinColumn(name="paciente_id", referencedColumnName="id")
      */
     private $paciente;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="sala", type="string", length=255)
+     * @var Ingreso
+     * @ORM\OneToOne(
+     *     targetEntity="BackendBundle\Entity\IngresoSala",
+     *     mappedBy="ingresos"
+     * )
      */
-    private $sala;
+    private $salas;
 
     /**
      * @var string
@@ -97,6 +101,20 @@ class Ingreso
      * @ORM\Column(name="Seguimiento", type="string", length=255, nullable=true)
      */
     private $seguimiento;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria", mappedBy="ingresoId")
+     */
+    private $hojasEnfermeria1;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\OneToMany(targetEntity="BackendBundle\Entity\HojaEnfermeria2", mappedBy="ingresoId")
+     */
+    private $hojasEnfermeria2;
 
 
     /**
@@ -371,5 +389,105 @@ class Ingreso
     public function getSeguimiento()
     {
         return $this->seguimiento;
+    }
+
+    /**
+     * Set salas
+     *
+     * @param \BackendBundle\Entity\Sala $salas
+     *
+     * @return Ingreso
+     */
+    public function setSalas(\BackendBundle\Entity\Sala $salas = null)
+    {
+        $this->salas = $salas;
+
+        return $this;
+    }
+
+    /**
+     * Get salas
+     *
+     * @return \BackendBundle\Entity\Sala
+     */
+    public function getSalas()
+    {
+        return $this->salas;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->hojasEnfermeria1 = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->hojasEnfermeria2 = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add hojasEnfermeria1
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria $hojasEnfermeria1
+     *
+     * @return Ingreso
+     */
+    public function addHojasEnfermeria1(\BackendBundle\Entity\HojaEnfermeria $hojasEnfermeria1)
+    {
+        $this->hojasEnfermeria1[] = $hojasEnfermeria1;
+
+        return $this;
+    }
+
+    /**
+     * Remove hojasEnfermeria1
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria $hojasEnfermeria1
+     */
+    public function removeHojasEnfermeria1(\BackendBundle\Entity\HojaEnfermeria $hojasEnfermeria1)
+    {
+        $this->hojasEnfermeria1->removeElement($hojasEnfermeria1);
+    }
+
+    /**
+     * Get hojasEnfermeria1
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHojasEnfermeria1()
+    {
+        return $this->hojasEnfermeria1;
+    }
+
+    /**
+     * Add hojasEnfermeria2
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria2 $hojasEnfermeria2
+     *
+     * @return Ingreso
+     */
+    public function addHojasEnfermeria2(\BackendBundle\Entity\HojaEnfermeria2 $hojasEnfermeria2)
+    {
+        $this->hojasEnfermeria2[] = $hojasEnfermeria2;
+
+        return $this;
+    }
+
+    /**
+     * Remove hojasEnfermeria2
+     *
+     * @param \BackendBundle\Entity\HojaEnfermeria2 $hojasEnfermeria2
+     */
+    public function removeHojasEnfermeria2(\BackendBundle\Entity\HojaEnfermeria2 $hojasEnfermeria2)
+    {
+        $this->hojasEnfermeria2->removeElement($hojasEnfermeria2);
+    }
+
+    /**
+     * Get hojasEnfermeria2
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getHojasEnfermeria2()
+    {
+        return $this->hojasEnfermeria2;
     }
 }
