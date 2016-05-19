@@ -21,8 +21,8 @@ class HojaMedicoType extends AbstractType
             ->add('tratamientoAntibioticos')
             ->add('doctor')
             ->add('residente')
-            ->add('ingresos')
-            ->add('consultas')
+            ->add('ingreso')
+            ->add('consulta')
         ;
     }
     

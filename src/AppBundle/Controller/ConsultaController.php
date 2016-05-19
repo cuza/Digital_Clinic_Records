@@ -38,6 +38,8 @@ class ConsultaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $cid = $request->request->get('paciente')['cId'];
+        if (!is_numeric($cid))
+            $cid=$request->query->get('paciente')['cId'];
         $paciente=null;
         if (is_numeric($cid))
             $paciente = $em->getRepository("AppBundle:Paciente")->findOneBy(array('cId'=>$cid));
@@ -54,10 +56,10 @@ class ConsultaController extends Controller
             $em->persist($paciente);
             $em->flush();
 
-            return $this->redirectToRoute('paciente_show', array('id' => $paciente->getId()));
+            return $this->redirectToRoute('app_hojamedico_fetch', array('id' => $paciente->getId()));
         }
 
-        if($form->isSubmitted()) {
+        if($form->isSubmitted() || is_numeric($cid)) {
             return array(
                 'paciente' => $paciente,
                 'form' => $form->createView(),
