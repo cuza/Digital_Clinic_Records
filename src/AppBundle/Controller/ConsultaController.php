@@ -10,11 +10,11 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Consulta;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\Request;
 
 
 /**
@@ -24,5 +24,13 @@ use Symfony\Component\HttpFoundation\Request;
  */
 class ConsultaController extends Controller
 {
-
+    /**
+     * @Route("/new")
+     * @Template()
+     */
+    public function newAction()
+    {
+        return array(// ...
+        );
+    }
 }

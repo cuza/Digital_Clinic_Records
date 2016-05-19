@@ -20,6 +20,9 @@ class PacienteController extends Controller
     /**
      * @Route("/fetch")
      * @Template()
+     * @param Request $request
+     * @return array
+     * @throws \InvalidArgumentException
      */
     public function fetchAction(Request $request)
     {
@@ -54,6 +57,8 @@ class PacienteController extends Controller
      * @Route("/{id}", name="paciente_show")
      * @Template()
      * @Method("GET")
+     * @param Paciente $paciente
+     * @return array
      */
     public function showAction(Paciente $paciente)
     {
