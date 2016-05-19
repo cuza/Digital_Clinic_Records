@@ -20,6 +20,7 @@ use PUGX\MultiUserBundle\Validator\Constraints\UniqueEntity;
  */
 class AdminUser extends User
 {
+
     /**
      * AdminUser constructor.
      */
