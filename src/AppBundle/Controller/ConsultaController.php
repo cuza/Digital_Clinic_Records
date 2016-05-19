@@ -36,7 +36,16 @@ class ConsultaController extends Controller
      */
     public function newAction(Request $request)
     {
-        $paciente = new Paciente();
+        $em = $this->getDoctrine()->getManager();
+        $cid = $request->request->get('paciente')['cId'];
+        $paciente=null;
+        if (is_numeric($cid))
+            $paciente = $em->getRepository("AppBundle:Paciente")->findOneBy(array('cId'=>$cid));
+        if ($paciente == null) {
+            $paciente = new Paciente();
+            if (is_numeric($cid))
+                $paciente->setCId($cid);
+        }
         $form = $this->createForm('AppBundle\Form\PacienteType', $paciente);
         $form->handleRequest($request);
 

@@ -34,7 +34,7 @@ class PacienteController extends Controller
         if ($paciente == null) {
             $paciente = new Paciente();
             if (is_numeric($cid))
-            $paciente->setCId($cid);
+                $paciente->setCId($cid);
         }
         $editForm = $this->createForm('AppBundle\Form\PacienteType', $paciente);
 
