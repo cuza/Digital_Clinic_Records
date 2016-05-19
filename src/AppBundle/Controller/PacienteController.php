@@ -27,12 +27,15 @@ class PacienteController extends Controller
     public function fetchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $id = $request->request->get('id');
+        $cid = $request->request->get('cid');
         $paciente=null;
-        if ($id)
-            $paciente = $em->getRepository("AppBundle:Paciente")->find($id);
-        if ($paciente == null)
+        if (is_numeric($cid))
+            $paciente = $em->getRepository("AppBundle:Paciente")->findOneBy(array('cId'=>$cid));
+        if ($paciente == null) {
             $paciente = new Paciente();
+            if (is_numeric($cid))
+            $paciente->setCId($cid);
+        }
         $editForm = $this->createForm('AppBundle\Form\PacienteType', $paciente);
 
         return array(

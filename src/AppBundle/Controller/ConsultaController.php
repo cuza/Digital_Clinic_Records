@@ -48,9 +48,15 @@ class ConsultaController extends Controller
             return $this->redirectToRoute('paciente_show', array('id' => $paciente->getId()));
         }
 
-        return  array(
-            'paciente' => $paciente,
-            'form' => $form->createView(),
+        if($form->isSubmitted()) {
+            return array(
+                'paciente' => $paciente,
+                'form' => $form->createView(),
+            );
+        }
+
+        return array(
+            'form' => null,
         );
     }
 }

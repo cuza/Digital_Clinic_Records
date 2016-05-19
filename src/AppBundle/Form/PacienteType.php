@@ -20,7 +20,7 @@ class PacienteType extends AbstractType
             ->add('primerApellido')
             ->add('segundoApellido')
             ->add('sexo')
-            ->add('fechaNacimiento', 'text', array('attr' => array('data-inputmask'=>"'alias': 'dd/mm/yyyy'",'data-mask'=>''), 'required' => 'true'))
+            ->add('fechaNacimiento', 'date', array('widget'=>'single_text', 'required' => 'true'))
             ->add('cId')
             ->add('colorPiel')
             ->add('estadoConyugal')
