@@ -343,7 +343,7 @@
                     {#</ul>#}
                     {#</li>#}
                     <li>
-                        <a href="pages/widgets.html">
+                        <a href="{{ path('app_consulta_new') }}">
                             <i class="fa fa-medkit"></i> <span>Consulta</span>
                             {#<small class="label pull-right bg-green">new</small>#}
                         </a>
@@ -419,6 +419,8 @@
     <script src="{{ asset('bower_components/datatables/media/js/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/scripts.min.js') }}"></script>
     <script src="{{ asset('js/AdminLTE.min.js') }}"></script>
+    <script src="{{ asset('input') }}"></script>
+
 {% endblock %}
 </body>
 </html>
