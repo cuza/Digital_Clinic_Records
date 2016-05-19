@@ -15,11 +15,12 @@ class PacienteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+
             ->add('nombre')
             ->add('primerApellido')
             ->add('segundoApellido')
             ->add('sexo')
-            ->add('fechaNacimiento', 'date')
+            ->add('fechaNacimiento', 'text', array('attr' => array('data-inputmask'=>"'alias': 'dd/mm/yyyy'",'data-mask'=>''), 'required' => 'true'))
             ->add('cId')
             ->add('colorPiel')
             ->add('estadoConyugal')
