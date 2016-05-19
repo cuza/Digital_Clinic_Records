@@ -14,13 +14,10 @@ class EstudianteUserProfileType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {        $builder
-        ->add('username')
-        ->add('email')
-        ->add('plainPassword')
-        ->add('ano')
         ->add('nombre')
-        ->add('cId')
-        ->add('sexo')
+        ->add('email')
+        ->add('plainPassword','password',array('label'=>'Contraseña'))
+        ->add('ano')
     ;
     }
     

@@ -1,5 +1,27 @@
-{% extends "FOSUserBundle::layout.html.twig" %}
+{% extends "::base.html.twig" %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Profile:show_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block title %}AppBundle:Profile:show{% endblock %}
+
+{% block ContentHeader %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Perfil
+            <small>Ver tu perfil</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-medkit active"></i> Perfil</a></li>
+            {#<li class="active"Crear consulta</li>#}
+        </ol>
+    </section>
+{% endblock %}
+
+{% block ContentBody %}
+    <!-- Main content -->
+    <section class="content">
+        <!-- Main row -->
+        <div class="row">
+            {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+        </div><!-- /.row (main row) -->
+    </section><!-- /.content -->
+{% endblock %}

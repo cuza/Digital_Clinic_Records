@@ -12,6 +12,9 @@ parameters:
     genders:
         M: Masculino
         F: Femenino
+    skins:
+            M: Masculino
+            F: Femenino
 
 framework:
     #esi:             ~
@@ -102,13 +105,6 @@ pugx_multi_user:
     doctor:
         entity:
           class: AppBundle\Entity\DoctorUser
-#          factory:
-#        registration:
-#          form:
-#            type: AppBundle\Form\DoctorUserRegistrationType
-#            name: fos_user_registration_form
-#            validation_groups:  [Registration, Default]
-#          template: AppBundle:Registration:doctor.form.html.twig
         profile:
           form:
             type: AppBundle\Form\DoctorUserProfileType
@@ -117,12 +113,6 @@ pugx_multi_user:
     admin:
         entity:
           class: AppBundle\Entity\AdminUser
-#        registration:
-#          form:
-#            type: AppBundle\Form\AdminUserRegistrationType
-#            name: fos_user_registration_form
-#            validation_groups:  [Registration, Default]
-#          template: AppBundle:Registration:admin.form.html.twig
         profile:
           form:
             type: AppBundle\Form\AdminUserProfileType
@@ -131,12 +121,6 @@ pugx_multi_user:
     laboratorio:
         entity:
           class: AppBundle\Entity\LaboratorioUser
-#        registration:
-#          form:
-#            type: AppBundle\Form\LaboratorioUserRegistrationType
-#            name: fos_user_registration_form
-#            validation_groups:  [Registration, Default]
-#          template: AppBundle:Registration:laboratorio.form.html.twig
         profile:
           form:
             type: AppBundle\Form\LaboratorioUserProfileType
@@ -145,12 +129,6 @@ pugx_multi_user:
     estudiante:
         entity:
           class: AppBundle\Entity\EstudianteUser
-#        registration:
-#          form:
-#            type: AppBundle\Form\EstudianteUserRegistrationType
-#            name: fos_user_registration_form
-#            validation_groups:  [Registration, Default]
-#          template: AppBundle:Registration:estudiante.form.html.twig
         profile:
           form:
             type: AppBundle\Form\EstudianteUserProfileType
@@ -159,12 +137,6 @@ pugx_multi_user:
     enfermero:
         entity:
           class: AppBundle\Entity\EnfermeroUser
-#        registration:
-#          form:
-#            type: AppBundle\Form\EnfermeroUserRegistrationType
-#            name: fos_user_registration_form
-#            validation_groups:  [Registration, Default]
-#          template: AppBundle:Registration:enfermero.form.html.twig
         profile:
           form:
             type: AppBundle\Form\EnfermeroUserProfileType
@@ -173,12 +145,6 @@ pugx_multi_user:
     residente:
         entity:
           class: AppBundle\Entity\ResidenteUser
-#        registration:
-#          form:
-#            type: AppBundle\Form\ResidenteUserRegistrationType
-#            name: fos_user_registration_form
-#            validation_groups:  [Registration, Default]
-#          template: AppBundle:Registration:residente.form.html.twig
         profile:
           form:
             type: AppBundle\Form\ResidenteUserProfileType

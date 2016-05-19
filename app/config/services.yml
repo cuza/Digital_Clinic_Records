@@ -14,6 +14,12 @@ services:
       - '%genders%'
     tags:
       - { name: form.type }
+  app.form.type.skin:
+    class: AppBundle\Form\SkinType
+    arguments:
+      - '%skins%'
+    tags:
+      - { name: form.type }
 
   app.admin.doctor:
     class: AppBundle\Admin\DoctorAdmin
