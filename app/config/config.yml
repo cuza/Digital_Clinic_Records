@@ -13,8 +13,16 @@ parameters:
         M: Masculino
         F: Femenino
     skins:
-            M: Masculino
-            F: Femenino
+        Blanco: Blanco
+        Negro: Negro
+        Mestizo: Mestizo
+        Amarilla: Amarilla
+    civil.state:
+        Soltero: Soltero
+        Casado: Casado
+        Viudo: Viudo
+        Divorciado: Divorciado
+        Acompañado: Acompañado
 
 framework:
     #esi:             ~
