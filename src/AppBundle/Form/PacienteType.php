@@ -16,9 +16,9 @@ class PacienteType extends AbstractType
     {
         $builder
 
-            ->add('nombre',null , array('required' => 'true'))
-            ->add('primerApellido',null , array('required' => 'true'))
-            ->add('segundoApellido',null , array('required' => 'true'))
+            ->add('nombre','text' , array('required' => 'true'))
+            ->add('primerApellido','text' , array('required' => 'true'))
+            ->add('segundoApellido','text' , array('required' => 'true'))
             ->add('sexo')
             ->add('fechaNacimiento', 'text', array('attr' => array('data-inputmask'=>"'alias': 'dd/mm/yyyy'",'data-mask'=>''), 'required' => 'true'))
             ->add('cId', 'text', array('attr' => array('data-inputmask'=>"'mask': '99999999999'",'data-mask'=>''), 'required' => 'true'))
