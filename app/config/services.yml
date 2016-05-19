@@ -20,7 +20,12 @@ services:
       - '%skins%'
     tags:
       - { name: form.type }
-
+  app.form.type.civil.state:
+    class: AppBundle\Form\CivilStateType
+    arguments:
+      - '%civil.state%'
+    tags:
+      - { name: form.type }
   app.admin.doctor:
     class: AppBundle\Admin\DoctorAdmin
     tags:
