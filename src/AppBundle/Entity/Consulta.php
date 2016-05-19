@@ -50,7 +50,7 @@ class Consulta
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\HojaMedico", mappedBy="consultas")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\HojaMedico", mappedBy="consulta")
      */
     private $hojasMedico;
 

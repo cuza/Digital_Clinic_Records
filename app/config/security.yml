@@ -5,7 +5,7 @@ security:
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+#        ROLE_DOCTOR: ROLE_RESIDENTE
 
     providers:
         fos_userbundle:

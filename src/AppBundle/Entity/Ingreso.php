@@ -112,7 +112,7 @@ class Ingreso
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\HojaMedico", mappedBy="ingresos")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\HojaMedico", mappedBy="ingreso")
      */
     private $hojasMedico;
 
