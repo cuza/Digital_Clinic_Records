@@ -9,7 +9,7 @@
                 <h5 class="widget-user-desc">{% if is_granted('ROLE_ENFERMERO') %}Enfermero/a{% endif %}{% if is_granted('ROLE_LABORATORIO') %}Laboratorista{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}Estudiante{% endif %}{% if is_granted('ROLE_RESIDENTE') %}Residente{% endif %}{% if is_granted('ROLE_DOCTOR') %}Doctor{% endif %}{% if is_granted('ROLE_ADMIN') %}Administrador{% endif %}</h5>
             </div>
             <div class="widget-user-image">
-                <img class="img-circle" src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}Laboratorista{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}" alt="User Avatar">
+                <img class="img-circle" src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}" alt="User Avatar">
             </div>
             <div class="box-footer">
                 <div class="row">
