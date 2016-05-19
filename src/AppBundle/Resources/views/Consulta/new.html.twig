@@ -2,6 +2,17 @@
 
 {% block title %}AppBundle:Consulta:new{% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        (function($){
+            $("#fetch").click(function(){
+                $("#paciente").load("{{ path('app_paciente_fetch') }}",{id:$("#cid").val()})
+            })
+        })(jQuery);
+    </script>
+{% endblock %}
+
 {% block ContentHeader %}
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -30,7 +41,7 @@
                         <h3 class="box-title">Crear un nueva consulta</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
-                    <form class="form-horizontal">
+                    <div class="form-horizontal">
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-2 control-label">CI</label>
@@ -41,9 +52,9 @@
                             </div>
                         </div><!-- /.box-body -->
                         <div class="box-footer">
-                            <button id="fetch" type="submit" class="btn btn-info pull-right">Enviar</button>
+                            <button id="fetch" class="btn btn-info pull-right">Enviar</button>
                         </div><!-- /.box-footer -->
-                    </form>
+                    </div>
                 </div>
             </div>
 
