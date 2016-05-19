@@ -145,3 +145,23 @@ services:
       - ~
     calls:
       - [ setTranslationDomain, [AppBundle]]
+  app.admin.hojaenfermeria:
+    class: AppBundle\Admin\HojaEnfermeriaAdmin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "HojaEnfermeria" }
+    arguments:
+      - ~
+      - AppBundle\Entity\HojaEnfermeria
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]
+  app.admin.hojaenfermeria2:
+    class: AppBundle\Admin\HojaEnfermeria2Admin
+    tags:
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "HojaEnfermeria2" }
+    arguments:
+      - ~
+      - AppBundle\Entity\HojaEnfermeria2
+      - ~
+    calls:
+      - [ setTranslationDomain, [AppBundle]]

@@ -7,7 +7,9 @@
     <script>
         (function($){
             $("#fetch").click(function(){
-                $("#paciente").load("{{ path('app_paciente_fetch') }}",{id:$("#cid").val()})
+                $("#paciente").load("{{ path('app_paciente_fetch') }}",{id:$("#cid").val()},function(){
+                    $("[data-mask]").inputmask();
+                })
             })
         })(jQuery);
     </script>
