@@ -19,7 +19,7 @@ class PacienteType extends AbstractType
             ->add('primerApellido')
             ->add('segundoApellido')
             ->add('sexo')
-            ->add('fechaNacimiento', 'datetime')
+            ->add('fechaNacimiento', 'date')
             ->add('cId')
             ->add('colorPiel')
             ->add('estadoConyugal')
