@@ -30,15 +30,23 @@ class HojaMedicoController extends Controller
     public function fetchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
-        $cid = $request->request->get('id');
+        $id = $request->request->get('id');
         $hoja=null;
-        if (is_numeric($cid))
-            $hoja = $em->getRepository("AppBundle:Paciente")->findOneBy(array('cId'=>$cid));
+        if (is_numeric($id))
+            $hoja = $em->getRepository("AppBundle:HojaMedico")->findOneBy(array('id'=>$id));
         if ($hoja == null) {
             $hoja = new HojaMedico();
         }
         $editForm = $this->createForm('AppBundle\Form\HojaMedicoType', $hoja);
+        $editForm->handleRequest($request);
 
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($hoja);
+            $em->flush();
+
+           // return $this->redirectToRoute('hoja_medico_show', array('id' => $hoja->getId()));
+        }
         return array(
             'hoja' => $hoja,
             'edit_form' => $editForm->createView()
