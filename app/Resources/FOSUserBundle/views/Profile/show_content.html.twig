@@ -1,6 +1,56 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+    <div class="col-md-4">
+        <div class="box box-widget widget-user">
+            <!-- Add the bg color to the header using any of the bg-* classes -->
+            <div class="widget-user-header bg-aqua-active">
+                <h3 class="widget-user-username">{{ app.user.nombre }}</h3>
+                <h5 class="widget-user-desc">{% if is_granted('ROLE_ENFERMERO') %}Enfermero/a{% endif %}{% if is_granted('ROLE_LABORATORIO') %}Laboratorista{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}Estudiante{% endif %}{% if is_granted('ROLE_RESIDENTE') %}Residente{% endif %}{% if is_granted('ROLE_DOCTOR') %}Doctor{% endif %}{% if is_granted('ROLE_ADMIN') %}Administrador{% endif %}</h5>
+            </div>
+            <div class="widget-user-image">
+                <img class="img-circle" src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}Laboratorista{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}" alt="User Avatar">
+            </div>
+            <div class="box-footer">
+                <div class="row">
+                    <ul class="nav nav-stacked">
+                        <li><a href="#">{{ 'profile.show.username'|trans }} <span class="pull-right">{{ user.username }}</span></a></li>
+                        <li><a href="#">{{ 'profile.show.email'|trans }} <span class="pull-right">{{ user.email }}</span></a></li>
+                        {% if is_granted('ROLE_DOCTOR') %}
+                            {% if user.especialidad %}
+                                <li><a href="#">Especialidad <span class="pull-right">{{ user.especialidad }}</span></a></li>
+                            {% endif %}
+                            {% if user.doctorId %}
+                                <li><a href="#">ID de doctor <span class="pull-right">{{ user.doctorId }}</span></a></li>
+                            {% endif %}
+                            <li><a href="#">Evoluciones realizadas <span class="pull-right">{{ user.hojasMedico | length }}</span></a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_RESIDENTE') %}
+                            {% if user.especialidad %}
+                                <li><a href="#">Especialidad <span class="pull-right">{{ user.especialidad }}</span></a></li>
+                            {% endif %}
+                            {% if user.ano %}
+                                <li><a href="#">Año <span class="pull-right">{{ user.ano }}</span></a></li>
+                            {% endif %}
+                            {% if user.doctorId %}
+                                <li><a href="#">ID de doctor <span class="pull-right">{{ user.doctorId }}</span></a></li>
+                            {% endif %}
+                            <li><a href="#">Evoluciones realizadas <span class="pull-right">{{ user.hojasMedico | length }}</span></a></li>
+                        {% endif %}
+                        {% if is_granted('ROLE_Estudiante') %}
+                            {% if user.ano %}
+                                <li><a href="#">Año <span class="pull-right">{{ user.ano }}</span></a></li>
+                            {% endif %}
+                        {% endif %}
+                        {% if is_granted('ROLE_LABORATORIO') %}
+                            {% if user.especialidad %}
+                                <li><a href="#">Especialidad <span class="pull-right">{{ user.especialidad }}</span></a></li>
+                            {% endif %}
+                            <li><a href="#">Complementarios procesados <span class="pull-right">{{ user.complementarios | length }}</span></a></li>
+                        {% endif %}
+                    </ul>
+                </div><!-- /.row -->
+            </div>
+        </div>
+    </div>
 </div>
