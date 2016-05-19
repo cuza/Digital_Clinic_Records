@@ -24,6 +24,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
  */
 class ConsultaController extends Controller
 {
+
+
     /**
      * @Route("/new")
      * @Template()
@@ -31,6 +33,7 @@ class ConsultaController extends Controller
     public function newAction()
     {
         return array(// ...
+
         );
     }
 }

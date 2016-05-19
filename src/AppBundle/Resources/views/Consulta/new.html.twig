@@ -2,6 +2,61 @@
 
 {% block title %}AppBundle:Consulta:new{% endblock %}
 
-{% block Content %}
-    <h1>Welcome to the Consulta:new page</h1>
+{% block ContentHeader %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Consulta
+            <small>Añadir una nuevo paciente</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ path('app_consulta_new') }}"><i class="fa fa-medkit active"></i> Consulta</a></li>
+            {#<li class="active"Crear consulta</li>#}
+        </ol>
+    </section>
+{% endblock %}
+
+{% block ContentBody %}
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Main row -->
+        <div class="row">
+            <h2></h2>
+            <div class="col-md-6">
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Crear un nueva consulta</h3>
+                    </div><!-- /.box-header -->
+                    <!-- form start -->
+                    <form class="form-horizontal">
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-2 control-label">CI</label>
+                                <div class="col-sm-10">
+                                    <input id="cid" type="email" class="form-control" id="inputEmail3"
+                                           placeholder="Carnet de Identidad">
+                                </div>
+                            </div>
+                        </div><!-- /.box-body -->
+                        <div class="box-footer">
+                            <button id="fetch" type="submit" class="btn btn-info pull-right">Enviar</button>
+                        </div><!-- /.box-footer -->
+                    </form>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="box box-default" id="paciente">
+                    </div>
+                </div>
+            </div>
+
+        </div><!-- /.row (main row) -->
+
+    </section><!-- /.content -->
+
+
 {% endblock %}
