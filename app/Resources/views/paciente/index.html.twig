@@ -1,0 +1,103 @@
+    {% extends ':default:backend.html.twig' %}
+
+    {% block BackendContent %}
+    <h1>Lista de Paciente</h1>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Primerapellido</th>
+                <th>Segundoapellido</th>
+                <th>Sexo</th>
+                <th>Fechanacimiento</th>
+                <th>Cid</th>
+                <th>Colorpiel</th>
+                <th>Estadoconyugal</th>
+                <th>Paisnacimiento</th>
+                <th>Provincianacimiento</th>
+                <th>Municipionacimiento</th>
+                <th>Telefono</th>
+                <th>Direccioncalle</th>
+                <th>Direccioncasano</th>
+                <th>Direccionentrecalles</th>
+                <th>Direccionlocalidad</th>
+                <th>Direccionmunicipio</th>
+                <th>Direccionprovincia</th>
+                <th>Nombrecentrotrabajo</th>
+                <th>Direccioncentrotrabajo</th>
+                <th>Emergenciasnombre</th>
+                <th>Emergenciasprimerapellido</th>
+                <th>Emergenciassegundoapellido</th>
+                <th>Emergenciastelefono</th>
+                <th>Emergenciasdireccioncalle</th>
+                <th>Emergenciasdireccioncasano</th>
+                <th>Emergenciasdireccionentrecalles</th>
+                <th>Emergenciasdireccionlocalidad</th>
+                <th>Emergenciasdireccionmunicipio</th>
+                <th>Emergenciasdireccionprovincia</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for paciente in pacientes %}
+        <tr>
+                    <td>
+                        <a href="{{ path('paciente_show', { 'id': paciente.id }) }}">{{ paciente.id }}</a>
+                    </td>
+                    <td>{{ paciente.nombre }}</td>
+                    <td>{{ paciente.primerApellido }}</td>
+                    <td>{{ paciente.segundoApellido }}</td>
+                    <td>{{ paciente.sexo }}</td>
+                    <td>{% if paciente.fechaNacimiento %}{{ paciente.fechaNacimiento|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>{{ paciente.cId }}</td>
+                    <td>{{ paciente.colorPiel }}</td>
+                    <td>{{ paciente.estadoConyugal }}</td>
+                    <td>{{ paciente.paisNacimiento }}</td>
+                    <td>{{ paciente.provinciaNacimiento }}</td>
+                    <td>{{ paciente.municipioNacimiento }}</td>
+                    <td>{{ paciente.telefono }}</td>
+                    <td>{{ paciente.direccionCalle }}</td>
+                    <td>{{ paciente.direccionCasaNo }}</td>
+                    <td>{{ paciente.direccionEntreCalles }}</td>
+                    <td>{{ paciente.direccionLocalidad }}</td>
+                    <td>{{ paciente.direccionMunicipio }}</td>
+                    <td>{{ paciente.direccionProvincia }}</td>
+                    <td>{{ paciente.nombreCentroTrabajo }}</td>
+                    <td>{{ paciente.direccionCentroTrabajo }}</td>
+                    <td>{{ paciente.EmergenciasNombre }}</td>
+                    <td>{{ paciente.EmergenciasPrimerApellido }}</td>
+                    <td>{{ paciente.EmergenciasSegundoApellido }}</td>
+                    <td>{{ paciente.Emergenciastelefono }}</td>
+                    <td>{{ paciente.emergenciasDireccionCalle }}</td>
+                    <td>{{ paciente.emergenciasDireccionCasaNo }}</td>
+                    <td>{{ paciente.emergenciasDireccionEntreCalles }}</td>
+                    <td>{{ paciente.emergenciasDireccionLocalidad }}</td>
+                    <td>{{ paciente.emergenciasDireccionMunicipio }}</td>
+                    <td>{{ paciente.emergenciasDireccionProvincia }}</td>
+                    <td>
+
+                        <div class="btn-group" role="group" aria-label="...">
+                                                                    <a role="button" class="btn btn-primary"
+                                       href="{{ path('paciente_show', { 'id': paciente.id }) }}"><i
+                                                class="fa fa-list"></i> show</a>
+
+                                
+                                                                    <a role="button" class="btn btn-success"
+                                       href="{{ path('paciente_edit', { 'id': paciente.id }) }}"><i
+                                                class="fa fa-edit"></i> edit</a>
+
+                                
+                        </div>
+
+                    </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+            <a class="btn btn-info" href="{{ path('paciente_new') }}"><i class="fa fa-plus"></i> Crear un nuevo/a Paciente</a>
+        </div>
+    {% endblock %}
