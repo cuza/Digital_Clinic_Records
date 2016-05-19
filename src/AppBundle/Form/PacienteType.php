@@ -19,7 +19,7 @@ class PacienteType extends AbstractType
             ->add('nombre','text' , array('required' => 'true'))
             ->add('primerApellido','text' , array('required' => 'true'))
             ->add('segundoApellido','text' , array('required' => 'true'))
-            ->add('sexo')
+            ->add('sexo', GenderType::class)
             ->add('fechaNacimiento', 'date', array('widget'=>'single_text', 'required' => 'true'))
             ->add('cId', 'text', array('attr' => array('data-inputmask'=>"'mask': '99999999999'",'data-mask'=>''), 'required' => 'true'))
             ->add('colorPiel')
