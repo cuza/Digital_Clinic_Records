@@ -254,7 +254,7 @@
                                              alt="User Image">
                                         <p>
                                             {{ app.user.nombre }} - {% if is_granted('ROLE_ENFERMERO') %}Enfermero/a{% endif %}{% if is_granted('ROLE_LABORATORIO') %}Laboratorista{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}Estudiante{% endif %}{% if is_granted('ROLE_RESIDENTE') %}Residente{% endif %}{% if is_granted('ROLE_DOCTOR') %}Doctor{% endif %}{% if is_granted('ROLE_ADMIN') %}Administrador{% endif %}
-                                            <small>Member since Nov. 2012</small>
+                                            <small>Ultima vez logueado {{ app.user.lastLogin | ago }}</small>
                                         </p>
                                     </li>
                                     <!-- Menu Body -->
