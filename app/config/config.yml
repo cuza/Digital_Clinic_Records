@@ -10,8 +10,8 @@ imports:
 parameters:
     locale: es
     genders:
-        m: Male
-        f: Female
+        M: Masculino
+        F: Femenino
 
 framework:
     #esi:             ~
