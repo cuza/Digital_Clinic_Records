@@ -83,8 +83,8 @@
                 </div><!-- /.box -->
             </div>
         </div>
-        <a class="btn btn-info" href="{{ path('homepage') }}">Archivar Consulta</a>
-        <a class="btn btn-info" href="{{ path('homepage') }}">Ingresar</a>
-        <a class="btn btn-info" href="{{ path('homepage') }}">Solicitar complementario</a>
+        <a class="btn btn-info" href="{{ path('app_consulta_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Archivar Consulta</a>
+        <a class="btn btn-info" href="{{ path('app_ingreso_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Ingresar</a>
+        <a class="btn btn-info" href="{{ path('app_complementario_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Solicitar complementario</a>
     </section>
 {% endblock %}
