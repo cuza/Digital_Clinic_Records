@@ -56,6 +56,7 @@ class ComplementarioController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             /** @var User $user */
             $complementario->setHojaMedico($hoja);
+            $complementario->setDatetime(new \DateTime());
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($hoja);

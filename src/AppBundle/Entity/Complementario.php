@@ -31,7 +31,7 @@ class Complementario
     /**
      * @var string
      *
-     * @ORM\Column(name="Resultado", type="string", length=255)
+     * @ORM\Column(name="Resultado", type="string", length=255, nullable=true)
      */
     private $resultado;
 

@@ -16,12 +16,12 @@ class ComplementarioType extends AbstractType
     {
         $builder
             ->add('nombre')
-            ->add('resultado')
-            ->add('datetime', 'datetime')
-            ->add('cancelado')
-            ->add('motivoCancelado')
-            ->add('hojaMedico')
-            ->add('laboratorista')
+//            ->add('resultado')
+//            ->add('datetime', 'datetime')
+//            ->add('cancelado')
+//            ->add('motivoCancelado')
+//            ->add('hojaMedico')
+//            ->add('laboratorista')
         ;
     }
     
