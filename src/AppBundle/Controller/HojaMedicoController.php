@@ -36,7 +36,7 @@ class HojaMedicoController extends Controller
 //        if (is_numeric($id))
 //            $hoja = $em->getRepository("AppBundle:HojaMedico")->findOneBy(array('id' => $id));
 //        if ($hoja == null) {
-            $hoja = new HojaMedico();
+        $hoja = new HojaMedico();
 //        }
         $editForm = $this->createForm('AppBundle\Form\HojaMedicoType', $hoja);
         $editForm->handleRequest($request);
@@ -53,11 +53,7 @@ class HojaMedicoController extends Controller
             $em->persist($hoja);
             $em->flush();
 
-            $action = $request->request->get('action');
-            if ($action == "Ingresar")
-                return $this->redirectToRoute('app_ingreso_fetch', array('hid' => $hoja->getId(),'pid'=>$paciente->getId()));
-            elseif ($action == "Consulta")
-                return $this->redirectToRoute('app_consulta_fetch', array('hid' => $hoja->getId(),'pid'=>$paciente->getId()));
+            return $this->redirectToRoute('hoja_medico_show', array('id' => $hoja->getId(), 'pid' => $paciente->getId()));
         }
         return array(
             'hoja' => $hoja,
@@ -72,13 +68,19 @@ class HojaMedicoController extends Controller
      * @Route("/{id}", name="hoja_medico_show")
      * @Template()
      * @Method("GET")
+     * @param Request $request
      * @param HojaMedico $hoja
      * @return array
+     * @throws \InvalidArgumentException
      */
-    public function showAction(HojaMedico $hoja)
+    public function showAction(Request $request, HojaMedico $hoja)
     {
+        $em = $this->getDoctrine()->getManager();
+        $pid = $request->query->get('pid');
+        $paciente = $em->getRepository("AppBundle:Paciente")->findOneBy(array('id' => $pid));
         return array(
-            'hoja' => $hoja
+            'hoja' => $hoja,
+            'paciente' => $paciente
         );
     }
 }
