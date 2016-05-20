@@ -85,7 +85,7 @@
         </div>
 
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="box box-default ">
                     <div class="box-header with-border">
                         <i class="fa fa-heartbeat fa-fw"></i> Complementarios
@@ -93,7 +93,7 @@
                     <div class="box-body timeline-box">
                         <ul class="timeline">
                             {#TODO: buscar como invertir el indice de la busqueda#}
-                            {% for complementario in hoja.complemetarios | sort('datetime') %}
+                            {% for complementario in hoja.complemetarios | sort|reverse %}
                             <li class="{% if complementario.id %2 %}timeline-inverted{% else %}{% endif %}">
                                 <div class="timeline-badge {% if complementario.laboratorista and complementario.resultado  %}success{% endif %}"><i class="fa {% if complementario.laboratorista and complementario.resultado  %}fa-check{% else %}fa-hourglass-o{% endif %}"></i>
                                 </div>
@@ -116,8 +116,16 @@
                 </div>
             </div>
         </div>
-        <a class="btn btn-info" href="{{ path('app_consulta_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Archivar Consulta</a>
-        <a class="btn btn-info" href="{{ path('app_ingreso_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Ingresar</a>
-        <a class="btn btn-info" href="{{ path('app_complementario_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Solicitar complementario</a>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                Prosesar <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="{{ path('app_consulta_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Archivar Consulta</a></li>
+                <li><a href="{{ path('app_ingreso_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Ingresar</a></li>
+            </ul>
+        </div>
+        <a class="btn btn-warning" href="{{ path('app_complementario_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Solicitar complementario</a>
     </section>
 {% endblock %}
