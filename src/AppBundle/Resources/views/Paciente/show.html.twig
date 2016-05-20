@@ -1,5 +1,6 @@
 {% extends "::base.html.twig" %}
 
+
 {% block title %}AppBundle:Paciente:show{% endblock %}
 
     {% block ContentHeader %}
@@ -60,6 +61,7 @@
                         <li><a href="#">Nacido en <span
                                         class="pull-right">{{ paciente.municipioNacimiento }}
                                     , {{ paciente.provinciaNacimiento }}, {{ paciente.paisNacimiento }}</span></a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>
@@ -103,7 +105,7 @@
             </div>
         {% endif %}
     </div><!-- /.row (main row) -->
-
+    <a href="{{ path('app_consulta_new', {'paciente':{'cId':paciente.cId} }) }}" id="paciente_edit" class="btn btn-success pull-left">Editar</a>
 </section><!-- /.content -->
 {% endblock %}
 
