@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\HojaMedico;
+use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -21,19 +22,19 @@ class HojaMedicoController extends Controller
 {
 
     /**
-     * @Route("/fetch")
+     * @Route("/fetch/{id}")
      * @Template()
      * @param Request $request
      * @return array
      * @throws \InvalidArgumentException
      */
-    public function fetchAction(Request $request)
+    public function fetchAction(Request $request, Paciente $paciente)
     {
         $em = $this->getDoctrine()->getManager();
-        $id = $request->request->get('id');
-        $hoja=null;
+        $id = $request->query->get('hid');
+        $hoja = null;
         if (is_numeric($id))
-            $hoja = $em->getRepository("AppBundle:HojaMedico")->findOneBy(array('id'=>$id));
+            $hoja = $em->getRepository("AppBundle:HojaMedico")->findOneBy(array('id' => $id));
         if ($hoja == null) {
             $hoja = new HojaMedico();
         }
@@ -41,14 +42,26 @@ class HojaMedicoController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            /** @var User $user */
+            $user = $this->getUser();
+            if ($user->hasRole("ROLE_DOCTOR"))
+                $hoja->setDoctor($user);
+            else if ($user->hasRole("ROLE_RESIDENTE"))
+                $hoja->setResidente($user);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($hoja);
             $em->flush();
 
-           // return $this->redirectToRoute('hoja_medico_show', array('id' => $hoja->getId()));
+            $action = $request->request->get('action');
+            if ($action == "Ingresar")
+                return $this->redirectToRoute('hoja_medico_show', array('hid' => $hoja->getId(),'pid'=>$paciente->getId()));
+            elseif ($action == "Consulta")
+                return $this->redirectToRoute('app_consulta_fetch', array('hid' => $hoja->getId(),'pid'=>$paciente->getId()));
         }
         return array(
             'hoja' => $hoja,
+            'paciente' => $paciente,
             'edit_form' => $editForm->createView()
         );
     }
