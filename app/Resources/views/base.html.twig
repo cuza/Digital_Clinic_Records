@@ -244,40 +244,43 @@
                         {% if(app.user) %}
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <img src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}" class="user-image" alt="User Image">
+                                    <img src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}"
+                                         class="user-image" alt="User Image">
                                     <span class="hidden-xs">{{ app.user.username }}</span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image -->
                                     <li class="user-header">
-                                        <img src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}" class="img-circle"
+                                        <img src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}"
+                                             class="img-circle"
                                              alt="User Image">
                                         <p>
-                                            {{ app.user.nombre }} - {% if is_granted('ROLE_ENFERMERO') %}Enfermero/a{% endif %}{% if is_granted('ROLE_LABORATORIO') %}Laboratorista{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}Estudiante{% endif %}{% if is_granted('ROLE_RESIDENTE') %}Residente{% endif %}{% if is_granted('ROLE_DOCTOR') %}Doctor{% endif %}{% if is_granted('ROLE_ADMIN') %}Administrador{% endif %}
+                                            {{ app.user.nombre }}
+                                            - {% if is_granted('ROLE_ENFERMERO') %}Enfermero/a{% endif %}{% if is_granted('ROLE_LABORATORIO') %}Laboratorista{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}Estudiante{% endif %}{% if is_granted('ROLE_RESIDENTE') %}Residente{% endif %}{% if is_granted('ROLE_DOCTOR') %}Doctor{% endif %}{% if is_granted('ROLE_ADMIN') %}Administrador{% endif %}
                                             <small>Ultima vez logueado {{ app.user.lastLogin | ago }}</small>
                                         </p>
                                     </li>
                                     <!-- Menu Body -->
                                     <div class="box-footer">
                                         {#<div class="row">#}
-                                            {#<div class="col-sm-4 border-right">#}
-                                                {#<div class="description-block">#}
-                                                    {#<h5 class="description-header">3,200</h5>#}
-                                                    {#<span class="description-text">SALES</span>#}
-                                                {#</div><!-- /.description-block -->#}
-                                            {#</div><!-- /.col -->#}
-                                            {#<div class="col-sm-4 border-right">#}
-                                                {#<div class="description-block">#}
-                                                    {#<h5 class="description-header">13,000</h5>#}
-                                                    {#<span class="description-text">FOLLOWERS</span>#}
-                                                {#</div><!-- /.description-block -->#}
-                                            {#</div><!-- /.col -->#}
-                                            {#<div class="col-sm-4">#}
-                                                {#<div class="description-block">#}
-                                                    {#<h5 class="description-header">35</h5>#}
-                                                    {#<span class="description-text">PRODUCTS</span>#}
-                                                {#</div><!-- /.description-block -->#}
-                                            {#</div><!-- /.col -->#}
+                                        {#<div class="col-sm-4 border-right">#}
+                                        {#<div class="description-block">#}
+                                        {#<h5 class="description-header">3,200</h5>#}
+                                        {#<span class="description-text">SALES</span>#}
+                                        {#</div><!-- /.description-block -->#}
+                                        {#</div><!-- /.col -->#}
+                                        {#<div class="col-sm-4 border-right">#}
+                                        {#<div class="description-block">#}
+                                        {#<h5 class="description-header">13,000</h5>#}
+                                        {#<span class="description-text">FOLLOWERS</span>#}
+                                        {#</div><!-- /.description-block -->#}
+                                        {#</div><!-- /.col -->#}
+                                        {#<div class="col-sm-4">#}
+                                        {#<div class="description-block">#}
+                                        {#<h5 class="description-header">35</h5>#}
+                                        {#<span class="description-text">PRODUCTS</span>#}
+                                        {#</div><!-- /.description-block -->#}
+                                        {#</div><!-- /.col -->#}
                                         {#</div><!-- /.row -->#}
                                     </div>
                                     <!-- Menu Footer-->
@@ -298,78 +301,10 @@
                 </div>
             </nav>
         </header>
-        <!-- Left side column. contains the logo and sidebar -->
         <aside class="main-sidebar">
-            <!-- sidebar: style can be found in sidebar.less -->
             <section class="sidebar">
-                <!-- Sidebar user panel -->
-                <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}" class="img-circle" alt="User Image">
-                    </div>
-                    <div class="pull-left info">
-                        <p>{{ app.user.nombre }}</p>
-                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                    </div>
-                </div>
-
-                <!-- sidebar menu: : style can be found in sidebar.less -->
-                <ul class="sidebar-menu">
-                    <li class="header">Menu de Navegación</li>
-                    <li class="active">
-                        <a href="#">
-                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                            {#<i class="fa fa-angle-left pull-right"></i>#}
-                        </a>
-                        {#<ul class="treeview-menu">#}
-                        {#<li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>#}
-                        {#<li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>#}
-                        {#</ul>#}
-                    </li>
-
-                    {#<li class="treeview">#}
-                    {#<a href="#">#}
-                    {#<i class="fa fa-files-o"></i>#}
-                    {#<span>Layout Options</span>#}
-                    {#<span class="label label-primary pull-right">4</span>#}
-                    {#</a>#}
-                    {#<ul class="treeview-menu">#}
-                    {#<li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a>#}
-                    {#</li>#}
-                    {#<li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>#}
-                    {#<li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>#}
-                    {#<li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed#}
-                    {#Sidebar</a></li>#}
-                    {#</ul>#}
-                    {#</li>#}
-                    <li>
-                        <a href="{{ path('app_consulta_new') }}">
-                            <i class="fa fa-medkit"></i> <span>Consulta</span>
-                            {#<small class="label pull-right bg-green">new</small>#}
-                        </a>
-                    </li>
-                    <li>
-                        <a href="pages/widgets.html">
-                            <i class="fa fa-hospital-o"></i> <span>Ingresados</span>
-                            {#<small class="label pull-right bg-green">new</small>#}
-                        </a>
-                    </li>
-                    <li class="treeview">
-                        <a href="#">
-                            <i class="fa fa-folder-open-o"></i>
-                            <span>Archivo</span>
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </a>
-                        <ul class="treeview-menu">
-                            <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Historias
-                                    Clínicas</a></li>
-                            <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Consultas</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
+                {% include(':default:aside.html.twig') %}
             </section>
-            <!-- /.sidebar -->
         </aside>
 
         {% block Content %}
@@ -383,7 +318,6 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li><i class="fa fa-home active"></i> Home</li>
-                            {#<li class="active">Dashboard</li>#}
                         </ol>
                     </section>
                 {% endblock %}
