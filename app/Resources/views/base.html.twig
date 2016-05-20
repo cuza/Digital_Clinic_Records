@@ -259,36 +259,36 @@
                                     </li>
                                     <!-- Menu Body -->
                                     <div class="box-footer">
-                                        <div class="row">
-                                            <div class="col-sm-4 border-right">
-                                                <div class="description-block">
-                                                    <h5 class="description-header">3,200</h5>
-                                                    <span class="description-text">SALES</span>
-                                                </div><!-- /.description-block -->
-                                            </div><!-- /.col -->
-                                            <div class="col-sm-4 border-right">
-                                                <div class="description-block">
-                                                    <h5 class="description-header">13,000</h5>
-                                                    <span class="description-text">FOLLOWERS</span>
-                                                </div><!-- /.description-block -->
-                                            </div><!-- /.col -->
-                                            <div class="col-sm-4">
-                                                <div class="description-block">
-                                                    <h5 class="description-header">35</h5>
-                                                    <span class="description-text">PRODUCTS</span>
-                                                </div><!-- /.description-block -->
-                                            </div><!-- /.col -->
-                                        </div><!-- /.row -->
+                                        {#<div class="row">#}
+                                            {#<div class="col-sm-4 border-right">#}
+                                                {#<div class="description-block">#}
+                                                    {#<h5 class="description-header">3,200</h5>#}
+                                                    {#<span class="description-text">SALES</span>#}
+                                                {#</div><!-- /.description-block -->#}
+                                            {#</div><!-- /.col -->#}
+                                            {#<div class="col-sm-4 border-right">#}
+                                                {#<div class="description-block">#}
+                                                    {#<h5 class="description-header">13,000</h5>#}
+                                                    {#<span class="description-text">FOLLOWERS</span>#}
+                                                {#</div><!-- /.description-block -->#}
+                                            {#</div><!-- /.col -->#}
+                                            {#<div class="col-sm-4">#}
+                                                {#<div class="description-block">#}
+                                                    {#<h5 class="description-header">35</h5>#}
+                                                    {#<span class="description-text">PRODUCTS</span>#}
+                                                {#</div><!-- /.description-block -->#}
+                                            {#</div><!-- /.col -->#}
+                                        {#</div><!-- /.row -->#}
                                     </div>
                                     <!-- Menu Footer-->
                                     <li class="user-footer">
                                         <div class="pull-left">
                                             <a href="{{ path('fos_user_profile_show') }}"
-                                               class="btn btn-default btn-flat">Profile</a>
+                                               class="btn btn-default btn-flat">Perfil</a>
                                         </div>
                                         <div class="pull-right">
                                             <a href="{{ path('fos_user_security_logout') }}"
-                                               class="btn btn-default btn-flat">Sign out</a>
+                                               class="btn btn-default btn-flat">Cerrar sesión</a>
                                         </div>
                                     </li>
                                 </ul>
@@ -382,7 +382,7 @@
                             {#<small>Control panel</small>#}
                         </h1>
                         <ol class="breadcrumb">
-                            <li><a href="{{ path('homepage') }}"><i class="fa fa-home active"></i> Home</a></li>
+                            <li><i class="fa fa-home active"></i> Home</li>
                             {#<li class="active">Dashboard</li>#}
                         </ol>
                     </section>

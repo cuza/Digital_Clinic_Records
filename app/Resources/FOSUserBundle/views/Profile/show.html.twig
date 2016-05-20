@@ -10,8 +10,8 @@
             <small>Ver tu perfil</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-medkit active"></i> Perfil</a></li>
-            {#<li class="active"Crear consulta</li>#}
+            <li><a href="{{ path('homepage') }}"><i class="fa fa-home"></i>Home</a></li>
+            <li class="active"><i class="fa fa-user-plus active"></i>Perfil</li>
         </ol>
     </section>
 {% endblock %}
@@ -23,5 +23,6 @@
         <div class="row">
             {% include "FOSUserBundle:Profile:show_content.html.twig" %}
         </div><!-- /.row (main row) -->
+        <a class="btn btn-success" href="{{ path('fos_user_profile_edit') }}">Editar</a>
     </section><!-- /.content -->
 {% endblock %}

@@ -10,8 +10,9 @@
             <small>Editar tu perfil</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-medkit active"></i> Perfil</a></li>
-            {#<li class="active"Crear consulta</li>#}
+            <li><a href="{{ path('homepage') }}"><i class="fa fa-home"></i>Home</a></li>
+            <li><a href="{{ path('fos_user_profile_show') }}"><i class="fa fa-user-plus active"></i> Perfil</a></li>
+            <li class="active"><a href="{{ path('fos_user_profile_edit') }}"></a><i class="fa fa-edit"></i> Editar perfil</li>
         </ol>
     </section>
 {% endblock %}

@@ -107,6 +107,11 @@ sonata_block:
         sonata.admin.block.admin_list:
             contexts: [admin]
         # ...
+sonata_admin:
+    title: '<b>Registro</b>Médico'
+    title_logo: bundles/sonataadmin/logo_title.png
+    options:
+        title_mode: 'single_text'
 
 pugx_multi_user:
   users:

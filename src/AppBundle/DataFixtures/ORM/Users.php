@@ -14,6 +14,10 @@ use AppBundle\Entity\EnfermeroUser;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+/**
+ * Fixtures de la entidad User.
+ * Crea usuarios de prueba con información muy realista.
+ */
 class Users extends AbstractFixture implements OrderedFixtureInterface,
     ContainerAwareInterface
 {
@@ -186,21 +190,19 @@ class Users extends AbstractFixture implements OrderedFixtureInterface,
      */
     private function getNombre($gender)
     {
-        // Los nombres más populares en España según el INE
-        // Fuente: http://www.ine.es/daco/daco42/nombyapel/nombyapel.htm
 
         $hombres = array(
             'Antonio', 'José', 'Manuel', 'Francisco', 'Juan', 'David',
             'José Antonio', 'José Luis', 'Jesús', 'Javier', 'Francisco Javier',
             'Carlos', 'Daniel', 'Miguel', 'Rafael', 'Pedro', 'José Manuel',
-            'Ángel', 'Alejandro', 'Miguel Ángel', 'José María', 'Fernando',
+            'Ángel', 'Alejandro', 'Miguel Ángel', 'Andy', 'Fernando',
             'Luis', 'Sergio', 'Pablo', 'Jorge', 'Alberto'
         );
         $mujeres = array(
             'María Carmen', 'María', 'Carmen', 'Josefa', 'Isabel', 'Ana María',
             'María Dolores', 'María Pilar', 'María Teresa', 'Ana', 'Francisca',
             'Laura', 'Antonia', 'Dolores', 'María Angeles', 'Cristina', 'Marta',
-            'María José', 'María Isabel', 'Pilar', 'María Luisa', 'Concepción',
+            'Claudia', 'María Isabel', 'Pilar', 'María Luisa', 'Concepción',
             'Lucía', 'Mercedes', 'Manuela', 'Elena', 'Rosa María'
         );
 
@@ -218,17 +220,16 @@ class Users extends AbstractFixture implements OrderedFixtureInterface,
      */
     private function getApellidos()
     {
-        // Los apellidos más populares en España según el INE
-        // Fuente: http://www.ine.es/daco/daco42/nombyapel/nombyapel.htm
+
 
         $apellidos = array(
-            'García', 'González', 'Rodríguez', 'Fernández', 'López', 'Martínez',
+            'Cuza', 'del Pino', 'García', 'González', 'Rodríguez', 'Fernández',
             'Sánchez', 'Pérez', 'Gómez', 'Martín', 'Jiménez', 'Ruiz',
             'Hernández', 'Díaz', 'Moreno', 'Álvarez', 'Muñoz', 'Romero',
             'Alonso', 'Gutiérrez', 'Navarro', 'Torres', 'Domínguez', 'Vázquez',
             'Ramos', 'Gil', 'Ramírez', 'Serrano', 'Blanco', 'Suárez', 'Molina',
             'Morales', 'Ortega', 'Delgado', 'Castro', 'Ortíz', 'Rubio', 'Marín',
-            'Sanz', 'Iglesias', 'Nuñez', 'Medina', 'Garrido'
+            'Sanz', 'Iglesias', 'Nuñez', 'Medina', 'Garrido', 'López', 'Martínez'
         );
 
         return $apellidos[array_rand($apellidos)] . ' ' . $apellidos[array_rand($apellidos)];
