@@ -17832,3 +17832,9 @@ fieldset[disabled] .btn-yahoo.active {
   padding-left: 20px;
   padding-right: 20px;
 }
+.timeline-box {
+  position: relative;
+  height: 200px;
+  margin-top: 10px;
+  overflow: auto;
+}

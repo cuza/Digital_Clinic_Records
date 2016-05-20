@@ -83,6 +83,39 @@
                 </div><!-- /.box -->
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box box-default ">
+                    <div class="box-header with-border">
+                        <i class="fa fa-heartbeat fa-fw"></i> Complementarios
+                    </div>
+                    <div class="box-body timeline-box">
+                        <ul class="timeline">
+                            {#TODO: buscar como invertir el indice de la busqueda#}
+                            {% for complementario in hoja.complemetarios | sort('datetime') %}
+                            <li class="{% if complementario.id %2 %}timeline-inverted{% else %}{% endif %}">
+                                <div class="timeline-badge"><i class="fa {% if complementario.laboratorista and complementario.resultado  %}fa-check{% else %}fa-hourglass-o{% endif %}"></i>
+                                </div>
+                                <div class="timeline-panel">
+                                    <div class="timeline-heading">
+                                        <h4 class="timeline-title">{{ complementario.nombre }}</h4>
+                                        <p>
+                                            <small class="text-muted"><i class="fa fa-clock-o"></i> {{ complementario.datetime | ago }}
+                                            </small>
+                                        </p>
+                                    </div>
+                                    <div class="timeline-body">
+                                        <p>{{ complementario.resultado }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
         <a class="btn btn-info" href="{{ path('app_consulta_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Archivar Consulta</a>
         <a class="btn btn-info" href="{{ path('app_ingreso_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Ingresar</a>
         <a class="btn btn-info" href="{{ path('app_complementario_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Solicitar complementario</a>
