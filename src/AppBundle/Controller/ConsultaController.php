@@ -41,13 +41,13 @@ class ConsultaController extends Controller
         $pid = $request->query->get('pid');
         $paciente = $em->getRepository("AppBundle:Paciente")->findOneBy(array('id' => $pid));
 
-        $cid = $request->query->get('cid');
-        $consulta = null;
-        if (is_numeric($cid))
-            $consulta = $em->getRepository("AppBundle:Consulta")->findOneBy(array('id' => $cid));
-        if ($consulta == null) {
+//        $cid = $request->query->get('cid');
+//        $consulta = null;
+//        if (is_numeric($cid))
+//            $consulta = $em->getRepository("AppBundle:Consulta")->findOneBy(array('id' => $cid));
+//        if ($consulta == null) {
             $consulta = new Consulta();
-        }
+//        }
         $editForm = $this->createForm('AppBundle\Form\ConsultaType', $consulta);
         $editForm->handleRequest($request);
 

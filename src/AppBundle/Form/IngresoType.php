@@ -23,8 +23,6 @@ class IngresoType extends AbstractType
             ->add('necropsia')
             ->add('repercusionIncapacidadFisica')
             ->add('seguimiento')
-            ->add('paciente')
-            ->add('salas')
         ;
     }
     

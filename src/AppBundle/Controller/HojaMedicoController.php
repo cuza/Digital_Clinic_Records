@@ -31,13 +31,13 @@ class HojaMedicoController extends Controller
     public function fetchAction(Request $request, Paciente $paciente)
     {
         $em = $this->getDoctrine()->getManager();
-        $id = $request->query->get('hid');
-        $hoja = null;
-        if (is_numeric($id))
-            $hoja = $em->getRepository("AppBundle:HojaMedico")->findOneBy(array('id' => $id));
-        if ($hoja == null) {
+//        $id = $request->query->get('hid');
+//        $hoja = null;
+//        if (is_numeric($id))
+//            $hoja = $em->getRepository("AppBundle:HojaMedico")->findOneBy(array('id' => $id));
+//        if ($hoja == null) {
             $hoja = new HojaMedico();
-        }
+//        }
         $editForm = $this->createForm('AppBundle\Form\HojaMedicoType', $hoja);
         $editForm->handleRequest($request);
 
@@ -55,7 +55,7 @@ class HojaMedicoController extends Controller
 
             $action = $request->request->get('action');
             if ($action == "Ingresar")
-                return $this->redirectToRoute('hoja_medico_show', array('hid' => $hoja->getId(),'pid'=>$paciente->getId()));
+                return $this->redirectToRoute('app_ingreso_fetch', array('hid' => $hoja->getId(),'pid'=>$paciente->getId()));
             elseif ($action == "Consulta")
                 return $this->redirectToRoute('app_consulta_fetch', array('hid' => $hoja->getId(),'pid'=>$paciente->getId()));
         }
