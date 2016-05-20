@@ -2,6 +2,35 @@
 
 {% block title %}AppBundle:HojaMedico:show{% endblock %}
 
-{% block body %}
-<h1>Welcome to the HojaMedico:show page</h1>
+{% block ContentHeader %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Home
+            {#<small>Control panel</small>#}
+        </h1>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-home active"></i> Home</li>
+        </ol>
+    </section>
+{% endblock %}
+{% block ContentBody %}
+    <h1>Welcome to the HojaMedico:show page</h1>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="box box-primary paciente-form">
+                    <div class="box-footer no-padding">
+                        <ul class="nav nav-stacked">
+                            <li><a href="#">Doctor <span class="pull-right">{{ hoja.doctor }}</span></a></li>
+                            <li><a href="#">Tratamiento <span class="pull-right">{{ hoja.evolucionTratamiento }}</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="btn btn-info" href="{{ path('homepage') }}">Archivar Consulta</a>
+        <a class="btn btn-info" href="{{ path('homepage') }}">Ingresar</a>
+        <a class="btn btn-info" href="{{ path('homepage') }}">Solicitar complementario</a>
+    </section>
 {% endblock %}

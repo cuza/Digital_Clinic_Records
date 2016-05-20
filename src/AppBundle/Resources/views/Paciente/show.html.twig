@@ -1,8 +1,8 @@
 {% extends "::base.html.twig" %}
 
-
-{% block title %}AppBundle:Paciente:show{% endblock %}
-
+ {% block title %}
+     AppBundle:Paciente:show
+ {% endblock %}
     {% block ContentHeader %}
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -17,97 +17,98 @@
         </section>
     {% endblock %}
     {% block ContentBody %}
-<!-- Main content -->
-<section class="content">
+        <!-- Main content -->
+        <section class="content">
+            <!-- Main row -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="box box-widget widget-user-2">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-red">
+                            <div class="widget-user-image">
 
-    <!-- Main row -->
-    <div class="row">
-        <div class="col-md-6">
-            <div class="box box-widget widget-user-2">
-                <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header bg-red">
-                    <div class="widget-user-image">
-
-                    </div><!-- /.widget-user-image -->
-                    <h3 class="widget-user-username"><i
-                                class="fa fa-user fa-2x"></i> {{ paciente.nombre }} {{ paciente.primerApellido }} {{ paciente.segundoApellido }}
-                    </h3>
-                    <h5 class="widget-user-desc">Nacido {{ paciente.fechaNacimiento | ago }}</h5>
-                </div>
-                <div class="box-footer no-padding">
-                    <ul class="nav nav-stacked">
-                        <li><a href="#">Sexo <span class="pull-right">{{ paciente.sexo }}</span></a></li>
-                        <li><a href="#">CI <span class="pull-right badge bg-blue">{{ paciente.cId }}</span></a>
-                        </li>
-                        {% if paciente.colorPiel %}
-                            <li><a href="#">Color de piel <span
-                                            class="pull-right">{{ paciente.colorPiel }}</span></a></li>
-                        {% endif %}
-                        {% if paciente.estadoConyugal %}
-                            <li><a href="#">Estado conyugal <span
-                                            class="pull-right">{{ paciente.estadoConyugal }}</span></a></li>
-                        {% endif %}
-                        {% if paciente.telefono %}
-                            <li><a href="#">Teléfono<span class="pull-right">{{ paciente.telefono }} <i
-                                                class="fa fa-phone"></i></span></a></li>
-                        {% endif %}
-                        {% if paciente.direccionCalle or paciente.direccionLocalidad or paciente.direccionEntreCalles %}
-                            <li><a href="#">Dirección<span class="pull-right">{{ paciente.direccionCalle }}
-                                        #{{ paciente.direccionCasaNo }} {{ paciente.direccionEntreCalles }}
-                                        , {{ paciente.direccionLocalidad }}, {{ paciente.direccionMunicipio }}
-                                        , {{ paciente.direccionProvincia }}</span></a></li>
-                        {% endif %}
-                        {% if paciente.municipioNacimiento or paciente.provinciaNacimiento or paciente.paisNacimiento %}
-                        <li><a href="#">Nacido en <span
-                                        class="pull-right">{{ paciente.municipioNacimiento }}
-                                    , {{ paciente.provinciaNacimiento }}, {{ paciente.paisNacimiento }}</span></a></li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        {% if paciente.emergenciasNombre %}
-            <div class="col-md-5">
-                <div class="box box-widget widget-user-2">
-                    <!-- Add the bg color to the header using any of the bg-* classes -->
-                    <div class="widget-user-header bg-maroon">
-                        <div class="widget-user-image">
-                        </div><!-- /.widget-user-image -->
-                        <h5 class="widget-user-desc">En caso de emergencias avisar a:</h5>
-                        <h3 class="widget-user-username">{{ paciente.emergenciasNombre }} {{ paciente.emergenciasPrimerApellido }} {{ paciente.emergenciasSegundoApellido }}
-                        </h3>
-                    </div>
-                    <div class="box-footer no-padding">
-                        <ul class="nav nav-stacked">
-                            {% if paciente.emergenciastelefono %}
-                                <li>
-                                    <a href="#">Teléfono<span
-                                                class="pull-right">{{ paciente.emergenciastelefono }} <i
-                                                    class="fa fa-phone"></i></span>
-                                    </a>
+                            </div><!-- /.widget-user-image -->
+                            <h3 class="widget-user-username"><i
+                                        class="fa fa-user fa-2x"></i> {{ paciente.nombre }} {{ paciente.primerApellido }} {{ paciente.segundoApellido }}
+                            </h3>
+                            <h5 class="widget-user-desc">Nacido {{ paciente.fechaNacimiento | ago }}</h5>
+                        </div>
+                        <div class="box-footer no-padding">
+                            <ul class="nav nav-stacked">
+                                <li><a href="#">Sexo <span class="pull-right">{{ paciente.sexo }}</span></a></li>
+                                <li><a href="#">CI <span class="pull-right badge bg-blue">{{ paciente.cId }}</span></a>
                                 </li>
-                            {% endif %}
-                            {% if paciente.emergenciasDireccionCasaNo or paciente.emergenciasDireccionCalle or paciente.emergenciasDireccionEntreCalles %}
-                                <li>
-                                    <a href="#">Dirección<span
-                                                class="pull-right">{{ paciente.emergenciasDireccionCalle }}
-                                            #{{ paciente.emergenciasDireccionCasaNo }} {{ paciente.emergenciasDireccionEntreCalles }}
-                                            , {{ paciente.emergenciasDireccionLocalidad }}
-                                            , {{ paciente.emergenciasDireccionMunicipio }}
-                                            , {{ paciente.emergenciasDireccionProvincia }}</span>
-                                    </a>
-                                </li>
-                            {% endif %}
-                        </ul>
+                                {% if paciente.colorPiel %}
+                                    <li><a href="#">Color de piel <span
+                                                    class="pull-right">{{ paciente.colorPiel }}</span></a></li>
+                                {% endif %}
+                                {% if paciente.estadoConyugal %}
+                                    <li><a href="#">Estado conyugal <span
+                                                    class="pull-right">{{ paciente.estadoConyugal }}</span></a></li>
+                                {% endif %}
+                                {% if paciente.telefono %}
+                                    <li><a href="#">Teléfono<span class="pull-right">{{ paciente.telefono }} <i
+                                                        class="fa fa-phone"></i></span></a></li>
+                                {% endif %}
+                                {% if paciente.direccionCalle or paciente.direccionLocalidad or paciente.direccionEntreCalles %}
+                                    <li><a href="#">Dirección<span class="pull-right">{{ paciente.direccionCalle }}
+                                                #{{ paciente.direccionCasaNo }} {{ paciente.direccionEntreCalles }}
+                                                , {{ paciente.direccionLocalidad }}, {{ paciente.direccionMunicipio }}
+                                                , {{ paciente.direccionProvincia }}</span></a></li>
+                                {% endif %}
+                                {% if paciente.municipioNacimiento or paciente.provinciaNacimiento or paciente.paisNacimiento %}
+                                    <li><a href="#">Nacido en <span
+                                                    class="pull-right">{{ paciente.municipioNacimiento }}
+                                                , {{ paciente.provinciaNacimiento }}
+                                                , {{ paciente.paisNacimiento }}</span></a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endif %}
-    </div><!-- /.row (main row) -->
-    <a href="{{ path('app_consulta_new', {'paciente':{'cId':paciente.cId} }) }}" id="paciente_edit" class="btn btn-success pull-left">Editar</a>
-</section><!-- /.content -->
-{% endblock %}
+
+                {% if paciente.emergenciasNombre %}
+                    <div class="col-md-5">
+                        <div class="box box-widget widget-user-2">
+                            <!-- Add the bg color to the header using any of the bg-* classes -->
+                            <div class="widget-user-header bg-maroon">
+                                <div class="widget-user-image">
+                                </div><!-- /.widget-user-image -->
+                                <h5 class="widget-user-desc">En caso de emergencias avisar a:</h5>
+                                <h3 class="widget-user-username">{{ paciente.emergenciasNombre }} {{ paciente.emergenciasPrimerApellido }} {{ paciente.emergenciasSegundoApellido }}
+                                </h3>
+                            </div>
+                            <div class="box-footer no-padding">
+                                <ul class="nav nav-stacked">
+                                    {% if paciente.emergenciastelefono %}
+                                        <li>
+                                            <a href="#">Teléfono<span
+                                                        class="pull-right">{{ paciente.emergenciastelefono }} <i
+                                                            class="fa fa-phone"></i></span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                    {% if paciente.emergenciasDireccionCasaNo or paciente.emergenciasDireccionCalle or paciente.emergenciasDireccionEntreCalles %}
+                                        <li>
+                                            <a href="#">Dirección<span
+                                                        class="pull-right">{{ paciente.emergenciasDireccionCalle }}
+                                                    #{{ paciente.emergenciasDireccionCasaNo }} {{ paciente.emergenciasDireccionEntreCalles }}
+                                                    , {{ paciente.emergenciasDireccionLocalidad }}
+                                                    , {{ paciente.emergenciasDireccionMunicipio }}
+                                                    , {{ paciente.emergenciasDireccionProvincia }}</span>
+                                            </a>
+                                        </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            </div><!-- /.row (main row) -->
+            <a href="{{ path('app_consulta_new', {'paciente':{'cId':paciente.cId} }) }}" id="paciente_edit"
+               class="btn btn-success pull-left">Editar</a>
+        </section><!-- /.content -->
+    {% endblock %}
 
 
 
