@@ -95,7 +95,7 @@
                             {#TODO: buscar como invertir el indice de la busqueda#}
                             {% for complementario in hoja.complemetarios | sort('datetime') %}
                             <li class="{% if complementario.id %2 %}timeline-inverted{% else %}{% endif %}">
-                                <div class="timeline-badge"><i class="fa {% if complementario.laboratorista and complementario.resultado  %}fa-check{% else %}fa-hourglass-o{% endif %}"></i>
+                                <div class="timeline-badge {% if complementario.laboratorista and complementario.resultado  %}success{% endif %}"><i class="fa {% if complementario.laboratorista and complementario.resultado  %}fa-check{% else %}fa-hourglass-o{% endif %}"></i>
                                 </div>
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
