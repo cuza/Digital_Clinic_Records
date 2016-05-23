@@ -23,6 +23,17 @@ class Ingreso
         $salas=$this->getSalas();
         return $salas[count($salas)-1];
     }
+
+    /**
+     * @return Ingreso
+     */
+    public function setSala(Sala $sala){
+        $s= new IngresoSala();
+        $s->setSala($sala);
+        $s->setIngreso($this);
+        $s->setFechaEntrada(new \DateTime());
+        $this->addSala($s);
+    }
     /**
      * @var int
      *
@@ -57,7 +68,7 @@ class Ingreso
 
     /**
      * @var Ingreso
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\IngresoSala", mappedBy="ingreso")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\IngresoSala", mappedBy="ingreso",cascade={"persist"})
      */
     private $salas;
 
