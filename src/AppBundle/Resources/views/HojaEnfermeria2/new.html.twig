@@ -1,0 +1,14 @@
+    {% extends '::base.html.twig' %}
+
+    {% block ContentBody %}
+    <h1>HojaEnfermeria2 creation</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+
+<div class="btn-group" role="group" aria-label="...">
+	
+<a role="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Atras" href="{{ path('hojaenfermeria2_index') }}"><i class="fa fa-fa-chevron-left"></i></a></div>{% endblock %}

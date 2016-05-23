@@ -17,6 +17,7 @@ class HojaMedicoType extends AbstractType
         $builder
             ->add('historiaEnfermedadActual')
             ->add('examenFisico')
+            ->add('impresionDiagnostica')
             ->add('evolucionTratamiento')
             ->add('tratamientoAntibioticos')
         ;

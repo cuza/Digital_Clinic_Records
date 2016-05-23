@@ -1,0 +1,51 @@
+    {% extends '::base.html.twig' %}
+
+    {% block ContentBody %}
+    <h1>Lista de HojaEnfermeria2</h1>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>Liquido</th>
+                <th>Deposiciones</th>
+                <th>Orina</th>
+                <th>Date</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for hojaEnfermeria2 in hojaEnfermeria2s %}
+        <tr>
+                    <td>
+                        <a href="{{ path('hojaenfermeria2_show', { 'id': hojaEnfermeria2.id }) }}">{{ hojaEnfermeria2.id }}</a>
+                    </td>
+                    <td>{{ hojaEnfermeria2.liquido }}</td>
+                    <td>{{ hojaEnfermeria2.deposiciones }}</td>
+                    <td>{{ hojaEnfermeria2.orina }}</td>
+                    <td>{% if hojaEnfermeria2.date %}{{ hojaEnfermeria2.date|date('Y-m-d') }}{% endif %}</td>
+                    <td>
+
+                        <div class="btn-group" role="group" aria-label="...">
+                                                                    <a role="button" class="btn btn-primary"
+                                       href="{{ path('hojaenfermeria2_show', { 'id': hojaEnfermeria2.id }) }}"><i
+                                                class="fa fa-list"></i> show</a>
+
+                                
+                                                                    <a role="button" class="btn btn-success"
+                                       href="{{ path('hojaenfermeria2_edit', { 'id': hojaEnfermeria2.id }) }}"><i
+                                                class="fa fa-edit"></i> edit</a>
+
+                                
+                        </div>
+
+                    </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+            <a class="btn btn-info" href="{{ path('hojaenfermeria2_new') }}"><i class="fa fa-plus"></i> Crear un nuevo/a HojaEnfermeria2</a>
+        </div>
+    {% endblock %}

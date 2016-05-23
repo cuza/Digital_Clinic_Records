@@ -18,9 +18,9 @@ class HojaEnfermeriaType extends AbstractType
             ->add('temperatura')
             ->add('pulso')
             ->add('respiracion')
-            ->add('tensionArterialMin')
             ->add('tensionArterialMax')
-            ->add('datetime', 'datetime')
+            ->add('tensionArterialMin')
+//            ->add('datetime', 'datetime')
             ->add('enfermero')
             ->add('ingreso')
         ;

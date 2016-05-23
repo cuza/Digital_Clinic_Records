@@ -1,13 +1,13 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:HojaMedico:show{% endblock %}
+{% block title %}Hoja de evolución:Mostrar{% endblock %}
 
 {% block ContentHeader %}
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Home
-            {#<small>Control panel</small>#}
+            Hoja de evolución
+            <small>Mostrar una Hoja de evolución</small>
         </h1>
         <ol class="breadcrumb">
             <li><i class="fa fa-home active"></i> Home</li>
@@ -15,13 +15,12 @@
     </section>
 {% endblock %}
 {% block ContentBody %}
-    <h1>Welcome to the HojaMedico:show page</h1>
     <section class="content">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
                 <div class="box box-solid">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Hoja Medico</h3>
+                        <h3 class="box-title">Hoja de evolución</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div class="box-group" id="accordion">
@@ -61,9 +60,25 @@
                             <div class="panel box box-success">
                                 <div class="box-header with-border">
                                     <h4 class="box-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"
+                                           class="collapsed" aria-expanded="false">
+                                            Impresion Diagnostica
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse" aria-expanded="false"
+                                     style="height: 0px;">
+                                    <div class="box-body">
+                                        {{ hoja.impresionDiagnostica | raw }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel box box-info">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title">
                                         <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
                                            class="" aria-expanded="true">
-                                            Evolución y tratamiento
+                                            Evolución y tratamineto
                                         </a>
                                     </h4>
                                 </div>
@@ -73,28 +88,37 @@
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                     </div><!-- /.box-body -->
                     <div class="box-footer">
                         {% if hoja.tratamientoAntibioticos %}
                             <span class="badge bg-red">Antibioticos</span>
                         {% endif %}
+                        <span class="pull-right">Fecha: {{  hoja.datetime|date('d/m/y') }} ({{ hoja.datetime|ago }})</span>
+                        {% if hoja.doctor %}
+                        <br>
+                        <span class="pull-right">Dr.: {{  hoja.doctor.nombre }}</span>
+                        {% endif %}
+                        {% if hoja.residente %}
+                            <br>
+                            <span class="pull-right">Dr.: {{  hoja.residente.nombre }} (Residente {{ hoja.residente.ano }} año)</span>
+                        {% endif %}
                     </div>
                 </div><!-- /.box -->
             </div>
         </div>
-
+{% if hoja.complemetarios.get(0) %}
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="box box-default ">
                     <div class="box-header with-border">
                         <i class="fa fa-heartbeat fa-fw"></i> Complementarios
                     </div>
-                    <div class="box-body timeline-box">
+                    <div class="box-body box-timeline">
                         <ul class="timeline">
-                            {#TODO: buscar como invertir el indice de la busqueda#}
                             {% for complementario in hoja.complemetarios | sort|reverse %}
-                            <li class="{% if complementario.id %2 %}timeline-inverted{% else %}{% endif %}">
+                            <li class="{% if (loop.index + 1) %2 %}timeline-inverted{% else %}{% endif %}">
                                 <div class="timeline-badge {% if complementario.laboratorista and complementario.resultado  %}success{% endif %}"><i class="fa {% if complementario.laboratorista and complementario.resultado  %}fa-check{% else %}fa-hourglass-o{% endif %}"></i>
                                 </div>
                                 <div class="timeline-panel">
@@ -116,10 +140,10 @@
                 </div>
             </div>
         </div>
-
+{% endif %}
         <div class="btn-group">
             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                Prosesar <span class="caret"></span>
+                Procesar <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
                 <li><a href="{{ path('app_consulta_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Archivar Consulta</a></li>

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Form\Type\GenderType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +18,7 @@ class SalaType extends AbstractType
         $builder
             ->add('nombre')
             ->add('servicio')
-            ->add('sexo')
+            ->add('sexo',GenderType::class)
         ;
     }
     

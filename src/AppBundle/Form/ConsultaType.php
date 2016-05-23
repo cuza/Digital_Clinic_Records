@@ -16,7 +16,7 @@ class ConsultaType extends AbstractType
     {
         $builder
             ->add('servicio')
-            ->add('fecha', 'datetime')
+//            ->add('fecha', 'datetime')
         ;
     }
     

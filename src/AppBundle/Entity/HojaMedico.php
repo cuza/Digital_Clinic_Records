@@ -27,7 +27,7 @@ class HojaMedico
     /**
      * @var string
      *
-     * @ORM\Column(name="HistoriaEnfermedadActual", type="text", nullable=true)
+     * @ORM\Column(name="HistoriaEnfermedadActual", type="text")
      */
     private $historiaEnfermedadActual;
 
@@ -48,6 +48,13 @@ class HojaMedico
     /**
      * @var string
      *
+     * @ORM\Column(name="ImpresionDiagnostica", type="text")
+     */
+    private $impresionDiagnostica;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="EvolucionTratamiento", type="text")
      */
     private $evolucionTratamiento;
@@ -58,6 +65,13 @@ class HojaMedico
      * @ORM\Column(name="TratamientoAntibioticos", type="boolean", nullable=true)
      */
     private $tratamientoAntibioticos;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="datetime", type="datetime", nullable=true)
+     */
+    private $datetime;
 
     /**
      * @var DoctorUser
@@ -336,5 +350,67 @@ class HojaMedico
     public function getConsulta()
     {
         return $this->consulta;
+    }
+
+    /**
+     * Set impresionDiagnostica
+     *
+     * @param string $impresionDiagnostica
+     *
+     * @return HojaMedico
+     */
+    public function setImpresionDiagnostica($impresionDiagnostica)
+    {
+        $this->impresionDiagnostica = $impresionDiagnostica;
+
+        return $this;
+    }
+
+    /**
+     * Get impresionDiagnostica
+     *
+     * @return string
+     */
+    public function getImpresionDiagnostica()
+    {
+        return $this->impresionDiagnostica;
+    }
+
+    /**
+     * Set consulta
+     *
+     * @param \AppBundle\Entity\Consulta $consulta
+     *
+     * @return HojaMedico
+     */
+    public function setConsulta(\AppBundle\Entity\Consulta $consulta = null)
+    {
+        $this->consulta = $consulta;
+
+        return $this;
+    }
+
+    /**
+     * Set datetime
+     *
+     * @param \DateTime $datetime
+     *
+     * @return HojaMedico
+     */
+    public function setDatetime($datetime)
+    {
+        $this->datetime = $datetime;
+
+        return $this;
+    }
+
+    /**
+     * Get datetime
+     *
+     * @return \DateTime
+     */
+    public function getDatetime()
+    {
+        return $this->datetime;
     }
 }

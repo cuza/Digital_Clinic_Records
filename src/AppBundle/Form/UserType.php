@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Form\Type\GenderType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +18,7 @@ class UserType extends AbstractType
         $builder
             ->add('nombre')
             ->add('cId')
-            ->add('sexo')
+            ->add('sexo',GenderType::class)
         ;
     }
     

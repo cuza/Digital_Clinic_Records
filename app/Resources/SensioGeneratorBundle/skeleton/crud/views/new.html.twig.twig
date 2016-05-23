@@ -1,9 +1,9 @@
 {% block extends %}
-    {{ "{% extends ':default:backend.html.twig' %}" }}
+    {{ "{% extends '::base.html.twig' %}" }}
 {% endblock extends %}
 
 {% block body %}
-    {{ "{% block BackendContent %}" }}
+    {{ "{% block ContentBody %}" }}
     <h1>{{ entity }} creation</h1>
 
     {{ '{{ form_start(form) }}' }}

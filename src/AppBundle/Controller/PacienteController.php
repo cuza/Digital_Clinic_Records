@@ -28,9 +28,9 @@ class PacienteController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $cid = $request->request->get('cid');
-        $paciente=null;
+        $paciente = null;
         if (is_numeric($cid))
-            $paciente = $em->getRepository("AppBundle:Paciente")->findOneBy(array('cId'=>$cid));
+            $paciente = $em->getRepository("AppBundle:Paciente")->findOneBy(array('cId' => $cid));
         if ($paciente == null) {
             $paciente = new Paciente();
             if (is_numeric($cid))
@@ -70,4 +70,38 @@ class PacienteController extends Controller
         );
     }
 
+    /**
+     * @Route("/edit")
+     * @Template()
+     * @param Paciente $paciente
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @throws \InvalidArgumentException
+     */
+    public function editAction(Paciente $paciente)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        if (!is_numeric($cid))
+            $cid = $request->query->get('paciente')['cId'];
+
+
+        $form = $this->createForm('AppBundle\Form\PacienteType', $paciente);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($paciente);
+            $em->flush();
+
+            return $this->redirectToRoute('paciente_show', array('id' => $paciente->getId()));
+        }
+
+        if ($form->isSubmitted() || is_numeric($cid)) {
+            return array(
+                'paciente' => $paciente,
+                'edit_form' => $form->createView(),
+            );
+        }
+
+    }
 }

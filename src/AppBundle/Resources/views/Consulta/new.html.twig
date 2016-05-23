@@ -60,16 +60,74 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="box box-default paciente-form" id="paciente">
-                    {% if form %}
-                        <h1>Editar paciente</h1>
-                        {{ form_start(form) }}
-                        {{ form_widget(form) }}
-                        <button type="submit" class="btn btn-info pull-right">Continuar</button>
-                        {{ form_end(form) }}
-                    {% endif %}
-                </div>
+            <div class="col-md-12" id="paciente">
+                {% if form %}
+                    <div>
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Datos generales</a></li>
+                                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Dirección</a></li>
+                                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">Antecedentes patológicos</a></li>
+                                <li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false">Contacto de Emergencias</a></li>
+                                <li class="pull-right header"><i class="fa fa-user"></i>Datos del paciente</li>
+                            </ul>
+                            {{ form_start(form) }}
+                            {{ form_errors(form) }}
+                            <div class="tab-content box-form">
+                                <div class="tab-pane active" id="tab_1">
+                                    {{ form_row(form.nombre) }}
+                                    {{ form_row(form.primerApellido) }}
+                                    {{ form_row(form.segundoApellido) }}
+                                    {{ form_row(form.segundoApellido) }}
+                                    {{ form_row(form.sexo) }}
+                                    {{ form_row(form.fechaNacimiento) }}
+                                    {{ form_row(form.cId) }}
+                                    {{ form_row(form.colorPiel) }}
+                                    {{ form_row(form.estadoConyugal) }}
+                                    {#{{ form_row(form.paisNacimiento) }}#}
+                                    {#{{ form_row(form.provinciaNacimiento) }}#}
+                                    {#{{ form_row(form.municipioNacimiento) }}#}
+                                    {{ form_row(form.telefono) }}
+                                    {{ form_row(form.nombreCentroTrabajo) }}
+                                    {{ form_row(form.direccionCentroTrabajo) }}
+
+                                </div>
+                                <div class="tab-pane" id="tab_2">
+                                    {{ form_row(form.direccionCalle) }}
+                                    {{ form_row(form.direccionCasaNo) }}
+                                    {{ form_row(form.direccionEntreCalles) }}
+                                    {{ form_row(form.direccionLocalidad) }}
+                                    {{ form_row(form.direccionMunicipio) }}
+                                    {{ form_row(form.direccionProvincia) }}
+                                </div>
+                                <div class="tab-pane" id="tab_3">
+                                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                                    when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                                    It has survived not only five centuries, but also the leap into electronic typesetting,
+                                    remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+                                    sheets containing Lorem Ipsum passages, and more recently with desktop publishing software
+                                    like Aldus PageMaker including versions of Lorem Ipsum.
+                                </div>
+                                <div class="tab-pane" id="tab_4">
+                                    {{ form_row(form.EmergenciasNombre) }}
+                                    {{ form_row(form.EmergenciasPrimerApellido) }}
+                                    {{ form_row(form.EmergenciasSegundoApellido) }}
+                                    {{ form_row(form.Emergenciastelefono) }}
+                                    {{ form_row(form.emergenciasDireccionCalle) }}
+                                    {{ form_row(form.emergenciasDireccionCasaNo) }}
+                                    {{ form_row(form.emergenciasDireccionEntreCalles) }}
+                                    {{ form_row(form.emergenciasDireccionLocalidad) }}
+                                    {{ form_row(form.emergenciasDireccionMunicipio) }}
+                                    {{ form_row(form.emergenciasDireccionProvincia) }}
+                                </div>
+                            </div>
+                            <button type="submit" class="btn box-btn-submit btn-info pull-right">Continuar</button>
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+
+                {% endif %}
             </div>
         </div><!-- /.row (main row) -->
 

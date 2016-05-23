@@ -24,7 +24,7 @@
                 <div class="col-md-6">
                     <div class="box box-widget widget-user-2">
                         <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-red">
+                        <div class="widget-user-header bg-aqua">
                             <div class="widget-user-image">
 
                             </div><!-- /.widget-user-image -->
@@ -105,7 +105,7 @@
                     </div>
                 {% endif %}
             </div><!-- /.row (main row) -->
-            <a href="{{ path('app_consulta_new', {'paciente':{'cId':paciente.cId} }) }}" id="paciente_edit"
+            <a href="{{ path('app_paciente_edit', {'paciente':{'cId':paciente.cId} }) }}" id="paciente_edit"
                class="btn btn-success pull-left">Editar</a>
         </section><!-- /.content -->
     {% endblock %}

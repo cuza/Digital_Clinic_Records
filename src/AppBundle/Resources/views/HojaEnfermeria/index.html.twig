@@ -1,0 +1,55 @@
+    {% extends '::base.html.twig' %}
+
+    {% block ContentBody %}
+    <h1>Lista de HojaEnfermeria</h1>
+
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+                <th>Id</th>
+                <th>Temperatura</th>
+                <th>Pulso</th>
+                <th>Respiracion</th>
+                <th>Tensionarterialmin</th>
+                <th>Tensionarterialmax</th>
+                <th>Datetime</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for hojaEnfermeria in hojaEnfermerias %}
+        <tr>
+                    <td>
+                        <a href="{{ path('hojaenfermeria_show', { 'id': hojaEnfermeria.id }) }}">{{ hojaEnfermeria.id }}</a>
+                    </td>
+                    <td>{{ hojaEnfermeria.temperatura }}</td>
+                    <td>{{ hojaEnfermeria.pulso }}</td>
+                    <td>{{ hojaEnfermeria.respiracion }}</td>
+                    <td>{{ hojaEnfermeria.tensionArterialMin }}</td>
+                    <td>{{ hojaEnfermeria.tensionArterialMax }}</td>
+                    <td>{% if hojaEnfermeria.datetime %}{{ hojaEnfermeria.datetime|date('Y-m-d H:i:s') }}{% endif %}</td>
+                    <td>
+
+                        <div class="btn-group" role="group" aria-label="...">
+                                                                    <a role="button" class="btn btn-primary"
+                                       href="{{ path('hojaenfermeria_show', { 'id': hojaEnfermeria.id }) }}"><i
+                                                class="fa fa-list"></i> show</a>
+
+                                
+                                                                    <a role="button" class="btn btn-success"
+                                       href="{{ path('hojaenfermeria_edit', { 'id': hojaEnfermeria.id }) }}"><i
+                                                class="fa fa-edit"></i> edit</a>
+
+                                
+                        </div>
+
+                    </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div>
+            <a class="btn btn-info" href="{{ path('hojaenfermeria_new') }}"><i class="fa fa-plus"></i> Crear un nuevo/a HojaEnfermeria</a>
+        </div>
+    {% endblock %}

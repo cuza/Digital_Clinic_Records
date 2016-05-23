@@ -8,7 +8,9 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Form\GenderType;
+use AppBundle\Form\Type\GenderType;
+use AppBundle\Form\Type\ProcendenciaIngresoType;
+use AppBundle\Form\Type\TipoIngresoType;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -24,8 +26,8 @@ class IngresoAdmin extends Admin
         $formMapper
             ->add('fechaIngreso', 'datetime')
             ->add('fechaSalida', 'datetime')
-            ->add('tipoIngreso')
-            ->add('procedencia')
+            ->add('tipoIngreso', TipoIngresoType::class)
+            ->add('procedencia', ProcendenciaIngresoType::class)
             ->add('estadoEgreso')
             ->add('necropsia')
             ->add('repercusionIncapacidadFisica')

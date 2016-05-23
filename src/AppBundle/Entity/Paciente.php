@@ -104,7 +104,7 @@ class Paciente
     /**
      * @var int
      *
-     * @ORM\Column(type="integer", nullable=true, name="telefono")
+     * @ORM\Column(type="string", nullable=true, name="telefono")
      */
     private $telefono;
 
@@ -189,7 +189,7 @@ class Paciente
     /**
      * @var int
      *
-     * @ORM\Column(type="integer", nullable=true, name="Emrgencias_telefono")
+     * @ORM\Column(type="string", nullable=true, name="Emrgencias_telefono")
      */
     private $Emergenciastelefono;
 

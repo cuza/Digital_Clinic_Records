@@ -158,4 +158,35 @@ class Sala
     {
         return $this->ingresos;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ingresos = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add ingreso
+     *
+     * @param \AppBundle\Entity\IngresoSala $ingreso
+     *
+     * @return Sala
+     */
+    public function addIngreso(\AppBundle\Entity\IngresoSala $ingreso)
+    {
+        $this->ingresos[] = $ingreso;
+
+        return $this;
+    }
+
+    /**
+     * Remove ingreso
+     *
+     * @param \AppBundle\Entity\IngresoSala $ingreso
+     */
+    public function removeIngreso(\AppBundle\Entity\IngresoSala $ingreso)
+    {
+        $this->ingresos->removeElement($ingreso);
+    }
 }

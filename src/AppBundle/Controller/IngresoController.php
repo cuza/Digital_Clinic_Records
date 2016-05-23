@@ -55,6 +55,7 @@ class IngresoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             /** @var User $user */
             $ingreso->setPaciente($paciente);
+            $ingreso->setFechaIngreso(new \DateTime());
             $hoja->setIngreso($ingreso);
 
             $em = $this->getDoctrine()->getManager();

@@ -8,7 +8,7 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Form\GenderType;
+use AppBundle\Form\Type\GenderType;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\FormMapper;
@@ -24,6 +24,7 @@ class HojaMedicoAdmin extends Admin
         $formMapper
             ->add('historiaEnfermedadActual')
             ->add('examenFisico')
+            ->add('impresionDiagnostica')
             ->add('evolucionTratamiento')
             ->add('tratamientoAntibioticos')
             ->add('doctor')
@@ -39,6 +40,7 @@ class HojaMedicoAdmin extends Admin
         $datagridMapper
             ->add('historiaEnfermedadActual')
             ->add('examenFisico')
+            ->add('impresionDiagnostica')
             ->add('evolucionTratamiento')
             ->add('tratamientoAntibioticos')
             ->add('doctor')
@@ -52,14 +54,15 @@ class HojaMedicoAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('ingreso')
-            ->addIdentifier('consulta')
             ->add('historiaEnfermedadActual')
             ->add('examenFisico')
+            ->add('impresionDiagnostica')
             ->add('evolucionTratamiento')
             ->add('tratamientoAntibioticos')
             ->add('doctor')
             ->add('residente')
+            ->add('ingreso')
+            ->add('consulta')
 
             ;
     }
@@ -70,6 +73,7 @@ class HojaMedicoAdmin extends Admin
         $showMapper
             ->add('historiaEnfermedadActual')
             ->add('examenFisico')
+            ->add('impresionDiagnostica')
             ->add('evolucionTratamiento')
             ->add('tratamientoAntibioticos')
             ->add('doctor')

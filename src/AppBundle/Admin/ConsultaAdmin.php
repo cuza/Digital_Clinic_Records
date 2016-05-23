@@ -8,7 +8,7 @@
 
 namespace AppBundle\Admin;
 
-use AppBundle\Form\GenderType;
+use AppBundle\Form\Type;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Form\FormMapper;

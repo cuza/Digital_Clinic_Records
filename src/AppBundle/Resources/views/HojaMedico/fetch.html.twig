@@ -1,44 +1,42 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:HojaMedico:new{% endblock %}
+{% block title %}Hoja de evolución:Mostrar{% endblock %}
 
 {% block ContentHeader %}
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-                <h1>
-                        HojaMedica
-                        <small>Añadir una Hoja Medica</small>
-                </h1>
-                <ol class="breadcrumb">
-                        <li><a href="{{ path('app_hojamedico_fetch', {'id':paciente.id}) }}"><i class="fa fa-medkit active"></i> Consulta</a></li>
-                        {#<li class="active"Crear consulta</li>#}
-                </ol>
-        </section>
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Hoja de evolución
+            <small>Añadir una Hoja de evolución</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ path('app_hojamedico_fetch', {'id':paciente.id}) }}"><i class="fa fa-medkit active"></i>
+                    Consulta</a></li>
+            {#<li class="active"Crear consulta</li>#}
+        </ol>
+    </section>
 {% endblock %}
 
 {% block ContentBody %}
 
-        <!-- Main content -->
-        <section class="content">
+    <!-- Main content -->
+    <section class="content">
 
-                <!-- Main row -->
-                <div class="row">
-                        <h2></h2>
-                        <div class="col-md-6 col-md-offset-3">
-                                <div class="box box-default">
+        <!-- Main row -->
+        <div class="row">
+            <h2></h2>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="box box-default box-form">
+                    <h1>Hoja de evolución</h1>
+                    {{ form_start(edit_form) }}
+                    {{ form_widget(edit_form) }}
+                    <input type="submit" class="btn box-btn-submit btn-info pull-right" value="Siguente">
+                    {{ form_end(edit_form) }}
+                </div>
+            </div>
+        </div><!-- /.row (main row) -->
 
-                                                <h1>Hoja Medica</h1>
-                                                {{ form_start(edit_form) }}
-                                                {{ form_widget(edit_form) }}
-                                                <input type="submit" class="btn btn-info pull-right" value="Siguente">
-
-                                                {{ form_end(edit_form) }}
-
-                                </div>
-                        </div>
-                </div><!-- /.row (main row) -->
-
-        </section><!-- /.content -->
+    </section><!-- /.content -->
 
 
 {% endblock %}

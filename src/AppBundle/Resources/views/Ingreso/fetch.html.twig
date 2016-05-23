@@ -25,13 +25,15 @@
         <div class="row">
             <h2></h2>
             <div class="col-md-6 col-md-offset-3">
-                <div class="box box-default">
+                <div class="box box-default box-form">
 
-                    <h1>Ingreso</h1>
+
+                    <h1>Nuevo Ingreso</h1>
                     {{ form_start(edit_form) }}
-                    {{ form_widget(edit_form) }}
-                    <input type="submit" class="btn btn-info pull-right" value="Siguiente">
-
+                    {#{{ form_widget(edit_form) }}#}
+                    {{ form_row(edit_form.tipoIngreso) }}
+                    {{ form_row(edit_form.procedencia) }}
+                    <input type="submit" class="btn box-btn-submit btn-info pull-right" value="Siguiente">
                     {{ form_end(edit_form) }}
 
                 </div>

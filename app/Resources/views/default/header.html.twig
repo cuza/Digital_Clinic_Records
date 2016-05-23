@@ -1,0 +1,74 @@
+<!-- Logo -->
+<a href="{{ path('homepage') }}" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>R</b>M</span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><b>Registro</b>Médico</span>
+</a>
+<!-- Header Navbar: style can be found in header.less -->
+<nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+    </a>
+    <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+            {% if(app.user) %}
+                <li class="dropdown user user-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <img src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}"
+                             class="user-image" alt="User Image">
+                        <span class="hidden-xs">{{ app.user.username }}</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <!-- User image -->
+                        <li class="user-header">
+                            <img src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}"
+                                 class="img-circle"
+                                 alt="User Image">
+                            <p>
+                                {{ app.user.nombre }}
+                                - {% if is_granted('ROLE_ENFERMERO') %}Enfermero/a{% endif %}{% if is_granted('ROLE_LABORATORIO') %}Laboratorista{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}Estudiante{% endif %}{% if is_granted('ROLE_RESIDENTE') %}Residente{% endif %}{% if is_granted('ROLE_DOCTOR') %}Doctor{% endif %}{% if is_granted('ROLE_ADMIN') %}Administrador{% endif %}
+                                <small>Ultima vez logueado {{ app.user.lastLogin | ago }}</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <div class="box-footer">
+                            {#<div class="row">#}
+                            {#<div class="col-sm-4 border-right">#}
+                            {#<div class="description-block">#}
+                            {#<h5 class="description-header">3,200</h5>#}
+                            {#<span class="description-text">SALES</span>#}
+                            {#</div><!-- /.description-block -->#}
+                            {#</div><!-- /.col -->#}
+                            {#<div class="col-sm-4 border-right">#}
+                            {#<div class="description-block">#}
+                            {#<h5 class="description-header">13,000</h5>#}
+                            {#<span class="description-text">FOLLOWERS</span>#}
+                            {#</div><!-- /.description-block -->#}
+                            {#</div><!-- /.col -->#}
+                            {#<div class="col-sm-4">#}
+                            {#<div class="description-block">#}
+                            {#<h5 class="description-header">35</h5>#}
+                            {#<span class="description-text">PRODUCTS</span>#}
+                            {#</div><!-- /.description-block -->#}
+                            {#</div><!-- /.col -->#}
+                            {#</div><!-- /.row -->#}
+                        </div>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="{{ path('fos_user_profile_show') }}"
+                                   class="btn btn-default btn-flat">Perfil</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="{{ path('fos_user_security_logout') }}"
+                                   class="btn btn-default btn-flat">Cerrar sesión</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>

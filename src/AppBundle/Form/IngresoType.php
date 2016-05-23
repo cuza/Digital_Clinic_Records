@@ -2,6 +2,8 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Form\Type\ProcendenciaIngresoType;
+use AppBundle\Form\Type\TipoIngresoType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -15,14 +17,14 @@ class IngresoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaIngreso', 'datetime')
-            ->add('fechaSalida', 'datetime')
-            ->add('tipoIngreso')
-            ->add('procedencia')
-            ->add('estadoEgreso')
-            ->add('necropsia')
-            ->add('repercusionIncapacidadFisica')
-            ->add('seguimiento')
+//            ->add('fechaIngreso', 'datetime')
+//            ->add('fechaSalida', 'datetime')
+            ->add('tipoIngreso',TipoIngresoType::class)
+            ->add('procedencia', ProcendenciaIngresoType::class)
+//            ->add('estadoEgreso')
+//            ->add('necropsia')
+//            ->add('repercusionIncapacidadFisica')
+//            ->add('seguimiento')
         ;
     }
     

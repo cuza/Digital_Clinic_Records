@@ -44,6 +44,7 @@ class HojaMedicoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             /** @var User $user */
             $user = $this->getUser();
+            $hoja->setDatetime(new \DateTime());
             if ($user->hasRole("ROLE_DOCTOR"))
                 $hoja->setDoctor($user);
             else if ($user->hasRole("ROLE_RESIDENTE"))
@@ -56,7 +57,7 @@ class HojaMedicoController extends Controller
             return $this->redirectToRoute('hoja_medico_show', array('id' => $hoja->getId(), 'pid' => $paciente->getId()));
         }
         return array(
-            'hoja' => $hoja,
+
             'paciente' => $paciente,
             'edit_form' => $editForm->createView()
         );

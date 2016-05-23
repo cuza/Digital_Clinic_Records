@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+{% block ContentHeader %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Error {{ status_code }}
+            <small>{{ status_text }}</small>
+        </h1>
+    </section>
+{% endblock %}
+
+{% block ContentBody %}
+    <section class="content">
+        <div class="error-page">
+            <h2 class="headline {% if ((status_code/100)|round(0,'floor'))==4 %}text-yellow{% endif %} {% if ((status_code/100)|round(0,'floor'))==5 %}text-red{% endif %}">{{ status_code }}</h2>
+            <div class="error-content">
+                <h3>
+                    <i class="fa fa-warning {% if ((status_code/100)|round(0,'floor'))==4 %}text-yellow{% endif %} {% if ((status_code/100)|round(0,'floor'))==5 %}text-red{% endif %}"></i>
+                    {% if ((status_code/100)|round(0,'floor'))==4 %}
+                        Parece que ha habido un error.
+                    {% endif %}
+                    {% if ((status_code/100)|round(0,'floor'))==5 %}
+                         "Houston tenemos un problema"
+                    {% endif %}
+                    <br>
+                </h3>
+                <p>
+
+                    {% if ((status_code/100)|round(0,'floor'))==4 %}
+                        Parece que ha habido un error.
+                        Puedes intentar <a href="{{ path('homepage') }}">regresar a la pagina de
+                        inicio</a> o usar el formulario
+                        de busqueda. Si lo anterior no te funciona prueba a reiniciar tu navegador
+                    {% endif %}
+
+                    {% if ((status_code/100)|round(0,'floor'))==5 %}
+                        Parece que nuestro código (<i class="fa fa-code"></i>) tiene algún bug (<i class="fa fa-bug"></i>),
+                                                                                                                    hazle saber a tu administrador que estabas haciendo cuando ocurrio este incidente para solucionar este problema lo antes posible.
+                                                                                                                    Puedes intentar
+                        <a href="{{ path('homepage') }}">regresar a la pagina de inicio</a> o usar el formulario
+                        de busqueda.
+                    {% endif %}
+                </p>
+                <form class="search-form">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control" placeholder="Buscar">
+                        <div class="input-group-btn">
+                            <button type="submit" name="submit" class="btn {% if ((status_code/100)|round(0,'floor'))==5 %}btn-danger{% endif %}{% if ((status_code/100)|round(0,'floor'))==4 %}btn-warning{% endif %} btn-flat"><i
+                                        class="fa fa-search"></i></button>
+                        </div>
+                    </div><!-- /.input-group -->
+                </form>
+            </div><!-- /.error-content -->
+        </div><!-- /.error-page -->
+    </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+{% endblock %}

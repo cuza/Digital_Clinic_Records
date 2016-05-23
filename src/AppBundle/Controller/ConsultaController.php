@@ -54,6 +54,7 @@ class ConsultaController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             /** @var User $user */
             $consulta->setPaciente($paciente);
+            $consulta->setFecha(new \DateTime());
             $hoja->setConsultas($consulta);
 
             $em = $this->getDoctrine()->getManager();

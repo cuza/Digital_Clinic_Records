@@ -477,4 +477,28 @@ class Ingreso
     {
         return $this->hojasMedico;
     }
+
+    /**
+     * Add sala
+     *
+     * @param \AppBundle\Entity\IngresoSala $sala
+     *
+     * @return Ingreso
+     */
+    public function addSala(\AppBundle\Entity\IngresoSala $sala)
+    {
+        $this->salas[] = $sala;
+
+        return $this;
+    }
+
+    /**
+     * Remove sala
+     *
+     * @param \AppBundle\Entity\IngresoSala $sala
+     */
+    public function removeSala(\AppBundle\Entity\IngresoSala $sala)
+    {
+        $this->salas->removeElement($sala);
+    }
 }

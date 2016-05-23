@@ -1,0 +1,78 @@
+{% extends '::base.html.twig' %}
+
+ {% block title %}
+     AppBundle:HojaEnfermeria2:show
+ {% endblock %}
+
+{% block ContentHeader %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Hoja de líquidos y depociciones
+            <small>Mostrar una hoja de líquidos y depociciones</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ path('homepage') }}"><i class="fa fa-home active"></i> Home</a></li>
+            {#<li class="active">Dashboard</li>#}
+        </ol>
+    </section>
+{% endblock %}
+
+{% block ContentBody %}
+
+
+    <section class="content">
+        <!-- Main row -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-yellow">
+                        <div class="widget-user-image">
+
+                        </div><!-- /.widget-user-image -->
+                        <h3 class="widget-user-username"><i
+                                    class="fa fa-heartbeat fa-2x"></i> Hoja de líquidos y depociciones
+                        </h3>
+                        <br>
+                        <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': hojaEnfermeria2.ingreso.paciente.id}) }}">{{ hojaEnfermeria2.ingreso.paciente.nombre }} {{ hojaEnfermeria2.ingreso.paciente.primerApellido }} {{ hojaEnfermeria2.ingreso.paciente.segundoApellido }}</a></h5>
+                        <h5 class="widget-user-desc">Enfermero/a: {{ hojaEnfermeria2.enfermero.nombre }}</h5>
+                        <h5 class="widget-user-desc">Fecha: {{ hojaEnfermeria2.date|date('d/m/y') }}
+                            ({{ hojaEnfermeria2.date|ago }}) </h5>
+                    </div>
+                    <div class="box-body">
+                        <ul class="nav nav-stacked">
+
+                            <li><a href="#">Líquidos ingeridos <span
+                                            class="pull-right">{{ hojaEnfermeria2.liquido }} L</span></a></li>
+                            <li><a href="#">Orina <span class="pull-right">{{ hojaEnfermeria2.orina }} L</span></a>
+                            </li>
+                            <li><a href="#">Deposiciones <span
+                                            class="pull-right">{{ hojaEnfermeria2.deposiciones }} {% if hojaEnfermeria2.deposiciones == 1 %}vez{% endif %}</span></a></li>
+
+                        </ul>
+                    </div>
+
+                    <div class="box-footer no-padding">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

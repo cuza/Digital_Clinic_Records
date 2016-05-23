@@ -1,22 +1,22 @@
 <?php
-namespace AppBundle\Form;
+namespace AppBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 // ...
-class SkinType extends AbstractType
+class CivilStateType extends AbstractType
 {
 
-    private $skinChoices;
-    public function __construct(array $skinChoices)
+    private $civilStateChoices;
+    public function __construct(array $civilStateChoices)
     {
-        $this->skinChoices = $skinChoices;
+        $this->civilStateChoices = $civilStateChoices;
     }
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'choices' => $this->skinChoices,
+            'choices' => $this->civilStateChoices,
         ));
     }
 

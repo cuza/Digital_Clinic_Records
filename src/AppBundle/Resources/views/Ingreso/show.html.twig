@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+{% block title %}AppBundle:Ingreso:show{% endblock %}
+
+{% block ContentHeader %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            AppBundle:Ingreso:show
+            {#<small>Control panel</small>#}
+        </h1>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-home active"></i> Home</li>
+        </ol>
+    </section>
+{% endblock %}
+{% block ContentBody %}
+Paciente: {{ ingreso.paciente.nombre }}<br>
+    Tiempo de ingreso:{{ ingreso.fechaIngreso|ago }}
+{% endblock %}

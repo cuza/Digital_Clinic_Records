@@ -1,10 +1,162 @@
 {% extends '::base.html.twig' %}
 
-{% block ContentHeader %}
-
-{% endblock %}
-
 {% block title %}
-
+    Consulta:Mostrar
 {% endblock %}
 
+{% block ContentHeader %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Consulta
+            <small>Mostrar una consulta</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><i class="fa fa-home active"></i> Home</li>
+        </ol>
+    </section>
+{% endblock %}
+
+{% block ContentBody %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="box box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title pull-left">{{ consulta.paciente.nombre }} {{ consulta.paciente.primerApellido }} {{ consulta.paciente.segundoApellido }}
+                        </h3>
+                        <p style="color: #525252;" class="pull-right">{{ consulta.servicio }}</p>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
+                        <div class="box-group" id="accordion">
+                            <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
+                            <div class="panel box box-primary">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+                                           aria-expanded="false" class="collapsed">
+                                            Historia de la enfermedad actual
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false"
+                                     style="height: 0px;">
+                                    <div class="box-body">
+                                        {{ consulta.hojasMedico.get(0).historiaEnfermedadActual | raw }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel box box-danger">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+                                           class="collapsed" aria-expanded="false">
+                                            Examen Físico
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false"
+                                     style="height: 0px;">
+                                    <div class="box-body">
+                                        {{ consulta.hojasMedico.get(0).examenFisico | raw }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel box box-success">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"
+                                           class="collapsed" aria-expanded="false">
+                                            Impresión Diagnostica
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseFour" class="panel-collapse collapse" aria-expanded="false"
+                                     style="height: 0px;">
+                                    <div class="box-body">
+                                        {{ consulta.hojasMedico.get(0).impresionDiagnostica | raw }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel box box-info">
+                                <div class="box-header with-border">
+                                    <h4 class="box-title">
+                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+                                           class="" aria-expanded="true">
+                                            Evolución y tratamineto
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div id="collapseThree" class="panel-collapse collapse in" aria-expanded="true">
+                                    <div class="box-body">
+                                        {{ consulta.hojasMedico.get(0).evolucionTratamiento | raw }}
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        {% if consulta.hojasMedico.get(0).tratamientoAntibioticos %}
+                            <span class="badge bg-red">Antibioticos</span>
+                        {% endif %}
+                        <span class="pull-right">Fecha: {{ consulta.hojasMedico.get(0).datetime|date('d/m/y') }} ({{ consulta.hojasMedico.get(0).datetime|ago }})</span>
+                        {% if consulta.hojasMedico.get(0).doctor %}
+                            <br>
+                            <span class="pull-right">Dr.: {{  consulta.hojasMedico.get(0).doctor.nombre }}</span>
+                        {% endif %}
+                        {% if consulta.hojasMedico.get(0).residente %}
+                            <br>
+                            <span class="pull-right">Dr.: {{  consulta.hojasMedico.get(0).residente.nombre }} (Residente {{ consulta.hojasMedico.get(0).residente.ano }} año)</span>
+                        {% endif %}
+                    </div>
+                </div><!-- /.box -->
+            </div>
+        </div>
+        {% if consulta.hojasMedico.get(0).complemetarios.get(0) %}
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="box box-default ">
+                        <div class="box-header with-border">
+                            <i class="fa fa-heartbeat fa-fw"></i> Complementarios
+                        </div>
+                        <div class="box-body box-timeline">
+                            <ul class="timeline">
+                                {% for complementario in consulta.hojasMedico.get(0).complemetarios | sort|reverse %}
+                                    <li class="{% if (loop.index + 1) %2 %}timeline-inverted{% else %}{% endif %}">
+                                        <div class="timeline-badge {% if complementario.laboratorista and complementario.resultado %}success{% endif %}">
+                                            <i class="fa {% if complementario.laboratorista and complementario.resultado %}fa-check{% else %}fa-hourglass-o{% endif %}"></i>
+                                        </div>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">{{ complementario.nombre }}</h4>
+                                                <p>
+                                                    <small class="text-muted"><i
+                                                                class="fa fa-clock-o"></i> {{ complementario.datetime | ago }}
+                                                    </small>
+                                                </p>
+                                            </div>
+                                            <div class="timeline-body">
+                                                <p>{{ complementario.resultado }}</p>
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+        {#<div class="btn-group">#}
+            {#<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">#}
+                {#Procesar <span class="caret"></span>#}
+            {#</button>#}
+            {#<ul class="dropdown-menu" role="menu">#}
+                {#<li><a href="{{ path('app_consulta_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Archivar Consulta</a></li>#}
+                {#<li><a href="{{ path('app_ingreso_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Ingresar</a></li>#}
+            {#</ul>#}
+        {#</div>#}
+        {#<a class="btn btn-warning" href="{{ path('app_complementario_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Solicitar complementario</a>#}
+    </section>
+{% endblock %}
