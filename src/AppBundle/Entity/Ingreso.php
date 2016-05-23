@@ -15,6 +15,14 @@ class Ingreso
     public function __toString(){
         return $this->getPaciente().'';
     }
+
+    /**
+     * @return Sala
+     */
+    public function getSala(){
+        $salas=$this->getSalas();
+        return $salas[count($salas)-1];
+    }
     /**
      * @var int
      *
