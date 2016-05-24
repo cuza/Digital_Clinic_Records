@@ -97,9 +97,9 @@
             </div>
         </div>
 
-        <a class="btn btn-default" href="{{ path('app_hojamedico_fetch', { 'id': ingreso.paciente.id }) }}">Nueva hoja de evolución</a>
-        <a class="btn btn-default" href="{{ path('app_ingreso_change', { 'id': ingreso.paciente.id }) }}">Transferir de sala</a>
-        <a class="btn btn-default" href="{{ path('app_ingreso_leave', { 'id': ingreso.paciente.id }) }}">Dar de alta/baja</a>
+        <a class="btn btn-default" href="{{ path('app_hojamedico_fetch', { 'id': ingreso.id }) }}">Nueva hoja de evolución</a>
+        <a class="btn btn-default" href="{{ path('app_ingreso_change', { 'id': ingreso.id }) }}">Transferir de sala</a>
+        <a class="btn btn-default" href="{{ path('app_ingreso_leave', { 'id': ingreso.id }) }}">Dar de alta/baja</a>
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 Nueva hoja enfermería <span class="caret"></span>
