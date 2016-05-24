@@ -1,16 +1,30 @@
-<div class="timeline-badge success">
-    <i class="fa fa-heartbeat"></i>
-</div>
-<div class="timeline-panel">
-    <div class="timeline-heading">
-        <h4 class="timeline-title">Complementario <small>({{ element.nombre }})</small></h4>
-        <p>
-            <small class="text-muted"><i
-                        class="fa fa-clock-o"></i> {{ element.datetime|date('d/m/y') }} {{ element.datetime|ago }}
-            </small>
-        </p>
+{% if element.cancelado %}
+{% else %}
+    {% if element.laboratorista and element.resultado %}
+    <div class="timeline-badge bg-green">
+        <i class="fa fa-heartbeat"></i>
     </div>
-    <div class="timeline-body">
-        <p>{{ element.resultado }}</p>
+    {% else %}
+        <div class="timeline-badge ">
+            <i class="fa fa-hourglass-o"></i>
+        </div>
+    {% endif %}
+    <div class="timeline-panel">
+        <div class="timeline-heading">
+            <h4 class="timeline-title">Complementario <small>({{ element.nombre }})</small></h4>
+            <p>
+                <small class="text-muted"><i
+                            class="fa fa-clock-o"></i> {{ element.datetime|date('d/m/y') }} {{ element.datetime|ago }}
+                </small>
+            </p>
+        </div>
+        <div class="timeline-body">
+            {% if element.laboratorista and element.resultado %}
+                <p><a href="{{ path('app_complementario_show', {'id': element.id }) }}">Mostrar resultados</a></p>
+            {% else %}
+                <small>Este complementario aun está siendo procesado</small>
+            {% endif %}
+        </div>
     </div>
-</div>
+{% endif %}
+
