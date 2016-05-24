@@ -10,10 +10,10 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\Complementario;
-use AppBundle\Entity\Consulta;
 use AppBundle\Entity\HojaMedico;
 use AppBundle\Entity\Ingreso;
 use AppBundle\Entity\Paciente;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -76,7 +76,7 @@ class ComplementarioController extends Controller
 
     /**
      * Change and displays a Ingreso entity.
-     *
+     * @Security("has_role('ROLE_LABORATORIO')")
      * @Route("/result/{id}")
      * @Template()
      * @param Request $request
@@ -84,7 +84,7 @@ class ComplementarioController extends Controller
      * @return array
      * @throws \InvalidArgumentException
      */
-    public function resultAction(Request $request,Complementario $complementario)
+    public function resultAction(Request $request, Complementario $complementario)
     {
         $form = $this->createForm('AppBundle\Form\ComplementarioEndType', $complementario);
         $form->handleRequest($request);
@@ -100,7 +100,7 @@ class ComplementarioController extends Controller
 
         return array(
             'ingreso' => $complementario,
-            'form'=>$form->createView()
+            'form' => $form->createView()
         );
     }
 
@@ -119,4 +119,23 @@ class ComplementarioController extends Controller
             'complementario' => $complementario
         );
     }
+
+    /**
+     * Finds and displays all complementarios entity.
+     * @Security("has_role('ROLE_LABORATORIO')")
+     * @Route("/")
+     * @Template()
+     * @Method("GET")
+     * @return array
+     */
+    public function indexAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $complementario = $em->getRepository('AppBundle:Complementario')->findAll();
+
+        return array(
+            'complementarios' => $complementario
+        );
+    }
+
 }

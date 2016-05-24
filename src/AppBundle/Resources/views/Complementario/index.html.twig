@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+
+ {% block title %}
+     Complementarios sin procesar
+ {% endblock %}
+
+{% block ContentHeader %}
+    <section class="content-header">
+        <h1>
+            Complementarios
+            <small>Complementarios sin procesar</small>
+        </h1>
+    </section>
+{% endblock %}
+
+{% block ContentBody %}
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Complementarios sin procesar</h3>
+                    </div>
+                    <div class="box-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Complementario</th>
+                                <th>Doctor</th>
+                                <th>Fecha de la orden</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for complementario in complementarios %}
+                                {% if complementario.resultado or complementario.laboratorista or complementario.cancelado %}
+                                {% else %}
+                                    <tr>
+                                        <td>
+                                            <a href="{{ path('app_complementario_result', {'id': complementario.id }) }}">{{ complementario.nombre }}</a>
+                                        </td>
+                                        <td>
+                                            {% if complementario.hojaMedico.doctor %}
+                                                {{ complementario.hojaMedico.doctor.nombre }}
+                                            {% endif %}
+                                            {% if complementario.hojaMedico.residente %}
+                                                {{ complementario.hojaMedico.residente.nombre }} (Residente)
+                                            {% endif %}
+                                        </td>
+                                        <td>{{ complementario.datetime|date('d/m/y') }}
+                                            ({{ complementario.datetime|ago }})
+                                        </td>
+                                    </tr>
+                                {% endif %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}

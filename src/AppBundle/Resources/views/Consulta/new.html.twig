@@ -1,6 +1,8 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:Consulta:new{% endblock %}
+{% block title %}
+    Crear - Consulta
+{% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
@@ -22,10 +24,6 @@
             Consulta
             <small>Añadir una nuevo paciente</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="{{ path('app_consulta_new') }}"><i class="fa fa-medkit active"></i> Consulta</a></li>
-            {#<li class="active"Crear consulta</li>#}
-        </ol>
     </section>
 {% endblock %}
 
@@ -41,8 +39,7 @@
                 <div class="box box-info">
                     <div class="box-header with-border">
                         <h3 class="box-title">Crear un nueva consulta</h3>
-                    </div><!-- /.box-header -->
-                    <!-- form start -->
+                    </div>
                     <div class="form-horizontal">
                         <div class="box-body">
                             <div class="form-group">
@@ -53,10 +50,10 @@
                                            placeholder="Carnet de Identidad">
                                 </div>
                             </div>
-                        </div><!-- /.box-body -->
+                        </div>
                         <div class="box-footer">
                             <button id="fetch" class="btn btn-info pull-right">Enviar</button>
-                        </div><!-- /.box-footer -->
+                        </div>
                     </div>
                 </div>
             </div>

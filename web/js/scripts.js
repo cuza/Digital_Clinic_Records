@@ -4,3 +4,7 @@
 (function($){
     $("[data-mask]").inputmask();
 })(jQuery);
+
+$(document).ready(function() {
+    $('.table').DataTable();
+} );

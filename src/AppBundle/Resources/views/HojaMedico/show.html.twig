@@ -1,19 +1,18 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}Hoja de evolución:Mostrar{% endblock %}
+{% block title %}
+    Mostrar - Hoja de evolución
+{% endblock %}
 
 {% block ContentHeader %}
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             Hoja de evolución
             <small>Mostrar una Hoja de evolución</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><i class="fa fa-home active"></i> Home</li>
-        </ol>
     </section>
 {% endblock %}
+
 {% block ContentBody %}
     <section class="content">
         <div class="row">
@@ -87,20 +86,32 @@
                     </div>
                     <div class="box-body box-timeline">
                         <ul class="timeline">
-                            {% for complementario in hoja.complemetarios | sort|reverse %}
+                            {% for element in hoja.complemetarios | sort|reverse %}
                             <li class="{% if (loop.index + 1) %2 %}timeline-inverted{% else %}{% endif %}">
-                                <div class="timeline-badge {% if complementario.laboratorista and complementario.resultado  %}success{% endif %}"><i class="fa {% if complementario.laboratorista and complementario.resultado  %}fa-check{% else %}fa-hourglass-o{% endif %}"></i>
-                                </div>
+                                {% if element.laboratorista and element.resultado %}
+                                    <div class="timeline-badge bg-green">
+                                        <i class="fa fa-heartbeat"></i>
+                                    </div>
+                                {% else %}
+                                    <div class="timeline-badge ">
+                                        <i class="fa fa-hourglass-o"></i>
+                                    </div>
+                                {% endif %}
                                 <div class="timeline-panel">
                                     <div class="timeline-heading">
-                                        <h4 class="timeline-title">{{ complementario.nombre }}</h4>
+                                        <h4 class="timeline-title">Complementario <small>({{ element.nombre }})</small></h4>
                                         <p>
-                                            <small class="text-muted"><i class="fa fa-clock-o"></i> {{ complementario.datetime | ago }}
+                                            <small class="text-muted"><i
+                                                        class="fa fa-clock-o"></i> {{ element.datetime|date('d/m/y') }} {{ element.datetime|ago }}
                                             </small>
                                         </p>
                                     </div>
                                     <div class="timeline-body">
-                                        <p>{{ complementario.resultado }}</p>
+                                        {% if element.laboratorista and element.resultado %}
+                                            <p><a href="{{ path('app_complementario_show', {'id': element.id }) }}">Mostrar resultados</a></p>
+                                        {% else %}
+                                            <small>Este complementario aun está siendo procesado</small>
+                                        {% endif %}
                                     </div>
                                 </div>
                             </li>

@@ -1,6 +1,8 @@
 {% extends "::base.html.twig" %}
 
-{% block title %}AppBundle:HojaMedico:new{% endblock %}
+ {% block title %}
+     Añadir - Complementario
+ {% endblock %}
 
 {% block ContentHeader %}
     <!-- Content Header (Page header) -->
@@ -9,10 +11,7 @@
             Complementario
             <small>Añadir un Complementario</small>
         </h1>
-        <ol class="breadcrumb">
-            <li><a href="{{ path('app_hojamedico_fetch', {'id':paciente.id}) }}"><i class="fa fa-medkit active"></i> Consulta</a></li>
-            {#<li class="active"Crear consulta</li>#}
-        </ol>
+
     </section>
 {% endblock %}
 

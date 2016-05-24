@@ -30,30 +30,38 @@
             {#<i class="fa fa-angle-left pull-right"></i>#}
         </a>
     </li>
+    {% if is_granted('ROLE_ADMIN') %}
     <li class="">
         <a href="{{ path('sonata_admin_dashboard') }}">
             <i class="fa fa-dashboard"></i> <span>Administración</span>
             {#<i class="fa fa-angle-left pull-right"></i>#}
         </a>
     </li>
+    {% endif %}
+    {% if is_granted('ROLE_DOCTOR') or is_granted('ROLE_RESIDENTE') %}
     <li>
         <a href="{{ path('app_consulta_new') }}">
             <i class="fa fa-medkit"></i> <span>Consulta</span>
             {#<small class="label pull-right bg-green">new</small>#}
         </a>
     </li>
+    {% endif %}
+    {% if is_granted('ROLE_DOCTOR') or is_granted('ROLE_RESIDENTE') or is_granted('ROLE_ESTUDIANTE') %}
     <li>
         <a href="pages/widgets.html">
             <i class="fa fa-hospital-o"></i> <span>Ingresados</span>
             {#<small class="label pull-right bg-green">new</small>#}
         </a>
     </li>
+    {% endif %}
+    {% if is_granted('ROLE_LABORATORIO') %}
     <li>
-        <a href="{{ path('app_complementario_fetch') }}">
+        <a href="{{ path('app_complementario_index') }}">
             <i class="fa fa-heartbeat"></i> <span>Complementarios</span>
             {#<small class="label pull-right bg-green">new</small>#}
         </a>
     </li>
+    {% endif %}
     <li class="treeview">
         <a href="#">
             <i class="fa fa-folder-open-o"></i>
