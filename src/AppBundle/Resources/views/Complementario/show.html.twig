@@ -1,0 +1,74 @@
+{% extends '::base.html.twig' %}
+
+ {% block title %}
+     AppBundle:Complementario:show
+ {% endblock %}
+
+{% block ContentHeader %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Complementario
+            <small>Mostrar el resultado de un complementario</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="{{ path('homepage') }}"><i class="fa fa-home active"></i> Home</a></li>
+            {#<li class="active">Dashboard</li>#}
+        </ol>
+    </section>
+{% endblock %}
+
+{% block ContentBody %}
+    <!-- Main content -->
+    <section class="content">
+        <!-- Main row -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-green">
+                        <div class="widget-user-image">
+
+                        </div><!-- /.widget-user-image -->
+                        <h3 class="widget-user-username"><i
+                                    class="fa fa-heartbeat fa-2x"></i> Complementario
+                        </h3>
+                        <br>
+                        {% if complementario.hojaMedico.ingreso %}
+                        <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': complementario.hojaMedico.ingreso.paciente}) }}">{{ complementario.hojaMedico.ingreso.paciente.nombre }} {{ complementario.hojaMedico.ingreso.paciente.primerApellido }} {{ complementario.hojaMedico.ingreso.paciente.segundoApellido }}</a></h5>
+                        {% endif %}
+                        {% if complementario.hojaMedico.consulta %}
+                            <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': complementario.hojaMedico.consulta.paciente}) }}">{{ complementario.hojaMedico.consulta.paciente.nombre }} {{ complementario.hojaMedico.consulta.paciente.primerApellido }} {{ complementario.hojaMedico.consulta.paciente.segundoApellido }}</a></h5>
+                        {% endif %}
+                        <h5 class="widget-user-desc">Laboratorista: {{ complementario.laboratorista.nombre }}</h5>
+                        <h5 class="widget-user-desc">Fecha: {{ complementario.datetime|date('d/m/y') }} ({{ complementario.datetime|ago }}) </h5>
+                    </div>
+                    <div class="box-body">
+                        <ul class="nav nav-stacked">
+                            <span>Resultado: <p class="pull-right">{{ complementario.resultado }}</p></span>
+                            {#<li><a href="#">Resultado <span class="pull-right">{{ complementario.resultado }}</span></a></li>#}
+                            {#<li><a href="#">Pulso <span class="pull-right">{{ hojaEnfermeria.pulso }}</span></a></li>#}
+                        </ul>
+                    </div>
+
+                    <div class="box-footer no-padding">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {#{{ form_start(delete_form) }}#}
+    {#<div class="btn-group" role="group" aria-label="...">#}
+
+    {#<a role="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Atras"#}
+    {#href="{{ path('hojaenfermeria_index') }}"><i class="fa fa-chevron-left"></i></a>#}
+    {#<a role="button" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Editar"#}
+    {#href="{{ path('hojaenfermeria_edit', { 'id': hojaEnfermeria.id }) }}"><i class="fa fa-edit"></i></a>#}
+    {#<button type="submit" class="btn btn-default" data-toggle="tooltip" data-placement="top" title="Eliminar"><i#}
+    {#class="fa fa-trash"></i></button>#}
+    {#</div>#}
+    {#{{ form_end(delete_form) }}#}
+
+{% endblock %}
