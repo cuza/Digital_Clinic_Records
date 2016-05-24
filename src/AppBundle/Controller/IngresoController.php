@@ -9,7 +9,10 @@
 namespace AppBundle\Controller;
 
 
+use AppBundle\Entity\Complementario;
 use AppBundle\Entity\Consulta;
+use AppBundle\Entity\HojaEnfermeria;
+use AppBundle\Entity\HojaEnfermeria2;
 use AppBundle\Entity\HojaMedico;
 use AppBundle\Entity\Ingreso;
 use AppBundle\Entity\Paciente;
@@ -47,7 +50,7 @@ class IngresoController extends Controller
 //        if (is_numeric($iid))
 //            $ingreso = $em->getRepository("AppBundle:Ingreso")->findOneBy(array('id' => $iid));
 //        if ($ingreso == null) {
-            $ingreso = new Ingreso();
+        $ingreso = new Ingreso();
 //        }
         $editForm = $this->createForm('AppBundle\Form\IngresoType', $ingreso);
         $editForm->handleRequest($request);
@@ -73,6 +76,22 @@ class IngresoController extends Controller
         );
     }
 
+    /**
+     * Change and displays a Ingreso entity.
+     *
+     * @Route("/change/{id}")
+     * @Template()
+     * @param Ingreso $ingreso
+     * @return array
+     */
+    public function changeAction(Ingreso $ingreso)
+    {
+
+        return array(
+            'ingreso'=>$ingreso
+        );
+    }
+
 
     /**
      * Finds and displays a Ingreso entity.
@@ -85,8 +104,58 @@ class IngresoController extends Controller
      */
     public function showAction(Ingreso $ingreso)
     {
+        $hm = $ingreso->getHojasMedico();
+        $he1 = $ingreso->getHojasEnfermeria1();
+        $he2 = $ingreso->getHojasEnfermeria2();
+        $cmp = array();
+        /** @var HojaMedico $var */
+        foreach ($hm as $var) {
+            $cs = $var->getComplemetarios();
+            foreach ($cs as $c) {
+                $cmp[] = $c;
+            }
+        }
+
+        $tl = array();
+        foreach ($hm as $x)
+            $tl[] = $x;
+        foreach ($he1 as $x)
+            $tl[] = $x;
+        foreach ($he2 as $x)
+            $tl[] = $x;
+        foreach ($cmp as $x)
+            $tl[] = $x;
+        usort($tl, "AppBundle\\Controller\\IngresoController::cmp");
+        $tl=array_reverse($tl);
         return array(
+            'timeline' => array(),
             'ingreso' => $ingreso
         );
+    }
+
+    public static function cmp($a, $b)
+    {
+        $da = IngresoController::gDate($a);
+        $db = IngresoController::gDate($b);
+        if ($a == $b) {
+            return 0;
+        }
+        return ($a < $b) ? -1 : 1;
+    }
+
+    /**
+     * @param mixed $e
+     * @return \DateTime
+     */
+    public static function gDate($e)
+    {
+        switch (get_class($e)) {
+            case "AppBundle\\Entity\\HojaEnfermeria":
+            case "AppBundle\\Entity\\Complementario":
+            case "AppBundle\\Entity\\HojaMedico":
+                return $e->getDatetime();
+            case "AppBundle\\Entity\\HojaEnfermeria2":
+                return $e->getDate();
+        }
     }
 }
