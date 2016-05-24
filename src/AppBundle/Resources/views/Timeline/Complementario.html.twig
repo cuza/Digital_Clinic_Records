@@ -3,7 +3,7 @@
 </div>
 <div class="timeline-panel">
     <div class="timeline-heading">
-        <h4 class="timeline-title">Complemetario</h4>
+        <h4 class="timeline-title">{{ element.nombre }}</h4>
         <p>
             <small class="text-muted"><i
                         class="fa fa-clock-o"></i> {{ element.datetime|date('d/m/y') }} {{ element.datetime|ago }}
@@ -14,4 +14,3 @@
         <p>{{ element.resultado }}</p>
     </div>
 </div>
-</li>
