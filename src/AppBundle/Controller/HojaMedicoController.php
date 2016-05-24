@@ -55,7 +55,7 @@ class HojaMedicoController extends Controller
         }
         return array(
 
-            'paciente' => $paciente,
+            'ingreso' => $ingreso,
             'edit_form' => $editForm->createView()
         );
     }

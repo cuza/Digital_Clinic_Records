@@ -71,6 +71,7 @@ class IngresoController extends Controller
         }
         return array(
             'hoja' => $hoja,
+            'paciente' => $paciente,
             'ingreso' => $ingreso,
             'edit_form' => $editForm->createView()
         );
