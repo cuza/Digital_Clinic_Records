@@ -11,9 +11,9 @@ class SeguimientoType extends AbstractType
     {
         $resolver->setDefaults(array(
             'choices' => array(
-                'En Consulta externa' => 'En Consulta externa',
+                'En consulta externa' => 'En Consulta externa',
                 'Remision a otro hospital' => 'Remision a otro hospital',
-                'Atencion primaria' => 'Atencion primaria',
+                'Atención primaria' => 'Atencion primaria',
             )
         ));
 
