@@ -11,8 +11,9 @@ class RepercucionType extends AbstractType
     {
         $resolver->setDefaults(array(
             'choices' => array(
-                'Vivo' => 'Vivo',
-                'Fallecido' => 'Fallecido',
+                'Sin Incapacidad' => 'Sin Incapacidad',
+                'Incapacidad temporal' => 'Incapacidad temporal',
+                'Incapacidad Definitiva' => 'Incapacidad Definitiva',
             )
         ));
 
