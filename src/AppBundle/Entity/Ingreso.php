@@ -28,6 +28,11 @@ class Ingreso
      * @return Ingreso
      */
     public function setSala(Sala $sala){
+        $salas=$this->getSalas();
+        /** @var IngresoSala $sa */
+        $sa = $salas[count($salas)-1];
+        if($sa)
+        $sa->setFechaSalida(new \DateTime());
         $s= new IngresoSala();
         $s->setSala($sala);
         $s->setIngreso($this);

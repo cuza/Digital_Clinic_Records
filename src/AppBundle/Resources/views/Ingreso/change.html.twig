@@ -1,10 +1,36 @@
-{% extends '::base.html.twig' %}
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:HojaMedico:new{% endblock %}
 
 {% block ContentHeader %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
 
+    </section>
 {% endblock %}
 
-{% block title %}
+{% block ContentBody %}
+
+    <!-- Main content -->
+    <section class="content">
+
+        <!-- Main row -->
+        <div class="row">
+            <h2></h2>
+            <div class="col-md-6 col-md-offset-3">
+                <div class="box box-default box-form">
+
+                    <h1>Nuevo Ingreso</h1>
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <input type="submit" class="btn box-btn-submit btn-info pull-right" value="Siguiente">
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div><!-- /.row (main row) -->
+
+    </section><!-- /.content -->
+
 
 {% endblock %}
-

@@ -81,14 +81,27 @@ class IngresoController extends Controller
      *
      * @Route("/change/{id}")
      * @Template()
+     * @param Request $request
      * @param Ingreso $ingreso
      * @return array
+     * @throws \InvalidArgumentException
      */
-    public function changeAction(Ingreso $ingreso)
+    public function changeAction(Request $request,Ingreso $ingreso)
     {
+        $form = $this->createForm('AppBundle\Form\IngresoChangeType', $ingreso);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($ingreso);
+            $em->flush();
+
+            return $this->redirectToRoute('app_ingreso_show', array('id' => $ingreso->getId()));
+        }
 
         return array(
-            'ingreso' => $ingreso
+            'ingreso' => $ingreso,
+            'form'=>$form->createView()
         );
     }
 
@@ -133,7 +146,7 @@ class IngresoController extends Controller
 //            $x['class'] = get_class($x);
             $tl[] = $x;
         }
-        usort($tl, "AppBundle\\Controller\\IngresoController::cmp");
+        $tl= usort($tl, "AppBundle\\Controller\\IngresoController::cmp");
         $tl = array_reverse($tl);
         return array(
             'timeline' => $tl,
@@ -145,10 +158,10 @@ class IngresoController extends Controller
     {
         $da = IngresoController::gDate($a);
         $db = IngresoController::gDate($b);
-        if ($a == $b) {
+        if ($da == $db) {
             return 0;
         }
-        return ($a < $b) ? -1 : 1;
+        return ($da < $db) ? -1 : 1;
     }
 
     /**
