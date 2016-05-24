@@ -1,18 +1,17 @@
-<li class="{% if (loop.index + 1) %2 %}timeline-inverted{% else %}{% endif %}">
-    <div class="timeline-badge {% if timeline|class == '' and complementario.resultado %}success{% endif %}">
-        <i class="fa {% if complementario.laboratorista and complementario.resultado %}fa-check{% else %}fa-hourglass-o{% endif %}"></i>
+<div class="timeline-badge danger">
+    <i class="fa fa-check"></i>
+</div>
+<div class="timeline-panel">
+    <div class="timeline-heading">
+        <h4 class="timeline-title">Hoja de temperatura</h4>
+        <p>
+            <small class="text-muted"><i
+                        class="fa fa-clock-o"></i> {{ element.datetime|date('d/m/y') }} {{ element.datetime|ago }}
+            </small>
+        </p>
     </div>
-    <div class="timeline-panel">
-        <div class="timeline-heading">
-            <h4 class="timeline-title">{% block timelineHeader %}{% endblock %}</h4>
-            <p>
-                <small class="text-muted"><i
-                            class="fa fa-clock-o"></i> {% block timelineTime %}{% endblock %}
-                </small>
-            </p>
-        </div>
-        <div class="timeline-body">
-            <p>{% block timelineContent %}{% endblock %}</p>
-        </div>
+    <div class="timeline-body">
+        <p><a href="{{ path('hojaenfermeria_show', {'id': element.id }) }}">Mostrar hoja de evolución</a></p>
     </div>
+</div>
 </li>

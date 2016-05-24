@@ -24,8 +24,6 @@
             </div>
 
 
-
-
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="box box-default ">
@@ -35,7 +33,11 @@
                         <div class="box-body box-timeline">
                             <ul class="timeline">
                                 {% for element in timeline %}
+                                    <li class="{% if (loop.index + 1) %2 %}timeline-inverted{% else %}{% endif %}">
+                                        {% set template = "@App/Timeline/" ~ (element|class) ~ ".html.twig" %}
+                                        {% include template with {'element': element} %}
 
+                                    </li>
                                 {% endfor %}
                             </ul>
                         </div>
