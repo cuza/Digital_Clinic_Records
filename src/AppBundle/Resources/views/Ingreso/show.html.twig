@@ -36,7 +36,6 @@
                                     <li class="{% if (loop.index + 1) %2 %}timeline-inverted{% else %}{% endif %}">
                                         {% set template = "@App/Timeline/" ~ (element|class) ~ ".html.twig" %}
                                         {% include template with {'element': element} %}
-
                                     </li>
                                 {% endfor %}
                             </ul>
