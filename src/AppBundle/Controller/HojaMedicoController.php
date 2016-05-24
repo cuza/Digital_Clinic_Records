@@ -20,6 +20,47 @@ use AppBundle\Form\PacienteType;
  */
 class HojaMedicoController extends Controller
 {
+    /**
+     * @Route("/new/{id}")
+     * @Template()
+     * @param Request $request
+     * @return array
+     * @throws \InvalidArgumentException
+     */
+    public function newAction(Request $request, Paciente $paciente)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $iid = $request->query->get('iid');
+       $ingreso = null;
+        if (is_numeric($iid))
+            $ingreso = $em->getRepository("AppBundle:Ingreso")->findOneBy(array('id' => $iid));
+//        if ($hoja == null) {
+        $hoja = new HojaMedico();
+//        }
+        $editForm = $this->createForm('AppBundle\Form\HojaMedicoType', $hoja);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            /** @var User $user */
+            $user = $this->getUser();
+            $hoja->setDatetime(new \DateTime());
+            if ($user->hasRole("ROLE_DOCTOR"))
+                $hoja->setDoctor($user);
+            else if ($user->hasRole("ROLE_RESIDENTE"))
+                $hoja->setResidente($user);
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($hoja);
+            $em->flush();
+
+            return $this->redirectToRoute('app_ingreso_show', array('id' => $hoja->getId(), 'pid' => $paciente->getId()));
+        }
+        return array(
+
+            'paciente' => $paciente,
+            'edit_form' => $editForm->createView()
+        );
+    }
 
     /**
      * @Route("/fetch/{id}")
