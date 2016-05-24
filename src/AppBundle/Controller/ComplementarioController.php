@@ -75,6 +75,36 @@ class ComplementarioController extends Controller
 
 
     /**
+     * Change and displays a Ingreso entity.
+     *
+     * @Route("/result/{id}")
+     * @Template()
+     * @param Request $request
+     * @param Ingreso $complementario
+     * @return array
+     * @throws \InvalidArgumentException
+     */
+    public function resultAction(Request $request,Complementario $complementario)
+    {
+        $form = $this->createForm('AppBundle\Form\ComplementarioEndType', $complementario);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($complementario);
+            $em->flush();
+
+            return $this->redirectToRoute('app_complementario_show', array('id' => $complementario->getId()));
+        }
+
+        return array(
+            'ingreso' => $complementario,
+            'form'=>$form->createView()
+        );
+    }
+
+    /**
      * Finds and displays a Ingreso entity.
      *
      * @Route("/{id}")

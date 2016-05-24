@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class IngresoEndType extends AbstractType
+class ComplementarioEndType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,14 +15,13 @@ class IngresoEndType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-//            ->add('fechaIngreso', 'datetime')
-//            ->add('tipoIngreso')
-//            ->add('procedencia')
-//            ->add('fechaSalida', 'datetime')
-            ->add('estadoEgreso')
-            ->add('necropsia')
-            ->add('repercusionIncapacidadFisica')
-            ->add('seguimiento')
+//            ->add('nombre')
+            ->add('resultado')
+//            ->add('datetime', 'datetime')
+            ->add('cancelado')
+            ->add('motivoCancelado')
+//            ->add('hojaMedico')
+//            ->add('laboratorista')
         ;
     }
     
@@ -32,7 +31,7 @@ class IngresoEndType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Ingreso'
+            'data_class' => 'AppBundle\Entity\Complementario'
         ));
     }
 }

@@ -15,6 +15,7 @@ use AppBundle\Entity\HojaEnfermeria;
 use AppBundle\Entity\HojaEnfermeria2;
 use AppBundle\Entity\HojaMedico;
 use AppBundle\Entity\Ingreso;
+use AppBundle\Entity\IngresoSala;
 use AppBundle\Entity\Paciente;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -92,6 +93,41 @@ class IngresoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($ingreso);
+            $em->flush();
+
+            return $this->redirectToRoute('app_ingreso_show', array('id' => $ingreso->getId()));
+        }
+
+        return array(
+            'ingreso' => $ingreso,
+            'form'=>$form->createView()
+        );
+    }
+
+    /**
+     * Change and displays a Ingreso entity.
+     *
+     * @Route("/leave/{id}")
+     * @Template()
+     * @param Request $request
+     * @param Ingreso $ingreso
+     * @return array
+     * @throws \InvalidArgumentException
+     */
+    public function leaveAction(Request $request,Ingreso $ingreso)
+    {
+        $form = $this->createForm('AppBundle\Form\IngresoEndType', $ingreso);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $ingreso->setFechaSalida(new \DateTime());
+            $salas=$ingreso->getSalas();
+            /** @var IngresoSala $sa */
+            $sa = $salas[count($salas)-1];
+            $sa->setFechaSalida(new \DateTime());
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($ingreso);
             $em->flush();
