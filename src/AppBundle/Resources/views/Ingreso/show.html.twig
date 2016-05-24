@@ -5,8 +5,8 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            AppBundle:Ingreso:show
-            {#<small>Control panel</small>#}
+            Ingreso
+            <small>Muestra detalles del ingreso</small>
         </h1>
         <ol class="breadcrumb">
             <li><i class="fa fa-home active"></i> Home</li>
@@ -16,19 +16,71 @@
 {% block ContentBody %}
     <section class="content">
         <div class="row">
+            <div class="col-md-6">
 
-            <div>
-                Paciente: {{ ingreso.paciente.nombre }}
-                <br>
-                Tiempo de ingreso:{{ ingreso.fechaIngreso|ago }}
-            </div>
+                <div class="box box-widget widget-user-2">
+                    <!-- Add the bg color to the header using any of the bg-* classes -->
+                    <div class="widget-user-header bg-blue-gradient">
+                        <div class="widget-user-image">
+
+                        </div><!-- /.widget-user-image -->
+                        <h3 class="widget-user-username"><i class="fa fa-medkit fa-2x"></i> Resumen de ingreso
+                        </h3>
+                        <br>
+                        <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': ingreso.paciente.id }) }}">{{ ingreso.paciente.nombre }} {{ ingreso.paciente.primerApellido }} {{ ingreso.paciente.segundoApellido }}</a></h5>
+                        <h5 class="widget-user-desc">Fecha de ingreso: {{ ingreso.fechaIngreso|date('d/m/y') }} ({{ ingreso.fechaIngreso|ago }})</h5>
+                        {% if ingreso.fechaSalida %}
+                        <h5 class="widget-user-desc">Fecha de engreso: {{ ingreso.fechaSalida|date('d/m/y') }} ({{ ingreso.fechaSalida|ago }})</h5>
+                        {% endif %}
+                    </div>
+                    <div class="box-body">
+                        <ul class="nav nav-stacked">
+                            <li><a href="{{ path('paciente_show', {'id': ingreso.paciente.id }) }}">Paciente: <span class="pull-right">{{ ingreso.paciente.nombre }} {{ ingreso.paciente.primerApellido }} {{ ingreso.paciente.segundoApellido }}</span></a>
+                            </li>
+                            {#<li><a href="#">Sala: <span class="pull-right">{{ ingreso.sala.nombre }}</span></a></li>#}
+                            {#<li><a href="#">Servicio: <span class="pull-right">{{ ingreso.sala.servicio }}</span></a></li>#}
+                            <li><a href="#">Tipo de ingreso: <span class="pull-right">{{ ingreso.tipoIngreso }}</span></a></li>
+                            <li><a href="#">Procedencia: <span class="pull-right">{{ ingreso.procedencia }}</span></a></li>
+
+                            {% if ingreso.estadoEgreso %}
+                            <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.estadoEgreso }}</span></a></li>
+                            {% endif %}
+                            {% if ingreso.repercusionIncapacidadFisica %}
+                            <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.repercusionIncapacidadFisica }}</span></a></li>
+                            {% endif %}
+                            {% if ingreso.seguimiento %}
+                            <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.seguimiento }}</span></a></li>
+                            {% endif %}
+                            {% if ingreso.necropsia %}
+                            <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.necropsia }}</span></a></li>
+                            {% endif %}
+                            {#<li><a href="#">Servicio: <span class="pull-right">{{ ingreso.sala }}</span></a></li>#}
+                        </ul>
+                    </div>
+
+                    <div class="box-footer no-padding">
+
+                    </div>
+                </div>
+
+            {#<div class="box box-primary"></div>#}
+            {#<div class="box-header with-border"><h3 class="box-title"> {{ ingreso.paciente.nombre }}</h3></div>#}
+            {#<div class="box-body">#}
+                {#<ul>#}
+                    {#<li>Tiempo de ingreso:{{ ingreso.fechaIngreso|ago }}</li>#}
+                {#</ul>#}
+            {#</div>#}
+            {#<div class="box-footer"></div>#}
+
+
+        </div>
 
 
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="box box-default ">
                         <div class="box-header with-border">
-                            <i class="fa fa-heartbeat fa-fw"></i> Complementarios
+                            <i class="fa fa-heartbeat fa-fw"></i> Historial médico
                         </div>
                         <div class="box-body box-timeline">
                             <ul class="timeline">
@@ -43,8 +95,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </section>
 
