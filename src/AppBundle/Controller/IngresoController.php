@@ -88,7 +88,7 @@ class IngresoController extends Controller
     {
 
         return array(
-            'ingreso'=>$ingreso
+            'ingreso' => $ingreso
         );
     }
 
@@ -117,16 +117,24 @@ class IngresoController extends Controller
         }
 
         $tl = array();
-        foreach ($hm as $x)
+        foreach ($hm as $x) {
+            $x['class'] = get_class($x);
             $tl[] = $x;
-        foreach ($he1 as $x)
+        }
+        foreach ($he1 as $x) {
+            $x['class'] = get_class($x);
             $tl[] = $x;
-        foreach ($he2 as $x)
+        }
+        foreach ($he2 as $x) {
+            $x['class'] = get_class($x);
             $tl[] = $x;
-        foreach ($cmp as $x)
+        }
+        foreach ($cmp as $x) {
+            $x['class'] = get_class($x);
             $tl[] = $x;
+        }
         usort($tl, "AppBundle\\Controller\\IngresoController::cmp");
-        $tl=array_reverse($tl);
+        $tl = array_reverse($tl);
         return array(
             'timeline' => $tl,
             'ingreso' => $ingreso
