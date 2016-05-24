@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 
 use AppBundle\Entity\HojaMedico;
+use AppBundle\Entity\Ingreso;
 use AppBundle\Entity\User;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,13 +28,9 @@ class HojaMedicoController extends Controller
      * @return array
      * @throws \InvalidArgumentException
      */
-    public function newAction(Request $request, Paciente $paciente)
+    public function newAction(Request $request, Ingreso $ingreso)
     {
         $em = $this->getDoctrine()->getManager();
-        $iid = $request->query->get('iid');
-       $ingreso = null;
-        if (is_numeric($iid))
-            $ingreso = $em->getRepository("AppBundle:Ingreso")->findOneBy(array('id' => $iid));
 //        if ($hoja == null) {
         $hoja = new HojaMedico();
 //        }
@@ -48,12 +45,13 @@ class HojaMedicoController extends Controller
                 $hoja->setDoctor($user);
             else if ($user->hasRole("ROLE_RESIDENTE"))
                 $hoja->setResidente($user);
+            $hoja->setIngreso($ingreso);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($hoja);
             $em->flush();
 
-            return $this->redirectToRoute('app_ingreso_show', array('id' => $hoja->getId(), 'pid' => $paciente->getId()));
+            return $this->redirectToRoute('app_ingreso_show', array('id' => $ingreso->getId()));
         }
         return array(
 
