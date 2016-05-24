@@ -141,6 +141,7 @@
             </div>
         </div>
 {% endif %}
+        {% if paciente %}
         <div class="btn-group">
             <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
                 Procesar <span class="caret"></span>
@@ -151,5 +152,6 @@
             </ul>
         </div>
         <a class="btn btn-warning" href="{{ path('app_complementario_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Solicitar complementario</a>
+   {% endif %}
     </section>
 {% endblock %}
