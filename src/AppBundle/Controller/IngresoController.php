@@ -128,7 +128,7 @@ class IngresoController extends Controller
         usort($tl, "AppBundle\\Controller\\IngresoController::cmp");
         $tl=array_reverse($tl);
         return array(
-            'timeline' => array(),
+            'timeline' => $tl,
             'ingreso' => $ingreso
         );
     }
