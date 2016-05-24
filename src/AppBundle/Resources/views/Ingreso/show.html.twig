@@ -98,6 +98,8 @@
         </div>
 
         <a class="btn btn-default" href="{{ path('app_hojamedico_fetch', { 'id': ingreso.paciente.id }) }}">Nueva hoja de evolución</a>
+        <a class="btn btn-default" href="{{ path('app_hojamedico_fetch', { 'id': ingreso.paciente.id }) }}">Transferir de sala</a>
+        <a class="btn btn-default" href="{{ path('app_hojamedico_fetch', { 'id': ingreso.paciente.id }) }}">Dar de alta/baja</a>
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 Nueva hoja enfermería <span class="caret"></span>
@@ -107,6 +109,7 @@
                 <li><a href="{{ path('hojaenfermeria2_new') }}">Hoja de líquidos y depociciones</a></li>
             </ul>
         </div>
+
     </section>
 
 {% endblock %}
