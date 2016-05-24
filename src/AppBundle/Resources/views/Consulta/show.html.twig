@@ -23,9 +23,13 @@
             <div class="col-md-6 col-md-offset-3">
                 <div class="box box-solid">
                     <div class="box-header with-border">
-                        <h3 class="box-title pull-left">{{ consulta.paciente.nombre }} {{ consulta.paciente.primerApellido }} {{ consulta.paciente.segundoApellido }}
+                        <h3 class="box-title pull-left"><a class="text-navy"
+                                    href="{{ path('paciente_show', {'id': consulta.paciente.id}) }}">{{ consulta.paciente.nombre }} {{ consulta.paciente.primerApellido }} {{ consulta.paciente.segundoApellido }}</a>
                         </h3>
-                        <p style="color: #525252;" class="pull-right">{{ consulta.servicio }}</p>
+                        <p style="color: #525252;" class="pull-right">No. Consulta: {{ consulta.id }}</p>
+                        <br>
+                        <br>
+                        <p style="color: #525252;" class="pull-right">Fecha: {{ consulta.hojasMedico.get(0).datetime|date('d/m/y') }} ({{ consulta.hojasMedico.get(0).datetime|ago }})</p>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div class="box-group" id="accordion">
@@ -99,16 +103,19 @@
                     <div class="box-footer">
                         {% if consulta.hojasMedico.get(0).tratamientoAntibioticos %}
                             <span class="badge bg-red">Antibioticos</span>
-                        {% endif %}
-                        <span class="pull-right">Fecha: {{ consulta.hojasMedico.get(0).datetime|date('d/m/y') }} ({{ consulta.hojasMedico.get(0).datetime|ago }})</span>
-                        {% if consulta.hojasMedico.get(0).doctor %}
                             <br>
-                            <span class="pull-right">Dr.: {{  consulta.hojasMedico.get(0).doctor.nombre }}</span>
+                        {% endif %}
+
+                        {% if consulta.hojasMedico.get(0).doctor %}
+
+                            <span class="pull-left">Dr. : {{  consulta.hojasMedico.get(0).doctor.nombre }}</span>
                         {% endif %}
                         {% if consulta.hojasMedico.get(0).residente %}
-                            <br>
-                            <span class="pull-right">Dr.: {{  consulta.hojasMedico.get(0).residente.nombre }} (Residente {{ consulta.hojasMedico.get(0).residente.ano }} año)</span>
+
+                            <span class="pull-left">Dr. : {{  consulta.hojasMedico.get(0).residente.nombre }} (Residente {{ consulta.hojasMedico.get(0).residente.ano }} año)</span>
                         {% endif %}
+                        <br>
+                        <span class="pull-left">Servicio: {{ consulta.servicio }}</span>
                     </div>
                 </div><!-- /.box -->
             </div>
