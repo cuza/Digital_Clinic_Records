@@ -2,6 +2,9 @@
 
 namespace AppBundle\Form;
 
+use AppBundle\Form\Type\EstadoEgresoType;
+use AppBundle\Form\Type\RepercucionType;
+use AppBundle\Form\Type\SeguimientoType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,10 +22,10 @@ class IngresoEndType extends AbstractType
 //            ->add('tipoIngreso')
 //            ->add('procedencia')
 //            ->add('fechaSalida', 'datetime')
-            ->add('estadoEgreso')
+            ->add('estadoEgreso',EstadoEgresoType::class)
             ->add('necropsia')
-            ->add('repercusionIncapacidadFisica')
-            ->add('seguimiento')
+            ->add('repercusionIncapacidadFisica',RepercucionType::class)
+            ->add('seguimiento',SeguimientoType::class)
         ;
     }
     
