@@ -1,0 +1,18 @@
+<li class="{% if (loop.index + 1) %2 %}timeline-inverted{% else %}{% endif %}">
+    <div class="timeline-badge danger{% endif %}">
+        <i class="fa fa-check"></i>
+    </div>
+    <div class="timeline-panel">
+        <div class="timeline-heading">
+            <h4 class="timeline-title">{% block timelineHeader %}{% endblock %}</h4>
+            <p>
+                <small class="text-muted"><i
+                            class="fa fa-clock-o"></i> {% block timelineTime %}{% endblock %}
+                </small>
+            </p>
+        </div>
+        <div class="timeline-body">
+            <p>{% block timelineContent %}{% endblock %}</p>
+        </div>
+    </div>
+</li>

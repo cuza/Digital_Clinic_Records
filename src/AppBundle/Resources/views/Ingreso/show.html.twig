@@ -17,9 +17,34 @@
     <section class="content">
         <div class="row">
 
+            <div>
+                Paciente: {{ ingreso.paciente.nombre }}
+                <br>
+                Tiempo de ingreso:{{ ingreso.fechaIngreso|ago }}
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="box box-default ">
+                        <div class="box-header with-border">
+                            <i class="fa fa-heartbeat fa-fw"></i> Complementarios
+                        </div>
+                        <div class="box-body box-timeline">
+                            <ul class="timeline">
+                                {% for element in timeline %}
+
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
     </section>
-    {{ dump(ingreso|class) }}
-    Paciente: {{ ingreso.paciente.nombre }}<br>
-    Tiempo de ingreso:{{ ingreso.fechaIngreso|ago }}
+
 {% endblock %}

@@ -15,10 +15,10 @@ class IngresoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaIngreso', 'datetime')
+//            ->add('fechaIngreso', 'datetime')
+//            ->add('tipoIngreso')
+//            ->add('procedencia')
             ->add('fechaSalida', 'datetime')
-            ->add('tipoIngreso')
-            ->add('procedencia')
             ->add('estadoEgreso')
             ->add('necropsia')
             ->add('repercusionIncapacidadFisica')
