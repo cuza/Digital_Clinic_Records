@@ -20,7 +20,7 @@ class AppExtension extends \Twig_Extension
 
     public function classFilter($entity)
     {
-        return get_class($entity);
+        return preg_split("#\\\\#",get_class($entity))[2];
     }
 
     /**

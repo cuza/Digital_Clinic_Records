@@ -19,6 +19,7 @@
 
         </div>
     </section>
+    {{ dump(ingreso|class) }}
     Paciente: {{ ingreso.paciente.nombre }}<br>
     Tiempo de ingreso:{{ ingreso.fechaIngreso|ago }}
 {% endblock %}
