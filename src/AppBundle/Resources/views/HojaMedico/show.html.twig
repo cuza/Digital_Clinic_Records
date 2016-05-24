@@ -17,92 +17,62 @@
 {% block ContentBody %}
     <section class="content">
         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <div class="box box-solid">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Hoja de evolución</h3>
+            <div class="col-md-9 col-md-offset-1">
+                <div class="box box-widget widget-user-2">
+                    <div class="widget-user-header bg-red">
+                        <h3 class="widget-user-username"><i
+                                    class="fa fa-user-md fa-2x"></i> Hoja de evolución
+                        </h3>
+                        {% if hoja.ingreso %}
+                        <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': hoja.ingreso.paciente.id }) }}">{{ hoja.ingreso.paciente.nombre }} {{ hoja.ingreso.paciente.primerApellido }} {{ hoja.ingreso.paciente.segundoApellido }}</a></h5>
+                        {% endif %}
+                        {% if hoja.consulta %}
+                            <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': hoja.consulta.paciente.id }) }}">{{ hoja.consulta.paciente.nombre }} {{ hoja.consulta.paciente.primerApellido }} {{ hoja.consulta.paciente.segundoApellido }}</a></h5>
+                        {% endif %}
+                        {% if hoja.doctor %}
+                        <h5 class="widget-user-desc">Dr. : {{  hoja.doctor.nombre }}</h5>
+                        {% endif %}
+                        {% if hoja.residente %}
+                            <h5 class="widget-user-desc">Dr. : {{  hoja.residente.nombre }}(Residente - {{ hoja.residente.ano }} año)</h5>
+                        {% endif %}
+                            <h5 class="widget-user-desc">Fecha: {{  hoja.datetime|date('d/m/y') }} ({{ hoja.datetime|ago }})</h5>
                     </div><!-- /.box-header -->
                     <div class="box-body">
-                        <div class="box-group" id="accordion">
-                            <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-                            <div class="panel box box-primary">
-                                <div class="box-header with-border">
-                                    <h4 class="box-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
-                                           aria-expanded="false" class="collapsed">
-                                            Historia de la enfermedad actual
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseOne" class="panel-collapse collapse" aria-expanded="false"
-                                     style="height: 0px;">
-                                    <div class="box-body">
-                                        {{ hoja.historiaEnfermedadActual | raw }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel box box-danger">
-                                <div class="box-header with-border">
-                                    <h4 class="box-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
-                                           class="collapsed" aria-expanded="false">
-                                            Examen Físico
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseTwo" class="panel-collapse collapse" aria-expanded="false"
-                                     style="height: 0px;">
-                                    <div class="box-body">
-                                        {{ hoja.examenFisico | raw }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel box box-success">
-                                <div class="box-header with-border">
-                                    <h4 class="box-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"
-                                           class="collapsed" aria-expanded="false">
-                                            Impresion Diagnostica
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseFour" class="panel-collapse collapse" aria-expanded="false"
-                                     style="height: 0px;">
-                                    <div class="box-body">
-                                        {{ hoja.impresionDiagnostica | raw }}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel box box-info">
-                                <div class="box-header with-border">
-                                    <h4 class="box-title">
-                                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
-                                           class="" aria-expanded="true">
-                                            Evolución y tratamineto
-                                        </a>
-                                    </h4>
-                                </div>
-                                <div id="collapseThree" class="panel-collapse collapse in" aria-expanded="true">
-                                    <div class="box-body">
-                                        {{ hoja.evolucionTratamiento | raw }}
-                                    </div>
-                                </div>
-                            </div>
 
+                        <div class="nav-tabs-custom">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#tab_1" data-toggle="tab">Hist. enfermedad actual</a></li>
+                                <li><a href="#tab_2" data-toggle="tab">Examen Físico</a></li>
+                                <li><a href="#tab_3" data-toggle="tab">Impresión Diagnostica</a></li>
+                                <li><a href="#tab_4" data-toggle="tab">Evolución y tratamiento</a></li>
+                               </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="tab_1">
+                                    <b>Historia de la enfermedad actual:</b>
+                                    <p>{{ hoja.historiaEnfermedadActual|raw }}</p>
+
+                                </div><!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_2">
+                                    <b>Examen Físico:</b>
+                                    <p>{{ hoja.examenFisico|raw }}</p>
+
+                                </div><!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_3">
+                                    <b>Impresión Diagnostica:</b>
+                                    <p>{{ hoja.impresionDiagnostica|raw }}</p>
+                                </div><!-- /.tab-pane -->
+                                <div class="tab-pane" id="tab_4">
+                                    <b>Evolución y tratamiento:</b>
+                                    <p>{{ hoja.evolucionTratamiento|raw }}</p>
+                                </div><!-- /.tab-pane -->
+                            </div><!-- /.tab-content -->
                         </div>
+
+
                     </div><!-- /.box-body -->
                     <div class="box-footer">
                         {% if hoja.tratamientoAntibioticos %}
                             <span class="badge bg-red">Antibioticos</span>
-                        {% endif %}
-                        <span class="pull-right">Fecha: {{  hoja.datetime|date('d/m/y') }} ({{ hoja.datetime|ago }})</span>
-                        {% if hoja.doctor %}
-                        <br>
-                        <span class="pull-right">Dr.: {{  hoja.doctor.nombre }}</span>
-                        {% endif %}
-                        {% if hoja.residente %}
-                            <br>
-                            <span class="pull-right">Dr.: {{  hoja.residente.nombre }} (Residente {{ hoja.residente.ano }} año)</span>
                         {% endif %}
                     </div>
                 </div><!-- /.box -->

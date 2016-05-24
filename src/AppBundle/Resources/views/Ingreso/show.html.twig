@@ -27,32 +27,45 @@
                         <h3 class="widget-user-username"><i class="fa fa-medkit fa-2x"></i> Resumen de ingreso
                         </h3>
                         <br>
-                        <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': ingreso.paciente.id }) }}">{{ ingreso.paciente.nombre }} {{ ingreso.paciente.primerApellido }} {{ ingreso.paciente.segundoApellido }}</a></h5>
-                        <h5 class="widget-user-desc">Fecha de ingreso: {{ ingreso.fechaIngreso|date('d/m/y') }} ({{ ingreso.fechaIngreso|ago }})</h5>
+                        <h5 class="widget-user-desc">Paciente: <a class="text-navy"
+                                                                  href="{{ path('paciente_show', {'id': ingreso.paciente.id }) }}">{{ ingreso.paciente.nombre }} {{ ingreso.paciente.primerApellido }} {{ ingreso.paciente.segundoApellido }}</a>
+                        </h5>
+                        <h5 class="widget-user-desc">Fecha de ingreso: {{ ingreso.fechaIngreso|date('d/m/y') }}
+                            ({{ ingreso.fechaIngreso|ago }})</h5>
                         {% if ingreso.fechaSalida %}
-                        <h5 class="widget-user-desc">Fecha de engreso: {{ ingreso.fechaSalida|date('d/m/y') }} ({{ ingreso.fechaSalida|ago }})</h5>
+                            <h5 class="widget-user-desc">Fecha de engreso: {{ ingreso.fechaSalida|date('d/m/y') }}
+                                ({{ ingreso.fechaSalida|ago }})</h5>
                         {% endif %}
                     </div>
                     <div class="box-body">
                         <ul class="nav nav-stacked">
-                            <li><a href="{{ path('paciente_show', {'id': ingreso.paciente.id }) }}">Paciente: <span class="pull-right">{{ ingreso.paciente.nombre }} {{ ingreso.paciente.primerApellido }} {{ ingreso.paciente.segundoApellido }}</span></a>
+                            {#<li><a href="{{ path('paciente_show', {'id': ingreso.paciente.id }) }}">Paciente: <span class="pull-right">{{ ingreso.paciente.nombre }} {{ ingreso.paciente.primerApellido }} {{ ingreso.paciente.segundoApellido }}</span></a>#}
+                            {#</li>#}
+                            <li><a href="#">Sala: <span class="pull-right">{{ ingreso.sala.sala.nombre }}</span></a>
                             </li>
-                            {#<li><a href="#">Sala: <span class="pull-right">{{ ingreso.sala.nombre }}</span></a></li>#}
-                            {#<li><a href="#">Servicio: <span class="pull-right">{{ ingreso.sala.servicio }}</span></a></li>#}
-                            <li><a href="#">Tipo de ingreso: <span class="pull-right">{{ ingreso.tipoIngreso }}</span></a></li>
-                            <li><a href="#">Procedencia: <span class="pull-right">{{ ingreso.procedencia }}</span></a></li>
+                            <li><a href="#">Servicio: <span
+                                            class="pull-right">{{ ingreso.sala.sala.servicio }}</span></a></li>
+                            <li><a href="#">Tipo de ingreso: <span
+                                            class="pull-right">{{ ingreso.tipoIngreso }}</span></a></li>
+                            <li><a href="#">Procedencia: <span class="pull-right">{{ ingreso.procedencia }}</span></a>
+                            </li>
 
                             {% if ingreso.estadoEgreso %}
-                            <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.estadoEgreso }}</span></a></li>
+                                <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.estadoEgreso }}</span></a>
+                                </li>
                             {% endif %}
                             {% if ingreso.repercusionIncapacidadFisica %}
-                            <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.repercusionIncapacidadFisica }}</span></a></li>
+                                <li><a href="#">Servicio: <span
+                                                class="pull-right">{{ ingreso.repercusionIncapacidadFisica }}</span></a>
+                                </li>
                             {% endif %}
                             {% if ingreso.seguimiento %}
-                            <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.seguimiento }}</span></a></li>
+                                <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.seguimiento }}</span></a>
+                                </li>
                             {% endif %}
                             {% if ingreso.necropsia %}
-                            <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.necropsia }}</span></a></li>
+                                <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.necropsia }}</span></a>
+                                </li>
                             {% endif %}
                             {#<li><a href="#">Servicio: <span class="pull-right">{{ ingreso.sala }}</span></a></li>#}
                         </ul>
@@ -62,20 +75,7 @@
 
                     </div>
                 </div>
-
-            {#<div class="box box-primary"></div>#}
-            {#<div class="box-header with-border"><h3 class="box-title"> {{ ingreso.paciente.nombre }}</h3></div>#}
-            {#<div class="box-body">#}
-                {#<ul>#}
-                    {#<li>Tiempo de ingreso:{{ ingreso.fechaIngreso|ago }}</li>#}
-                {#</ul>#}
-            {#</div>#}
-            {#<div class="box-footer"></div>#}
-
-
-        </div>
-
-
+            </div>
             <div class="row">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="box box-default ">
@@ -95,6 +95,17 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <a class="btn btn-default" href="{{ path('app_hojamedico_fetch', { 'id': ingreso.paciente.id }) }}">Nueva hoja de evolución</a>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                Nueva hoja enfermería <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+                <li><a href="{{ path('hojaenfermeria_new') }}">Hoja de temperatura</a></li>
+                <li><a href="{{ path('hojaenfermeria2_new') }}">Hoja de líquidos y depociciones</a></li>
+            </ul>
         </div>
     </section>
 

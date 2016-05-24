@@ -167,19 +167,15 @@ class IngresoController extends Controller
 
         $tl = array();
         foreach ($hm as $x) {
-//            $x['class'] = get_class($x);
             $tl[] = $x;
         }
         foreach ($he1 as $x) {
-//            $x['class'] = get_class($x);
             $tl[] = $x;
         }
         foreach ($he2 as $x) {
-//            $x['class'] = get_class($x);
             $tl[] = $x;
         }
         foreach ($cmp as $x) {
-//            $x['class'] = get_class($x);
             $tl[] = $x;
         }
          usort($tl, "AppBundle\\Controller\\IngresoController::cmp");
