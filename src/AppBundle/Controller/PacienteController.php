@@ -71,7 +71,7 @@ class PacienteController extends Controller
     }
 
     /**
-     * @Route("/edit/id")
+     * @Route("/edit/{id}")
      * @Template()
      * @param Paciente $paciente
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
