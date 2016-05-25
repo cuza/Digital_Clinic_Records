@@ -77,7 +77,7 @@ class PacienteController extends Controller
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \InvalidArgumentException
      */
-    public function editAction(Request $request,Paciente $paciente)
+    public function editAction(Request $request, Paciente $paciente)
     {
 
 
@@ -92,12 +92,12 @@ class PacienteController extends Controller
             return $this->redirectToRoute('paciente_show', array('id' => $paciente->getId()));
         }
 
-        if ($form->isSubmitted() || is_numeric($cid)) {
-            return array(
-                'paciente' => $paciente,
-                'edit_form' => $form->createView(),
-            );
-        }
+
+        return array(
+            'paciente' => $paciente,
+            'edit_form' => $form->createView(),
+        );
+
 
     }
 }
