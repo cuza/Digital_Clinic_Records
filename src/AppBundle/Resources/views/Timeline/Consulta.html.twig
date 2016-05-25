@@ -1,0 +1,16 @@
+<div class="timeline-badge bg-olive">
+    <i class="fa fa-medkit"></i>
+</div>
+<div class="timeline-panel">
+    <div class="timeline-heading">
+        <h4 class="timeline-title">Consulta</h4>
+        <p>
+            <small class="text-muted"><i
+                        class="fa fa-clock-o"></i> {{ element.fecha|date('d/m/y') }} {{ element.fecha|ago }}
+            </small>
+        </p>
+    </div>
+    <div class="timeline-body">
+        <p><a href="{{ path('app_consulta_show', {'id': element.id }) }}">Mostrar resumen de consulta</a></p>
+    </div>
+</div>
