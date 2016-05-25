@@ -73,6 +73,43 @@ class ComplementarioController extends Controller
         );
     }
 
+    /**
+     * @Route("/new/{id}")
+     * @Template()
+     * @param Request $request
+     * @return array
+     * @throws \InvalidArgumentException
+     */
+    public function newAction(Request $request,HojaMedico $hoja)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+
+
+        $complementario = new Complementario();
+
+        $editForm = $this->createForm('AppBundle\Form\ComplementarioType', $complementario);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            /** @var User $user */
+            $complementario->setHojaMedico($hoja);
+            $complementario->setDatetime(new \DateTime());
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($hoja);
+            $em->persist($complementario);
+            $em->flush();
+
+            return $this->redirectToRoute('hoja_medico_show', array('id' => $hoja->getId()));
+        }
+        return array(
+            'hoja' => $hoja,
+            'complementario' => $complementario,
+            'edit_form' => $editForm->createView()
+        );
+    }
+
 
     /**
      * Change and displays a Ingreso entity.
