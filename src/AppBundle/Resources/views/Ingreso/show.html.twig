@@ -51,16 +51,16 @@
                             </li>
 
                             {% if ingreso.estadoEgreso %}
-                                <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.estadoEgreso }}</span></a>
+                                <li><a href="#">Estado al egreso: <span class="pull-right">{{ ingreso.estadoEgreso }}</span></a>
                                 </li>
                             {% endif %}
                             {% if ingreso.repercusionIncapacidadFisica %}
-                                <li><a href="#">Servicio: <span
+                                <li><a href="#">Repercusión o incapacidad física: <span
                                                 class="pull-right">{{ ingreso.repercusionIncapacidadFisica }}</span></a>
                                 </li>
                             {% endif %}
                             {% if ingreso.seguimiento %}
-                                <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.seguimiento }}</span></a>
+                                <li><a href="#">Seguimiento: <span class="pull-right">{{ ingreso.seguimiento }}</span></a>
                                 </li>
                             {% endif %}
                             {% if ingreso.necropsia %}
