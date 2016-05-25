@@ -198,16 +198,18 @@ class IngresoController extends Controller
     {
         $salas = array();
         $em = $this->getDoctrine()->getManager();
-        $ingresos = $em->getRepository('AppBundle:Ingreso')->findBy(array('fechaSalida', null));
+        $ingresos = $em->getRepository('AppBundle:Ingreso')->findBy(array('fechaSalida'=> null));
 
         /** @var Ingreso $i */
         foreach ($ingresos as $i) {
-            if (!$salas[$i->getSala()->getId()]) {
-                $salas[$i->getSala()->getId()] = array('sala' => $i->getSala(), 'ingresos' => array());
+            if($i->getSala()) {
+                if (!array_key_exists($i->getSala()->getId(),$salas)) {
+                    $salas[$i->getSala()->getId()] = array('sala' => $i->getSala(), 'ingresos' => array());
+                }
+                $salas[$i->getSala()->getId()]['ingresos'][] = $i;
             }
-            $salas[$i->getSala()->getId()]['ingresos'][]=$i;
         }
-
+dump($salas);
         return array(
             'salas' => $salas
         );
