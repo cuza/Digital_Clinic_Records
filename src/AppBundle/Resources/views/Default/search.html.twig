@@ -5,46 +5,74 @@
 {% endblock %}
 
 {% block ContentHeader %}
-    <section class="content-header">
-        <h1>
-            Buscar
-            <small>Resultados de la busqueda</small>
-        </h1>
-    </section>
+    {% if is_granted('ROLE_DOCTOR') or is_granted('ROLE_RESIDENTE') or is_granted('ROLE_ENFERMERO') or is_granted('ROLE_ESTUDIANTE') %}
+        <section class="content-header">
+            <h1>
+                Buscar
+                <small>Resultados de la busqueda</small>
+            </h1>
+        </section>
+    {% endif %}
+
+    {% if is_granted('ROLE_LABORATORIO') %}
+        <section class="content-header">
+            <h1>
+                Error 403
+                <small>Forbidden</small>
+            </h1>
+        </section>
+    {% endif %}
+
 {% endblock %}
 {% block ContentBody %}
-    <section class="content">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Resultados de la busqueda</h3>
-                    </div>
-                    <div class="box-body">
-                        <table class="table" id="datatables-table">
-                            <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>CI</th>
-                                <th>Fecha de nacimiento</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for paciente in pacientes %}
+    {% if is_granted('ROLE_DOCTOR') or is_granted('ROLE_RESIDENTE') or is_granted('ROLE_ENFERMERO') or is_granted('ROLE_ESTUDIANTE') %}
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box">
+                        <div class="box-header">
+                            <h3 class="box-title">Resultados de la busqueda</h3>
+                        </div>
+                        <div class="box-body">
+                            <table class="table" id="datatables-table">
+                                <thead>
                                 <tr>
-                                    <td>
-                                        <a href="{{ path('paciente_show', {'id': paciente.id }) }}">{{ paciente.nombre }} {{ paciente.primerApellido }} {{ paciente.segundoApellido }}</a>
-                                    </td>
-                                    <td>{{ paciente.cId }}</td>
-                                    <td>{{ paciente.fechaNacimiento | date('d/m/y') }}</td>
+                                    <th>Nombre</th>
+                                    <th>CI</th>
+                                    <th>Fecha de nacimiento</th>
                                 </tr>
-
-                            {% endfor %}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                {% for paciente in pacientes %}
+                                    <tr>
+                                        <td>
+                                            <a href="{{ path('paciente_show', {'id': paciente.id }) }}">{{ paciente.nombre }} {{ paciente.primerApellido }} {{ paciente.segundoApellido }}</a>
+                                        </td>
+                                        <td>{{ paciente.cId }}</td>
+                                        <td>{{ paciente.fechaNacimiento | date('d/m/y') }}</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    {% endif %}
+
+    {% if is_granted('ROLE_LABORATORIO') %}
+        <section class="content">
+            <div class="error-page">
+                <h2 class="headline text-yellow">403</h2>
+                <div class="error-content">
+                    <h3><i class="fa fa-warning text-yellow"></i> Oops! Parece que no tienes acceso a esta área.</h3>
+                    <p>
+                        No se pudo mostrar la pagina que solicitas ya que está en un área restringida del sistema.
+                        Puedes intentar <a href="{{ path('homepage') }}">regresar a la pagina de inicio</a>
+                    </p>
+                </div><!-- /.error-content -->
+            </div><!-- /.error-page -->
+        </section><!-- /.content -->
+    {% endif %}
 {% endblock %}
