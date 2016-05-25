@@ -71,18 +71,14 @@ class PacienteController extends Controller
     }
 
     /**
-     * @Route("/edit")
+     * @Route("/edit/id")
      * @Template()
      * @param Paciente $paciente
      * @return array|\Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
      * @throws \InvalidArgumentException
      */
-    public function editAction(Paciente $paciente)
+    public function editAction(Request $request,Paciente $paciente)
     {
-
-        $em = $this->getDoctrine()->getManager();
-        if (!is_numeric($cid))
-            $cid = $request->query->get('paciente')['cId'];
 
 
         $form = $this->createForm('AppBundle\Form\PacienteType', $paciente);
