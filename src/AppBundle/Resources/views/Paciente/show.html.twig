@@ -10,10 +10,6 @@
                 {{ paciente.nombre }} {{ paciente.primerApellido }}
                 <small>Datos Generales</small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="{{ path('homepage') }}"><i class="fa fa-home active"></i> Home</a></li>
-                {#<li class="active">Dashboard</li>#}
-            </ol>
         </section>
     {% endblock %}
     {% block ContentBody %}
@@ -104,14 +100,8 @@
                         </div>
                     </div>
                 {% endif %}
-            </div><!-- /.row (main row) -->
+            </div>
             <a href="{{ path('app_paciente_edit', {'id':paciente.id}) }}" id="paciente_edit"
                class="btn btn-success pull-left">Editar</a>
-        </section><!-- /.content -->
+        </section>
     {% endblock %}
-
-
-
-
-
-
