@@ -51,7 +51,8 @@
                             </li>
 
                             {% if ingreso.estadoEgreso %}
-                                <li><a href="#">Estado al egreso: <span class="pull-right">{{ ingreso.estadoEgreso }}</span></a>
+                                <li><a href="#">Estado al egreso: <span
+                                                class="pull-right">{{ ingreso.estadoEgreso }}</span></a>
                                 </li>
                             {% endif %}
                             {% if ingreso.repercusionIncapacidadFisica %}
@@ -60,14 +61,14 @@
                                 </li>
                             {% endif %}
                             {% if ingreso.seguimiento %}
-                                <li><a href="#">Seguimiento: <span class="pull-right">{{ ingreso.seguimiento }}</span></a>
+                                <li><a href="#">Seguimiento: <span
+                                                class="pull-right">{{ ingreso.seguimiento }}</span></a>
                                 </li>
                             {% endif %}
                             {% if ingreso.necropsia %}
-                                <li><a href="#">Servicio: <span class="pull-right">{{ ingreso.necropsia }}</span></a>
+                                <li><a href="#"><span class="pull-right badge bg-red">Necropsia</span></a>
                                 </li>
                             {% endif %}
-                            {#<li><a href="#">Servicio: <span class="pull-right">{{ ingreso.sala }}</span></a></li>#}
                         </ul>
                     </div>
 
@@ -76,8 +77,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
+            <div class="">
+                <div class="col-md-12">
                     <div class="box box-default ">
                         <div class="box-header with-border">
                             <i class="fa fa-heartbeat fa-fw"></i> Historial médico
@@ -103,10 +104,12 @@
             </button>
             <ul class="dropdown-menu">
                 <li><a href="{{ path('app_hojaenfermeria_new', {'id': ingreso.id }) }}">Hoja de temperatura</a></li>
-                <li><a href="{{ path('app_hojaenfermeria2_new', {'id': ingreso.id }) }}">Hoja de líquidos y depociciones</a></li>
+                <li><a href="{{ path('app_hojaenfermeria2_new', {'id': ingreso.id }) }}">Hoja de líquidos y
+                        depociciones</a></li>
             </ul>
         </div>
-        <a class="btn btn-default" href="{{ path('app_hojamedico_new', { 'id': ingreso.id }) }}">Nueva hoja de evolución</a>
+        <a class="btn btn-default" href="{{ path('app_hojamedico_new', { 'id': ingreso.id }) }}">Nueva hoja de
+            evolución</a>
         <a class="btn btn-default" href="{{ path('app_ingreso_change', { 'id': ingreso.id }) }}">Transferir de sala</a>
         <a class="btn btn-default" href="{{ path('app_ingreso_leave', { 'id': ingreso.id }) }}">Dar de alta/baja</a>
 
