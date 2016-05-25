@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block ContentHeader %}
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             Error {{ status_code }}
@@ -20,7 +19,7 @@
                         Parece que ha habido un error.
                     {% endif %}
                     {% if ((status_code/100)|round(0,'floor'))==5 %}
-                         "Houston tenemos un problema"
+                        "Houston tenemos un problema"
                     {% endif %}
                     <br>
                 </h3>
@@ -34,9 +33,10 @@
                     {% endif %}
 
                     {% if ((status_code/100)|round(0,'floor'))==5 %}
-                        Parece que nuestro código (<i class="fa fa-code"></i>) tiene algún bug (<i class="fa fa-bug"></i>),
-                                                                                                                    hazle saber a tu administrador que estabas haciendo cuando ocurrio este incidente para solucionar este problema lo antes posible.
-                                                                                                                    Puedes intentar
+                        Parece que nuestro código (<i class="fa fa-code"></i>) tiene algún bug (<i
+                            class="fa fa-bug"></i>),
+                                                  hazle saber a tu administrador que estabas haciendo cuando ocurrio este incidente para solucionar este problema lo antes posible.
+                                                  Puedes intentar
                         <a href="{{ path('homepage') }}">regresar a la pagina de inicio</a> o usar el formulario
                         de busqueda.
                     {% endif %}
@@ -45,13 +45,15 @@
                     <div class="input-group">
                         <input type="text" name="q" class="form-control" placeholder="Buscar">
                         <div class="input-group-btn">
-                            <button type="submit" name="submit" class="btn {% if ((status_code/100)|round(0,'floor'))==5 %}btn-danger{% endif %}{% if ((status_code/100)|round(0,'floor'))==4 %}btn-warning{% endif %} btn-flat"><i
+                            <button type="submit" name="submit"
+                                    class="btn {% if ((status_code/100)|round(0,'floor'))==5 %}btn-danger{% endif %}{% if ((status_code/100)|round(0,'floor'))==4 %}btn-warning{% endif %} btn-flat">
+                                <i
                                         class="fa fa-search"></i></button>
                         </div>
-                    </div><!-- /.input-group -->
+                    </div>
                 </form>
-            </div><!-- /.error-content -->
-        </div><!-- /.error-page -->
-    </section><!-- /.content -->
-    </div><!-- /.content-wrapper -->
+            </div>
+        </div>
+    </section>
+    </div>
 {% endblock %}
