@@ -87,7 +87,7 @@ class IngresoController extends Controller
      * @return array
      * @throws \InvalidArgumentException
      */
-    public function changeAction(Request $request,Ingreso $ingreso)
+    public function changeAction(Request $request, Ingreso $ingreso)
     {
         $form = $this->createForm('AppBundle\Form\IngresoChangeType', $ingreso);
         $form->handleRequest($request);
@@ -102,7 +102,7 @@ class IngresoController extends Controller
 
         return array(
             'ingreso' => $ingreso,
-            'form'=>$form->createView()
+            'form' => $form->createView()
         );
     }
 
@@ -116,16 +116,16 @@ class IngresoController extends Controller
      * @return array
      * @throws \InvalidArgumentException
      */
-    public function leaveAction(Request $request,Ingreso $ingreso)
+    public function leaveAction(Request $request, Ingreso $ingreso)
     {
         $form = $this->createForm('AppBundle\Form\IngresoEndType', $ingreso);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ingreso->setFechaSalida(new \DateTime());
-            $salas=$ingreso->getSalas();
+            $salas = $ingreso->getSalas();
             /** @var IngresoSala $sa */
-            $sa = $salas[count($salas)-1];
+            $sa = $salas[count($salas) - 1];
             $sa->setFechaSalida(new \DateTime());
 
             $em = $this->getDoctrine()->getManager();
@@ -137,7 +137,7 @@ class IngresoController extends Controller
 
         return array(
             'ingreso' => $ingreso,
-            'form'=>$form->createView()
+            'form' => $form->createView()
         );
     }
 
@@ -178,13 +178,41 @@ class IngresoController extends Controller
         foreach ($cmp as $x) {
             $tl[] = $x;
         }
-         usort($tl, "AppBundle\\Controller\\IngresoController::cmp");
+        usort($tl, "AppBundle\\Controller\\IngresoController::cmp");
         $tl = array_reverse($tl);
         return array(
             'timeline' => $tl,
             'ingreso' => $ingreso
         );
     }
+
+    /**
+     * Finds and displays a Ingreso entity.
+     *
+     * @Route("/{id}")
+     * @Template()
+     * @Method("GET")
+     * @return array
+     */
+    public function indexAction()
+    {
+        $salas = array();
+        $em = $this->getDoctrine()->getManager();
+        $ingresos = $em->getRepository('AppBundle:Ingreso')->findBy(array('fechaSalida', null));
+
+        /** @var Ingreso $i */
+        foreach ($ingresos as $i) {
+            if (!$salas[$i->getSala()->getId()]) {
+                $salas[$i->getSala()->getId()] = array('sala' => $i->getSala(), 'ingresos' => array());
+            }
+            $salas[$i->getSala()->getId()]['ingresos'][]=$i;
+        }
+
+        return array(
+            'salas' => $salas
+        );
+    }
+
 
     public static function cmp($a, $b)
     {
