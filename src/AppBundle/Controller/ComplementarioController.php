@@ -123,12 +123,19 @@ class ComplementarioController extends Controller
      */
     public function resultAction(Request $request, Complementario $complementario)
     {
+        /** @var User $user */
+        $user = $this->getUser();
+
+        if ($user->hasRole("ROLE_LABORATORIO"))
+            $complementario->setLaboratorista($user);
+
         $form = $this->createForm('AppBundle\Form\ComplementarioEndType', $complementario);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $em = $this->getDoctrine()->getManager();
+
             $em->persist($complementario);
             $em->flush();
 

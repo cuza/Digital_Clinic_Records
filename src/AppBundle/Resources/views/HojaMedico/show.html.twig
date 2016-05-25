@@ -146,8 +146,10 @@
             <a class="btn btn-warning" href="{{ path('app_complementario_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Solicitar
                 complementario</a>
         {% else %}
+        {% if is_granted('ROLE_DOCTOR') or is_granted('ROLE_RESIDENTE') %}
             <a class="btn btn-warning" href="{{ path('app_complementario_new', {'id' : hoja.id}) }}">Solicitar
                 complementario</a>
+        {% endif %}
         {% endif %}
 
     </section>
