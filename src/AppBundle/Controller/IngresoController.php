@@ -209,6 +209,10 @@ class IngresoController extends Controller
                 return $e->getDatetime();
             case "AppBundle\\Entity\\HojaEnfermeria2":
                 return $e->getDate();
+            case "AppBundle\\Entity\\Consulta":
+                return $e->getFecha();
+            case "AppBundle\\Entity\\Ingreso":
+                return $e->getFechaIngreso();
         }
     }
 }

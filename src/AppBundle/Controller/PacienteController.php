@@ -55,8 +55,22 @@ class PacienteController extends Controller
      */
     public function showAction(Paciente $paciente)
     {
+        $c = $paciente->getConsultas();
+        $i = $paciente->getIngresos();
+
+        $tl = array();
+        foreach ($c as $x) {
+            $tl[] = $x;
+        }
+        foreach ($i as $x) {
+            $tl[] = $x;
+        }
+
+        usort($tl, "AppBundle\\Controller\\IngresoController::cmp");
+        $tl = array_reverse($tl);
         return array(
-            'paciente' => $paciente
+            'paciente' => $paciente,
+            'timeline' => $tl
         );
     }
 
