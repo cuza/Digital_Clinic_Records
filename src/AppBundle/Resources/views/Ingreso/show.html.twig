@@ -39,8 +39,6 @@
                     </div>
                     <div class="box-body">
                         <ul class="nav nav-stacked">
-                            {#<li><a href="{{ path('paciente_show', {'id': ingreso.paciente.id }) }}">Paciente: <span class="pull-right">{{ ingreso.paciente.nombre }} {{ ingreso.paciente.primerApellido }} {{ ingreso.paciente.segundoApellido }}</span></a>#}
-                            {#</li>#}
                             <li><a href="#">Sala: <span class="pull-right">{{ ingreso.sala.sala.nombre }}</span></a>
                             </li>
                             <li><a href="#">Servicio: <span
@@ -102,7 +100,7 @@
                 </div>
             </div>
         </div>
-
+       {% if is_granted('ROLE_ENFERMERO') %}
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 Nueva hoja enfermería <span class="caret"></span>
@@ -113,9 +111,12 @@
                         depociciones</a></li>
             </ul>
         </div>
+       {% endif %}
+        {% if is_granted('ROLE_DOCTOR') or is_granted('ROLE_RESIDENTE') %}
         <a class="btn btn-default" href="{{ path('app_hojamedico_new', { 'id': ingreso.id }) }}">Nueva hoja de
             evolución</a>
         <a class="btn btn-default" href="{{ path('app_ingreso_change', { 'id': ingreso.id }) }}">Transferir de sala</a>
         <a class="btn btn-default" href="{{ path('app_ingreso_leave', { 'id': ingreso.id }) }}">Dar de alta/baja</a>
+        {% endif %}
     </section>
 {% endblock %}

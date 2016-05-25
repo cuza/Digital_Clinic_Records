@@ -23,18 +23,24 @@
                                     class="fa fa-user-md fa-2x"></i> Hoja de evolución
                         </h3>
                         {% if hoja.ingreso %}
-                        <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': hoja.ingreso.paciente.id }) }}">{{ hoja.ingreso.paciente.nombre }} {{ hoja.ingreso.paciente.primerApellido }} {{ hoja.ingreso.paciente.segundoApellido }}</a></h5>
+                            <h5 class="widget-user-desc">Paciente: <a class="text-navy"
+                                                                      href="{{ path('paciente_show', {'id': hoja.ingreso.paciente.id }) }}">{{ hoja.ingreso.paciente.nombre }} {{ hoja.ingreso.paciente.primerApellido }} {{ hoja.ingreso.paciente.segundoApellido }}</a>
+                            </h5>
                         {% endif %}
                         {% if hoja.consulta %}
-                            <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': hoja.consulta.paciente.id }) }}">{{ hoja.consulta.paciente.nombre }} {{ hoja.consulta.paciente.primerApellido }} {{ hoja.consulta.paciente.segundoApellido }}</a></h5>
+                            <h5 class="widget-user-desc">Paciente: <a class="text-navy"
+                                                                      href="{{ path('paciente_show', {'id': hoja.consulta.paciente.id }) }}">{{ hoja.consulta.paciente.nombre }} {{ hoja.consulta.paciente.primerApellido }} {{ hoja.consulta.paciente.segundoApellido }}</a>
+                            </h5>
                         {% endif %}
                         {% if hoja.doctor %}
-                        <h5 class="widget-user-desc">Dr. : {{  hoja.doctor.nombre }}</h5>
+                            <h5 class="widget-user-desc">Dr. : {{ hoja.doctor.nombre }}</h5>
                         {% endif %}
                         {% if hoja.residente %}
-                            <h5 class="widget-user-desc">Dr. : {{  hoja.residente.nombre }}(Residente - {{ hoja.residente.ano }} año)</h5>
+                            <h5 class="widget-user-desc">Dr. : {{ hoja.residente.nombre }}(Residente
+                                - {{ hoja.residente.ano }} año)</h5>
                         {% endif %}
-                            <h5 class="widget-user-desc">Fecha: {{  hoja.datetime|date('d/m/y') }} ({{ hoja.datetime|ago }})</h5>
+                        <h5 class="widget-user-desc">Fecha: {{ hoja.datetime|date('d/m/y') }} ({{ hoja.datetime|ago }}
+                            )</h5>
                     </div><!-- /.box-header -->
                     <div class="box-body">
 
@@ -44,7 +50,7 @@
                                 <li><a href="#tab_2" data-toggle="tab">Examen Físico</a></li>
                                 <li><a href="#tab_3" data-toggle="tab">Impresión Diagnostica</a></li>
                                 <li><a href="#tab_4" data-toggle="tab">Evolución y tratamiento</a></li>
-                               </ul>
+                            </ul>
                             <div class="tab-content">
                                 <div class="tab-pane active" id="tab_1">
                                     <b>Historia de la enfermedad actual:</b>
@@ -77,63 +83,72 @@
                 </div><!-- /.box -->
             </div>
         </div>
-{% if hoja.complemetarios.get(0) %}
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="box box-default ">
-                    <div class="box-header with-border">
-                        <i class="fa fa-heartbeat fa-fw"></i> Complementarios
-                    </div>
-                    <div class="box-body box-timeline">
-                        <ul class="timeline">
-                            {% for element in hoja.complemetarios | sort|reverse %}
-                            <li class="{% if (loop.index + 1) %2 %}timeline-inverted{% else %}{% endif %}">
-                                {% if element.laboratorista and element.resultado %}
-                                    <div class="timeline-badge bg-green">
-                                        <i class="fa fa-heartbeat"></i>
-                                    </div>
-                                {% else %}
-                                    <div class="timeline-badge ">
-                                        <i class="fa fa-hourglass-o"></i>
-                                    </div>
-                                {% endif %}
-                                <div class="timeline-panel">
-                                    <div class="timeline-heading">
-                                        <h4 class="timeline-title">Complementario <small>({{ element.nombre }})</small></h4>
-                                        <p>
-                                            <small class="text-muted"><i
-                                                        class="fa fa-clock-o"></i> {{ element.datetime|date('d/m/y') }} {{ element.datetime|ago }}
-                                            </small>
-                                        </p>
-                                    </div>
-                                    <div class="timeline-body">
+        {% if hoja.complemetarios.get(0) %}
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="box box-default ">
+                        <div class="box-header with-border">
+                            <i class="fa fa-heartbeat fa-fw"></i> Complementarios
+                        </div>
+                        <div class="box-body box-timeline">
+                            <ul class="timeline">
+                                {% for element in hoja.complemetarios | sort|reverse %}
+                                    <li class="{% if (loop.index + 1) %2 %}timeline-inverted{% else %}{% endif %}">
                                         {% if element.laboratorista and element.resultado %}
-                                            <p><a href="{{ path('app_complementario_show', {'id': element.id }) }}">Mostrar resultados</a></p>
+                                            <div class="timeline-badge bg-green">
+                                                <i class="fa fa-heartbeat"></i>
+                                            </div>
                                         {% else %}
-                                            <small>Este complementario aun está siendo procesado</small>
+                                            <div class="timeline-badge ">
+                                                <i class="fa fa-hourglass-o"></i>
+                                            </div>
                                         {% endif %}
-                                    </div>
-                                </div>
-                            </li>
-                            {% endfor %}
-                        </ul>
+                                        <div class="timeline-panel">
+                                            <div class="timeline-heading">
+                                                <h4 class="timeline-title">Complementario
+                                                    <small>({{ element.nombre }})</small>
+                                                </h4>
+                                                <p>
+                                                    <small class="text-muted"><i
+                                                                class="fa fa-clock-o"></i> {{ element.datetime|date('d/m/y') }} {{ element.datetime|ago }}
+                                                    </small>
+                                                </p>
+                                            </div>
+                                            <div class="timeline-body">
+                                                {% if element.laboratorista and element.resultado %}
+                                                    <p>
+                                                        <a href="{{ path('app_complementario_show', {'id': element.id }) }}">Mostrar
+                                                            resultados</a></p>
+                                                {% else %}
+                                                    <small>Este complementario aun está siendo procesado</small>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-{% endif %}
+        {% endif %}
         {% if paciente %}
-        <div class="btn-group">
-            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-                Procesar <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ path('app_consulta_fetch', {'hid': hoja.id,'pid':paciente.id}) }}">Archivar Consulta</a></li>
-                <li><a href="{{ path('app_ingreso_fetch', {'hid': hoja.id,'pid':paciente.id}) }}">Ingresar</a></li>
-            </ul>
-        </div>
-        <a class="btn btn-warning" href="{{ path('app_complementario_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Solicitar complementario</a>
-   {% endif %}
-        <a class="btn btn-warning" href="{{ path('app_complementario_new', {'id' : hoja.id}) }}">Solicitar complementario</a>
+            <div class="btn-group">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
+                    Procesar <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="{{ path('app_consulta_fetch', {'hid': hoja.id,'pid':paciente.id}) }}">Archivar
+                            Consulta</a></li>
+                    <li><a href="{{ path('app_ingreso_fetch', {'hid': hoja.id,'pid':paciente.id}) }}">Ingresar</a></li>
+                </ul>
+            </div>
+            <a class="btn btn-warning" href="{{ path('app_complementario_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Solicitar
+                complementario</a>
+        {% else %}
+            <a class="btn btn-warning" href="{{ path('app_complementario_new', {'id' : hoja.id}) }}">Solicitar
+                complementario</a>
+        {% endif %}
+
     </section>
 {% endblock %}
