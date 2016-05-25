@@ -24,7 +24,7 @@
                         <div class="widget-user-image">
 
                         </div><!-- /.widget-user-image -->
-                        <h3 class="widget-user-username"><i class="fa fa-medkit fa-2x"></i> Resumen de ingreso
+                        <h3 class="widget-user-username"><i class="fa fa-hospital-o fa-2x"></i> Resumen de ingreso
                         </h3>
                         <br>
                         <h5 class="widget-user-desc">Paciente: <a class="text-navy"
@@ -97,9 +97,6 @@
             </div>
         </div>
 
-        <a class="btn btn-default" href="{{ path('app_hojamedico_new', { 'id': ingreso.id }) }}">Nueva hoja de evolución</a>
-        <a class="btn btn-default" href="{{ path('app_ingreso_change', { 'id': ingreso.id }) }}">Transferir de sala</a>
-        <a class="btn btn-default" href="{{ path('app_ingreso_leave', { 'id': ingreso.id }) }}">Dar de alta/baja</a>
         <div class="btn-group">
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 Nueva hoja enfermería <span class="caret"></span>
@@ -109,7 +106,9 @@
                 <li><a href="{{ path('app_hojaenfermeria2_new', {'id': ingreso.id }) }}">Hoja de líquidos y depociciones</a></li>
             </ul>
         </div>
+        <a class="btn btn-default" href="{{ path('app_hojamedico_new', { 'id': ingreso.id }) }}">Nueva hoja de evolución</a>
+        <a class="btn btn-default" href="{{ path('app_ingreso_change', { 'id': ingreso.id }) }}">Transferir de sala</a>
+        <a class="btn btn-default" href="{{ path('app_ingreso_leave', { 'id': ingreso.id }) }}">Dar de alta/baja</a>
 
     </section>
-
 {% endblock %}
