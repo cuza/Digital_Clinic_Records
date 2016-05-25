@@ -6,5 +6,9 @@
 })(jQuery);
 
 $(document).ready(function() {
-    $('.table').DataTable();
+    $('.table').DataTable({
+        "oLanguage": {
+            "sUrl": "/bower_components/datatables-plugins/i18n/Spanish.lang.json"
+        }
+    });
 } );
