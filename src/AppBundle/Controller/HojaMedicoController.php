@@ -51,7 +51,7 @@ class HojaMedicoController extends Controller
             $em->persist($hoja);
             $em->flush();
 
-            return $this->redirectToRoute('app_ingreso_show', array('id' => $ingreso->getId()));
+            return $this->redirectToRoute('hoja_medico_show', array('id' => $hoja->getId()));
         }
         return array(
 
