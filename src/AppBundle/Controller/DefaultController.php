@@ -35,9 +35,9 @@ class DefaultController extends Controller
         $pacientes = $em->getRepository('AppBundle:Paciente')
             ->createQueryBuilder('p')
             ->orWhere("p.cId = :q")
-            ->orWhere("p.nombre = :q")
-            ->orWhere("p.primerApellido = :q")
-            ->orWhere("p.segundoApellido = :q")
+            ->orWhere("p.nombre LIKE '%:q%'")
+            ->orWhere("p.primerApellido LIKE '%:q%'")
+            ->orWhere("p.segundoApellido LIKE '%:q%'")
             ->setParameter('q', $q)
         ->getQuery()->getResult();
         dump($pacientes);
