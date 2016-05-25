@@ -79,10 +79,14 @@
             </div>
             <div class="">
                 <div class="col-md-12">
-                    <div class="box box-default ">
+
+                    <div class="box box-default collapsed-box">
                         <div class="box-header with-border">
-                            <i class="fa fa-heartbeat fa-fw"></i> Historial médico
-                        </div>
+                            <h3 class="box-title"><i class="fa fa-heartbeat fa-fw"></i> Historial médico</h3>
+                            <div class="box-tools pull-right">
+                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                            </div><!-- /.box-tools -->
+                        </div><!-- /.box-header -->
                         <div class="box-body box-timeline">
                             <ul class="timeline">
                                 {% for element in timeline %}
@@ -92,8 +96,9 @@
                                     </li>
                                 {% endfor %}
                             </ul>
-                        </div>
+                        </div><!-- /.box-body -->
                     </div>
+
                 </div>
             </div>
         </div>

@@ -13,5 +13,23 @@
     </section>
 {% endblock %}
 {% block ContentBody %}
+    <table class="table" id="datatables-table">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>CI</th>
+            <th>Fecha de nacimiento</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for paciente in pacientes %}
+            <tr>
+                <td><a href="{{ path('paciente_show', {'id': paciente.id }) }}">{{ paciente.nombre }} {{ paciente.primerApellido }} {{ paciente.segundoApellido }}</a></td>
+                <td>{{ paciente.cId }}</td>
+                <td>{{ paciente.fechaNacimiento | date('d/m/y') }}</td>
+            </tr>
 
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

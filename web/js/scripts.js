@@ -11,7 +11,7 @@
 })(jQuery);
 
 $(document).ready(function() {
-    $('#complementarios-table').DataTable({
+    $('#datatables-table').DataTable({
         "oLanguage": {
             "sUrl": "/bower_components/datatables-plugins/i18n/Spanish.lang.json"
         }
