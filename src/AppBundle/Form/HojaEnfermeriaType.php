@@ -21,8 +21,8 @@ class HojaEnfermeriaType extends AbstractType
             ->add('tensionArterialMax')
             ->add('tensionArterialMin')
 //            ->add('datetime', 'datetime')
-            ->add('enfermero')
-            ->add('ingreso')
+//            ->add('enfermero')
+//            ->add('ingreso')
         ;
     }
     

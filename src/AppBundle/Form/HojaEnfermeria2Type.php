@@ -19,8 +19,8 @@ class HojaEnfermeria2Type extends AbstractType
             ->add('deposiciones')
             ->add('orina')
 //            ->add('date', 'date')
-            ->add('enfermero')
-            ->add('ingreso')
+//            ->add('enfermero')
+//            ->add('ingreso')
         ;
     }
     
