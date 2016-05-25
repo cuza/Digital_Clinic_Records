@@ -22,7 +22,7 @@ class DefaultController extends Controller
     /**
      * @Security("has_role('ROLE_USER')")
      * @Template()
-     * @Route("/search")
+     * @Route("/buscar")
      */
     public function searchAction()
     {
