@@ -45,16 +45,6 @@ class PacienteController extends Controller
     }
 
     /**
-     * @Route("/post")
-     * @Template()
-     */
-    public function postAction()
-    {
-        return array(// ...
-        );
-    }
-
-    /**
      * Finds and displays a Paciente entity.
      *
      * @Route("/{id}", name="paciente_show")
