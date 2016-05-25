@@ -128,11 +128,12 @@
                 Procesar <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="{{ path('app_consulta_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Archivar Consulta</a></li>
-                <li><a href="{{ path('app_ingreso_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Ingresar</a></li>
+                <li><a href="{{ path('app_consulta_fetch', {'hid': hoja.id,'pid':paciente.id}) }}">Archivar Consulta</a></li>
+                <li><a href="{{ path('app_ingreso_fetch', {'hid': hoja.id,'pid':paciente.id}) }}">Ingresar</a></li>
             </ul>
         </div>
         <a class="btn btn-warning" href="{{ path('app_complementario_fetch', {'hid':hoja.id,'pid':paciente.id}) }}">Solicitar complementario</a>
    {% endif %}
+        <a class="btn btn-warning" href="{{ path('app_complementario_new', {'id' : hoja.id}) }}">Solicitar complementario</a>
     </section>
 {% endblock %}
