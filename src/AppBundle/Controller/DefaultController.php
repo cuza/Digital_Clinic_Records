@@ -34,11 +34,12 @@ class DefaultController extends Controller
         $em = $this->getDoctrine()->getManager();
         $pacientes = $em->getRepository('AppBundle:Paciente')
             ->createQueryBuilder('p')
-            ->orWhere("p.cId = :q")
-            ->orWhere("p.nombre LIKE '%:q%'")
-            ->orWhere("p.primerApellido LIKE '%:q%'")
-            ->orWhere("p.segundoApellido LIKE '%:q%'")
-            ->setParameter('q', $q)
+            ->orWhere("p.cId LIKE :q")
+            ->orWhere("p.nombre LIKE :q")
+            ->orWhere("p.primerApellido LIKE :q")
+            ->orWhere("p.segundoApellido LIKE :q")
+            ->orWhere("CONCAT(CONCAT(CONCAT(p.nombre,' '),CONCAT(p.primerApellido,' ')),CONCAT(p.segundoApellido,' ')) LIKE :q")
+            ->setParameter('q', '%'.$q.'%')
         ->getQuery()->getResult();
         dump($pacientes);
         return array(
