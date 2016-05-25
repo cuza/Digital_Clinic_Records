@@ -29,6 +29,7 @@ class HojaEnfermeria2Controller extends Controller
      */
     public function newAction(Request $request, Ingreso $ingreso)
     {
+        $error = null;
         $em = $this->getDoctrine()->getManager();
 //        if ($hoja == null) {
         $hoja = new HojaEnfermeria2();
@@ -39,19 +40,24 @@ class HojaEnfermeria2Controller extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             /** @var User $user */
             $user = $this->getUser();
-            $hoja->setDatetime(new \DateTime());
+            $hoja->setDate(new \DateTime());
             if ($user->hasRole("ROLE_ENFERMERO"))
                 $hoja->setEnfermero($user);
             $hoja->setIngreso($ingreso);
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($hoja);
-            $em->flush();
+            try {
+                $em->flush();
+                return $this->redirectToRoute('app_ingreso_show', array('id' => $ingreso->getId()));
+            } catch (\Exception $e) {
+                $error = "Solo se puede añadir una hoja de liquidos y depocisiones diaria";
+            }
 
-            return $this->redirectToRoute('app_ingreso_show', array('id' => $ingreso->getId()));
+
         }
         return array(
-
+            'error' => $error,
             'ingreso' => $ingreso,
             'form' => $editForm->createView()
         );

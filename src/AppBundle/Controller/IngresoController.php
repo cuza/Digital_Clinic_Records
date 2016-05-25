@@ -59,12 +59,15 @@ class IngresoController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             /** @var User $user */
             $ingreso->setPaciente($paciente);
+            $ingreso->addHojasMedico($hoja);
             $ingreso->setFechaIngreso(new \DateTime());
 
 
             $em = $this->getDoctrine()->getManager();
-            $em->persist($hoja);
             $em->persist($ingreso);
+
+            $em->persist($hoja);
+            $em->persist($paciente);
             $em->flush();
 
             return $this->redirectToRoute('app_ingreso_show', array('id' => $ingreso->getId()));
