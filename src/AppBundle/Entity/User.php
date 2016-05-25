@@ -27,7 +27,7 @@ abstract class User extends BaseUser
 
     /**
      * @var string
-     *
+     * @Assert\Regex("[a-z]")
      * @ORM\Column(type="string", length=255, nullable=true, name="Nombre")
      */
     protected $nombre;

@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Paciente
@@ -26,21 +27,21 @@ class Paciente
 
     /**
      * @var string
-     *
+     * @Assert\Regex("[a-z]")
      * @ORM\Column(type="string", length=255, nullable=true, name="Nombre")
      */
     private $nombre;
 
     /**
      * @var string
-     *
+     * @Assert\Regex("[a-z]")
      * @ORM\Column(type="string", length=255, nullable=true, name="Primer_Apellido")
      */
     private $primerApellido;
 
     /**
      * @var string
-     *
+     * @Assert\Regex("[a-z]")
      * @ORM\Column(type="string", length=255, nullable=true, name="Segundo_Apellido")
      */
     private $segundoApellido;
@@ -167,13 +168,14 @@ class Paciente
 
     /**
      * @var string
-     *
+     * @Assert\Regex("[a-z]")
      * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_nombre")
      */
     private $EmergenciasNombre;
 
     /**
      * @var string
+     * @Assert\Regex("[a-z]")
      *
      * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_primer_apellido")
      */
@@ -181,6 +183,7 @@ class Paciente
 
     /**
      * @var string
+     * @Assert\Regex("[a-z]")
      *
      * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_segundo_apellido")
      */
