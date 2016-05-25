@@ -21,9 +21,9 @@
                     Puedes intentar <a href="{{ path('homepage') }}">regresar a la pagina de inicio</a> o usar el formulario
                     de busqueda.
                 </p>
-                <form class="search-form">
+                <form action="/buscar" method="get" class="search-form">
                     <div class="input-group">
-                        <input type="text" name="search" class="form-control" placeholder="Buscar">
+                        <input type="text" name="q" class="form-control" placeholder="Buscar">
                         <div class="input-group-btn">
                             <button type="submit" name="submit" class="btn btn-danger btn-flat"><i
                                         class="fa fa-search"></i></button>
