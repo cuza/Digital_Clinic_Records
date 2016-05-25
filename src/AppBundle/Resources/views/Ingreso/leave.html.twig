@@ -41,4 +41,20 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script>
+        (function ($) {
+            var $n = $("#ingreso_end_necropsia"), $doa = $("#ingreso_end_estadoEgreso");
+            console.log($doa, $n);
+            $n.attr('disabled','');
+            $doa.change(function(e){
+                console.log($(e.target).val()=="Fallecido");
+                if($(e.target).val()=="Fallecido"){
+                    $n.removeAttr('disabled');
+                }else{
+                    $n.attr('checked',false);
+                    $n.attr('disabled','');
+                }
+            });
+        })(jQuery);
+    </script>
 {% endblock %}
