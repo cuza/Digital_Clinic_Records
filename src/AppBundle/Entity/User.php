@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
@@ -27,7 +28,11 @@ abstract class User extends BaseUser
 
     /**
      * @var string
-     * @Assert\Regex("[a-z]")
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Un nombre no puede contener números"
+     * )
      * @ORM\Column(type="string", length=255, nullable=true, name="Nombre")
      */
     protected $nombre;

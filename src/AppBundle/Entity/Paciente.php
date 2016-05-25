@@ -27,21 +27,33 @@ class Paciente
 
     /**
      * @var string
-     * @Assert\Regex("[a-z]")
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Un nombre no puede contener números"
+     * )
      * @ORM\Column(type="string", length=255, nullable=true, name="Nombre")
      */
     private $nombre;
 
     /**
      * @var string
-     * @Assert\Regex("[a-z]")
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Un apellido no puede contener números"
+     * )
      * @ORM\Column(type="string", length=255, nullable=true, name="Primer_Apellido")
      */
     private $primerApellido;
 
     /**
      * @var string
-     * @Assert\Regex("[a-z]")
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Un apellido no puede contener números"
+     * )
      * @ORM\Column(type="string", length=255, nullable=true, name="Segundo_Apellido")
      */
     private $segundoApellido;
@@ -168,23 +180,33 @@ class Paciente
 
     /**
      * @var string
-     * @Assert\Regex("[a-z]")
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Un nombre no puede contener números"
+     * )
      * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_nombre")
      */
     private $EmergenciasNombre;
 
     /**
      * @var string
-     * @Assert\Regex("[a-z]")
-     *
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Un apellido no puede contener números"
+     * )
      * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_primer_apellido")
      */
     private $EmergenciasPrimerApellido;
 
     /**
      * @var string
-     * @Assert\Regex("[a-z]")
-     *
+     * @Assert\Regex(
+     *     pattern="/\d/",
+     *     match=false,
+     *     message="Un apellido no puede contener números"
+     * )
      * @ORM\Column(type="string", length=255, nullable=true, name="Emergencias_segundo_apellido")
      */
     private $EmergenciasSegundoApellido;

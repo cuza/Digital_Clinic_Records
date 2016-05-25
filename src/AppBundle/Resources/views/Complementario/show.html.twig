@@ -25,9 +25,12 @@
                         </h3>
                         <br>
                         {% if complementario.hojaMedico.ingreso %}
-                            <h5 class="widget-user-desc">Paciente: <a class="text-navy"
-                                                                      href="{{ path('paciente_show', {'id': complementario.hojaMedico.ingreso.paciente}) }}">{{ complementario.hojaMedico.ingreso.paciente.nombre }} {{ complementario.hojaMedico.ingreso.paciente.primerApellido }} {{ complementario.hojaMedico.ingreso.paciente.segundoApellido }}</a>
-                            </h5>
+                            {% if is_granted('ROLE_LABORATORIO') %}
+                            {% else %}
+                                <h5 class="widget-user-desc">Paciente: <a class="text-navy"
+                                                                          href="{{ path('paciente_show', {'id': complementario.hojaMedico.ingreso.paciente.id}) }}">{{ complementario.hojaMedico.ingreso.paciente.nombre }} {{ complementario.hojaMedico.ingreso.paciente.primerApellido }} {{ complementario.hojaMedico.ingreso.paciente.segundoApellido }}</a>
+                                </h5>
+                            {% endif %}
                         {% endif %}
                         {% if complementario.hojaMedico.consulta %}
                             <h5 class="widget-user-desc">Paciente: <a class="text-navy"

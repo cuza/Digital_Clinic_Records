@@ -18,7 +18,7 @@ class ComplementarioEndType extends AbstractType
 //            ->add('nombre')
             ->add('resultado')
 //            ->add('datetime', 'datetime')
-            ->add('cancelado')
+            ->add('cancelado','Symfony\Component\Form\Extension\Core\Type\CheckboxType', array('label' => 'Cancelar orden', 'required' => false))
             ->add('motivoCancelado')
 //            ->add('hojaMedico')
 //            ->add('laboratorista')
