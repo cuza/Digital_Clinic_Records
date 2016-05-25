@@ -41,7 +41,6 @@ class DefaultController extends Controller
             ->orWhere("CONCAT(CONCAT(CONCAT(p.nombre,' '),CONCAT(p.primerApellido,' ')),CONCAT(p.segundoApellido,' ')) LIKE :q")
             ->setParameter('q', '%'.$q.'%')
         ->getQuery()->getResult();
-        dump($pacientes);
         return array(
             'pacientes' => $pacientes
         );

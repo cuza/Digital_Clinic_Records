@@ -213,7 +213,6 @@ class IngresoController extends Controller
                 $salas[$i->getSala()->getId()]['ingresos'][] = $i;
             }
         }
-dump($salas);
         return array(
             'salas' => $salas
         );
