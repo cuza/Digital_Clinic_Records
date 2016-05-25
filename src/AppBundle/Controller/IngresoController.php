@@ -189,7 +189,7 @@ class IngresoController extends Controller
     /**
      * Finds and displays a Ingreso entity.
      *
-     * @Route("/{id}")
+     * @Route("/")
      * @Template()
      * @Method("GET")
      * @return array

@@ -48,7 +48,7 @@
     {% endif %}
     {% if is_granted('ROLE_DOCTOR') or is_granted('ROLE_RESIDENTE') or is_granted('ROLE_ESTUDIANTE') %}
     <li>
-        <a id="nav_ingreso" href="pages/widgets.html">
+        <a id="nav_ingreso" href="{{ path('app_ingreso_index') }}">
             <i class="fa fa-hospital-o"></i> <span>Ingresados</span>
             {#<small class="label pull-right bg-green">new</small>#}
         </a>
