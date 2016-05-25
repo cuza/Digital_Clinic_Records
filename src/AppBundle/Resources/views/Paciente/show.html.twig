@@ -101,8 +101,28 @@
                     </div>
                 {% endif %}
             </div>
+
+            <div class="row">
+                <div class="col-md-11">
+                    <div class="box box-default ">
+                        <div class="box-header with-border">
+                            <i class="fa fa-heartbeat fa-fw"></i> Registros médicos
+                        </div>
+                        <div class="box-body box-timeline">
+                            <ul class="timeline">
+                                {% for element in timeline %}
+                                    <li class="{% if (loop.index + 1) %2 %}timeline-inverted{% else %}{% endif %}">
+                                        {% set template = "@App/Timeline/" ~ (element|class) ~ ".html.twig" %}
+                                        {% include template with {'element': element} %}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <a href="{{ path('app_paciente_edit', {'id':paciente.id}) }}" id="paciente_edit"
-               class="btn btn-success pull-left">Editar</a>
+               class="btn btn-success">Editar</a>
         </section>
-        {{ dump(paciente.consultas.get(2)|class) }}
+
     {% endblock %}
