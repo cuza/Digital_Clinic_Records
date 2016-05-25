@@ -104,4 +104,5 @@
             <a href="{{ path('app_paciente_edit', {'id':paciente.id}) }}" id="paciente_edit"
                class="btn btn-success pull-left">Editar</a>
         </section>
+        {{ dump(paciente.consultas.get(2)|class) }}
     {% endblock %}
