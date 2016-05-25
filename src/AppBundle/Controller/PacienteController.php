@@ -92,12 +92,9 @@ class PacienteController extends Controller
             return $this->redirectToRoute('paciente_show', array('id' => $paciente->getId()));
         }
 
-
         return array(
             'paciente' => $paciente,
             'edit_form' => $form->createView(),
         );
-
-
     }
 }

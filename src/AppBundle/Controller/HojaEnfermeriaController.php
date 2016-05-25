@@ -2,6 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Ingreso;
+use AppBundle\Entity\User;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -17,47 +20,41 @@ use AppBundle\Form\HojaEnfermeriaType;
 class HojaEnfermeriaController extends Controller
 {
     /**
-     * Lists all HojaEnfermeria entities.
-     *
-     * @Route("/", name="hojaenfermeria_index")
-     * @Method("GET")
+     * @Route("/new/{id}")
+     * @Template()
+     * @param Request $request
+     * @param Ingreso $ingreso
+     * @return array
+     * @throws \InvalidArgumentException
      */
-    public function indexAction()
+    public function newAction(Request $request, Ingreso $ingreso)
     {
         $em = $this->getDoctrine()->getManager();
+//        if ($hoja == null) {
+        $hoja = new HojaEnfermeria();
+//        }
+        $editForm = $this->createForm('AppBundle\Form\HojaEnfermeriaType', $hoja);
+        $editForm->handleRequest($request);
 
-        $hojaEnfermerias = $em->getRepository('AppBundle:HojaEnfermeria')->findAll();
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            /** @var User $user */
+            $user = $this->getUser();
+            $hoja->setDatetime(new \DateTime());
+            if ($user->hasRole("ROLE_ENFERMERO"))
+                $hoja->setEnfermero($user);
+            $hoja->setIngreso($ingreso);
 
-        return $this->render('AppBundle:HojaEnfermeria:index.html.twig', array(
-            'hojaEnfermerias' => $hojaEnfermerias,
-        ));
-    }
-
-    /**
-     * Creates a new HojaEnfermeria entity.
-     *
-     * @Route("/new", name="hojaenfermeria_new")
-     * @Method({"GET", "POST"})
-     */
-    public function newAction(Request $request)
-    {
-        $hojaEnfermeria = new HojaEnfermeria();
-        $form = $this->createForm('AppBundle\Form\HojaEnfermeriaType', $hojaEnfermeria);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $hojaEnfermeria->setDatetime(new \DateTime());
-            $em->persist($hojaEnfermeria);
+            $em->persist($hoja);
             $em->flush();
 
-            return $this->redirectToRoute('hojaenfermeria_show', array('id' => $hojaEnfermeria->getId()));
+            return $this->redirectToRoute('app_ingreso_show', array('id' => $ingreso->getId()));
         }
+        return array(
 
-        return $this->render('AppBundle:HojaEnfermeria:new.html.twig', array(
-            'hojaEnfermeria' => $hojaEnfermeria,
-            'form' => $form->createView(),
-        ));
+            'ingreso' => $ingreso,
+            'form' => $editForm->createView()
+        );
     }
 
     /**
@@ -68,11 +65,9 @@ class HojaEnfermeriaController extends Controller
      */
     public function showAction(HojaEnfermeria $hojaEnfermeria)
     {
-        $deleteForm = $this->createDeleteForm($hojaEnfermeria);
 
         return $this->render('AppBundle:HojaEnfermeria:show.html.twig', array(
             'hojaEnfermeria' => $hojaEnfermeria,
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
@@ -84,7 +79,6 @@ class HojaEnfermeriaController extends Controller
      */
     public function editAction(Request $request, HojaEnfermeria $hojaEnfermeria)
     {
-        $deleteForm = $this->createDeleteForm($hojaEnfermeria);
         $editForm = $this->createForm('AppBundle\Form\HojaEnfermeriaType', $hojaEnfermeria);
         $editForm->handleRequest($request);
 
@@ -99,43 +93,7 @@ class HojaEnfermeriaController extends Controller
         return $this->render('AppBundle:HojaEnfermeria:edit.html.twig', array(
             'hojaEnfermeria' => $hojaEnfermeria,
             'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
         ));
     }
 
-    /**
-     * Deletes a HojaEnfermeria entity.
-     *
-     * @Route("/{id}", name="hojaenfermeria_delete")
-     * @Method("DELETE")
-     */
-    public function deleteAction(Request $request, HojaEnfermeria $hojaEnfermeria)
-    {
-        $form = $this->createDeleteForm($hojaEnfermeria);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($hojaEnfermeria);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('hojaenfermeria_index');
-    }
-
-    /**
-     * Creates a form to delete a HojaEnfermeria entity.
-     *
-     * @param HojaEnfermeria $hojaEnfermeria The HojaEnfermeria entity
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm(HojaEnfermeria $hojaEnfermeria)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('hojaenfermeria_delete', array('id' => $hojaEnfermeria->getId())))
-            ->setMethod('DELETE')
-            ->getForm()
-        ;
-    }
 }
