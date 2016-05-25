@@ -60,6 +60,7 @@ class IngresoController extends Controller
             /** @var User $user */
             $ingreso->setPaciente($paciente);
             $ingreso->addHojasMedico($hoja);
+            $hoja->setIngreso($ingreso);
             $ingreso->setFechaIngreso(new \DateTime());
 
 
