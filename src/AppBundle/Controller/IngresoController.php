@@ -206,11 +206,11 @@ class IngresoController extends Controller
 
         /** @var Ingreso $i */
         foreach ($ingresos as $i) {
-            if($i->getSala()) {
-                if (!array_key_exists($i->getSala()->getId(),$salas)) {
-                    $salas[$i->getSala()->getId()] = array('sala' => $i->getSala(), 'ingresos' => array());
+            if($i->getSala()->getSala()) {
+                if (!array_key_exists($i->getSala()->getSala()->getId(),$salas)) {
+                    $salas[$i->getSala()->getSala()->getId()] = array('sala' => $i->getSala()->getSala(), 'ingresos' => array());
                 }
-                $salas[$i->getSala()->getId()]['ingresos'][] = $i;
+                $salas[$i->getSala()->getSala()->getId()]['ingresos'][] = $i;
             }
         }
         return array(

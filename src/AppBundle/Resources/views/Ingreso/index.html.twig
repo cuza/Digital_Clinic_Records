@@ -20,7 +20,7 @@
                     <div class="col-md-3">
                         <div class="box box-default collapsed-box">
                             <div class="box-header with-border">
-                                <h3 class="box-title">{{ sala.sala.sala.nombre }}</h3>
+                                <h3 class="box-title">{{ sala.sala.nombre }}</h3>
                                 <div class="box-tools pull-right">
                                     <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
                                     </button>
@@ -28,11 +28,11 @@
                             </div><!-- /.box-header -->
                             <div class="box-body">
                                 <ul>
-                                    <li>
                                         {% for ingreso in sala.ingresos %}
+                                    <li>
                                             <a href="{{ path('app_ingreso_show', {'id': ingreso.id }) }}">{{ ingreso.paciente.nombre }} {{ ingreso.paciente.primerApellido }} {{ ingreso.paciente.segundoApellido }}</a>
-                                        {% endfor %}
                                     </li>
+                                        {% endfor %}
                                 </ul>
 
                             </div><!-- /.box-body -->
