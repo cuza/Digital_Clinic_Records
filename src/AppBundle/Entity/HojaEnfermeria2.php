@@ -32,8 +32,7 @@ class HojaEnfermeria2
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="liquido", type="integer")
+     * @ORM\Column(name="liquido", type="decimal", scale=2)
      */
     private $liquido;
 
@@ -46,8 +45,7 @@ class HojaEnfermeria2
 
     /**
      * @var int
-     *
-     * @ORM\Column(name="orina", type="integer")
+     * @ORM\Column(name="orina", type="decimal", scale=2)
      */
     private $orina;
 
