@@ -1,14 +1,15 @@
-Clean Symfony Template
+Registro médico
 ==========
 
-A clean and working Symfony 3 project ready for development purposes
+Aplicación web para el seguimiento de las historias clínicas
 
-How to use it
+Como instalarlo
 --------
 
-Run the following commands to create your [parameters.yml](app/config/parameters.yml.dist) file and install the assets of the project bundles (it works :100:% offline)
+Ejecuta los siguientes comandos para crear el fichero [parameters.yml](app/config/parameters.yml.dist), instalar las dependencias del proyecto (funcionan :100:% offline) y crear la base de datos y el usuario administrativo por defecto
 
 ```bash
-cd "route/to/your/project"
+cd "ruta/a/la/aplicacion"
 php composer.phar install
+php bin/console assets:install
 ```
