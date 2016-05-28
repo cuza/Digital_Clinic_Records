@@ -45,6 +45,7 @@ class IngresoController extends Controller
         $hoja = $em->getRepository("AppBundle:HojaMedico")->findOneBy(array('id' => $hid));
         $pid = $request->query->get('pid');
         $paciente = $em->getRepository("AppBundle:Paciente")->findOneBy(array('id' => $pid));
+        dump($paciente);
 
 //        $iid = $request->query->get('iid');
 //        $ingreso = null;

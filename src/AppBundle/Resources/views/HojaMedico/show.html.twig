@@ -16,7 +16,7 @@
 {% block ContentBody %}
     <section class="content">
         <div class="row">
-            <div class="col-md-9 col-md-offset-1">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="box box-widget widget-user-2">
                     <div class="widget-user-header bg-red">
                         <h3 class="widget-user-username"><i
@@ -51,7 +51,7 @@
                                 <li><a href="#tab_3" data-toggle="tab">Impresión Diagnostica</a></li>
                                 <li><a href="#tab_4" data-toggle="tab">Evolución y tratamiento</a></li>
                             </ul>
-                            <div class="tab-content">
+                            <div class="tab-content box-timeline">
                                 <div class="tab-pane active" id="tab_1">
                                     <b>Historia de la enfermedad actual:</b>
                                     <p>{{ hoja.historiaEnfermedadActual|raw }}</p>
@@ -99,7 +99,7 @@
                                                 <i class="fa fa-heartbeat"></i>
                                             </div>
                                         {% else %}
-                                            <div class="timeline-badge ">
+                                            <div class="timeline-badge">
                                                 <i class="fa fa-hourglass-o"></i>
                                             </div>
                                         {% endif %}

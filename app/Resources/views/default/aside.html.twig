@@ -1,5 +1,4 @@
 {% if(app.user) %}
-<!-- Sidebar user panel -->
 <div class="user-panel">
     <div class="pull-left image">
         <img src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}"
@@ -7,7 +6,7 @@
     </div>
     <div class="pull-left info">
         <p>{{ app.user.nombre }}</p>
-        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+        <a href="#"><i class="fa fa-circle text-success"></i> Online {{ app.user.lastLogin|ago }}</a>
     </div>
 </div>
 
@@ -63,17 +62,4 @@
         </a>
     </li>
     {% endif %}
-    {#<li class="treeview">#}
-        {#<a href="#">#}
-            {#<i class="fa fa-folder-open-o"></i>#}
-            {#<span>Archivo</span>#}
-            {#<i class="fa fa-angle-left pull-right"></i>#}
-        {#</a>#}
-        {#<ul class="treeview-menu">#}
-            {#<li><a id="nav_historias" href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> Historias#}
-                    {#Clínicas</a></li>#}
-            {#<li><a id="nav_consultas" href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Consultas</a></li>#}
-        {#</ul>#}
-    {#</li>#}
-
 </ul>

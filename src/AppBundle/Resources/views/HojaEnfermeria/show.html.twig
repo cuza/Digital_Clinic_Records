@@ -1,14 +1,14 @@
 {% extends '::base.html.twig' %}
 
  {% block title %}
-     Mostrar - Hoja de Temperatura
+     Mostrar - Hoja de signos vitales
  {% endblock %}
 
 {% block ContentHeader %}
     <section class="content-header">
         <h1>
-            Hoja de Temperatura
-            <small>Mostrar una hoja de temperatura</small>
+            Hoja de signos vitales
+            <small>Mostrar una hoja de signos vitales</small>
         </h1>
     </section>
 {% endblock %}
@@ -22,7 +22,7 @@
                         <div class="widget-user-image">
                         </div>
                         <h3 class="widget-user-username"><i
-                                    class="fa fa-stethoscope fa-2x"></i> Hoja de Temperatura
+                                    class="fa fa-stethoscope fa-2x"></i> Hoja de signos vitales
                         </h3>
                         <br>
                             <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': hojaEnfermeria.ingreso.paciente.id}) }}">{{ hojaEnfermeria.ingreso.paciente.nombre }} {{ hojaEnfermeria.ingreso.paciente.primerApellido }} {{ hojaEnfermeria.ingreso.paciente.segundoApellido }}</a></h5>

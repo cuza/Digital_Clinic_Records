@@ -82,7 +82,8 @@
                         <div class="box-header with-border">
                             <h3 class="box-title"><i class="fa fa-heartbeat fa-fw"></i> Historial médico</h3>
                             <div class="box-tools pull-right">
-                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i></button>
+                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                </button>
                             </div><!-- /.box-tools -->
                         </div><!-- /.box-header -->
                         <div class="box-body box-timeline">
@@ -96,27 +97,28 @@
                             </ul>
                         </div><!-- /.box-body -->
                     </div>
-
                 </div>
             </div>
         </div>
-       {% if is_granted('ROLE_ENFERMERO') %}
-        <div class="btn-group">
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                Nueva hoja enfermería <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-                <li><a href="{{ path('app_hojaenfermeria_new', {'id': ingreso.id }) }}">Hoja de temperatura</a></li>
-                <li><a href="{{ path('app_hojaenfermeria2_new', {'id': ingreso.id }) }}">Hoja de líquidos y
-                        deposiciones</a></li>
-            </ul>
-        </div>
-       {% endif %}
+        {% if is_granted('ROLE_ENFERMERO') %}
+            <div class="btn-group">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+                    Nueva hoja enfermería <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path('app_hojaenfermeria_new', {'id': ingreso.id }) }}">Hoja de signos vitales</a></li>
+                    <li><a href="{{ path('app_hojaenfermeria2_new', {'id': ingreso.id }) }}">Hoja de líquidos y
+                            deposiciones</a></li>
+                </ul>
+            </div>
+        {% endif %}
         {% if is_granted('ROLE_DOCTOR') or is_granted('ROLE_RESIDENTE') %}
-        <a class="btn btn-default" href="{{ path('app_hojamedico_new', { 'id': ingreso.id }) }}">Nueva hoja de
-            evolución</a>
-        <a class="btn btn-default" href="{{ path('app_ingreso_change', { 'id': ingreso.id }) }}">Transferir de sala</a>
-        <a class="btn btn-default" href="{{ path('app_ingreso_leave', { 'id': ingreso.id }) }}">Dar de alta/baja</a>
+            <a class="btn btn-default" href="{{ path('app_hojamedico_new', { 'id': ingreso.id }) }}">Nueva hoja de
+                evolución</a>
+            <a class="btn btn-default" href="{{ path('app_ingreso_change', { 'id': ingreso.id }) }}">Transferir de
+                sala</a>
+            <a class="btn btn-default" href="{{ path('app_ingreso_leave', { 'id': ingreso.id }) }}">Dar de alta/baja</a>
         {% endif %}
     </section>
 {% endblock %}

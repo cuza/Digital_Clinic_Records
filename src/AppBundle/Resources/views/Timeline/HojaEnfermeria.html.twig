@@ -3,7 +3,7 @@
 </div>
 <div class="timeline-panel">
     <div class="timeline-heading">
-        <h4 class="timeline-title">Hoja de temperatura</h4>
+        <h4 class="timeline-title">Hoja de signos vitales</h4>
         <p>
             <small class="text-muted"><i
                         class="fa fa-clock-o"></i> {{ element.datetime|date('d/m/y') }} {{ element.datetime|ago }}
@@ -11,6 +11,6 @@
         </p>
     </div>
     <div class="timeline-body">
-        <p><a href="{{ path('hojaenfermeria_show', {'id': element.id }) }}">Mostrar hoja de temperatura</a></p>
+        <p><a href="{{ path('hojaenfermeria_show', {'id': element.id }) }}">Mostrar hoja de signos vitales</a></p>
     </div>
 </div>
