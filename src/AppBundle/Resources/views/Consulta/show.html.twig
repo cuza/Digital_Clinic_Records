@@ -14,21 +14,24 @@
 {% endblock %}
 
 {% block ContentBody %}
-
     <section class="content">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="box box-widget widget-user-2">
                     <div class="widget-user-header bg-olive">
                         <h3 class="widget-user-username"><i class="fa fa-medkit fa-2x"></i> Consulta</h3>
-                            <h5 class="widget-user-desc">Paciente: <a class="text-navy" href="{{ path('paciente_show', {'id': consulta.paciente.id }) }}">{{ consulta.paciente.nombre }} {{ consulta.paciente.primerApellido }} {{ consulta.paciente.segundoApellido }}</a></h5>
+                        <h5 class="widget-user-desc">Paciente: <a class="text-navy"
+                                                                  href="{{ path('paciente_show', {'id': consulta.paciente.id }) }}">{{ consulta.paciente.nombre }} {{ consulta.paciente.primerApellido }} {{ consulta.paciente.segundoApellido }}</a>
+                        </h5>
                         {% if consulta.hojasMedico.get(0).doctor %}
-                            <h5 class="widget-user-desc">Dr. : {{  consulta.hojasMedico.get(0).doctor.nombre }}</h5>
+                            <h5 class="widget-user-desc">Dr. : {{ consulta.hojasMedico.get(0).doctor.nombre }}</h5>
                         {% endif %}
                         {% if consulta.hojasMedico.get(0).residente %}
-                            <h5 class="widget-user-desc">Dr. : {{  consulta.hojasMedico.get(0).residente.nombre }}(Residente - {{ consulta.hojasMedico.get(0).residente.ano }} año)</h5>
+                            <h5 class="widget-user-desc">Dr. : {{ consulta.hojasMedico.get(0).residente.nombre }}
+                                (Residente - {{ consulta.hojasMedico.get(0).residente.ano }} año)</h5>
                         {% endif %}
-                        <h5 class="widget-user-desc">Fecha: {{  consulta.fecha|date('d/m/y') }} ({{ consulta.fecha|ago }})</h5>
+                        <h5 class="widget-user-desc">Fecha: {{ consulta.fecha|date('d/m/y') }} ({{ consulta.fecha|ago }}
+                            )</h5>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <div class="nav-tabs-custom">
@@ -93,7 +96,9 @@
                                         {% endif %}
                                         <div class="timeline-panel">
                                             <div class="timeline-heading">
-                                                <h4 class="timeline-title">Complementario <small>({{ element.nombre }})</small></h4>
+                                                <h4 class="timeline-title">Complementario
+                                                    <small>({{ element.nombre }})</small>
+                                                </h4>
                                                 <p>
                                                     <small class="text-muted"><i
                                                                 class="fa fa-clock-o"></i> {{ element.datetime|date('d/m/y') }} {{ element.datetime|ago }}
@@ -102,7 +107,9 @@
                                             </div>
                                             <div class="timeline-body">
                                                 {% if element.laboratorista and element.resultado %}
-                                                    <p><a href="{{ path('app_complementario_show', {'id': element.id }) }}">Mostrar resultados</a></p>
+                                                    <p>
+                                                        <a href="{{ path('app_complementario_show', {'id': element.id }) }}">Mostrar
+                                                            resultados</a></p>
                                                 {% else %}
                                                     <small>Este complementario aun está siendo procesado</small>
                                                 {% endif %}
@@ -116,7 +123,5 @@
                 </div>
             </div>
         {% endif %}
-
     </section>
-
 {% endblock %}
