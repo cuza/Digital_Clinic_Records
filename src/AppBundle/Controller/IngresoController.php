@@ -45,7 +45,6 @@ class IngresoController extends Controller
         $hoja = $em->getRepository("AppBundle:HojaMedico")->findOneBy(array('id' => $hid));
         $pid = $request->query->get('pid');
         $paciente = $em->getRepository("AppBundle:Paciente")->findOneBy(array('id' => $pid));
-        dump($paciente);
 
 //        $iid = $request->query->get('iid');
 //        $ingreso = null;
@@ -58,7 +57,7 @@ class IngresoController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            /** @var User $user */
+            $paciente->setIngresado(true);
             $ingreso->setPaciente($paciente);
             $ingreso->addHojasMedico($hoja);
             $hoja->setIngreso($ingreso);
@@ -128,6 +127,8 @@ class IngresoController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $ingreso->setFechaSalida(new \DateTime());
+            $paciente = $ingreso->getPaciente();
+            $paciente->setIngresado(false);
             $salas = $ingreso->getSalas();
             /** @var IngresoSala $sa */
             $sa = $salas[count($salas) - 1];
@@ -135,6 +136,7 @@ class IngresoController extends Controller
 
             $em = $this->getDoctrine()->getManager();
             $em->persist($ingreso);
+            $em->persist($paciente);
             $em->flush();
 
             return $this->redirectToRoute('app_ingreso_show', array('id' => $ingreso->getId()));

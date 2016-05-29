@@ -38,6 +38,10 @@ class PacienteController extends Controller
         }
         $editForm = $this->createForm('AppBundle\Form\PacienteType', $paciente);
 
+        if ($paciente->getIngresado()){
+            return $this->render('AppBundle:Paciente:error.html.twig');
+        }
+
         return array(
             'paciente' => $paciente,
             'edit_form' => $editForm->createView()

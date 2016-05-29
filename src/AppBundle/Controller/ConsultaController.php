@@ -105,6 +105,12 @@ class ConsultaController extends Controller
             return $this->redirectToRoute('app_hojamedico_fetch', array('id' => $paciente->getId()));
         }
 
+        if ($paciente->getIngresado()){
+            return array(
+              'error'
+            );
+        }
+
         if ($form->isSubmitted() || is_numeric($cid)) {
             return array(
                 'paciente' => $paciente,

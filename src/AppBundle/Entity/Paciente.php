@@ -275,6 +275,13 @@ class Paciente
     private $ingresos;
 
     /**
+     * @var bool
+     *
+     * @ORM\Column(name="ingresado", type="boolean", nullable=true)
+     */
+    private $ingresado;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -1079,5 +1086,29 @@ class Paciente
     public function getIngresos()
     {
         return $this->ingresos;
+    }
+
+    /**
+     * Set ingresado
+     *
+     * @param boolean $ingresado
+     *
+     * @return Paciente
+     */
+    public function setIngresado($ingresado)
+    {
+        $this->ingresado = $ingresado;
+
+        return $this;
+    }
+
+    /**
+     * Get ingresado
+     *
+     * @return boolean
+     */
+    public function getIngresado()
+    {
+        return $this->ingresado;
     }
 }
