@@ -16,10 +16,10 @@ class ComplementarioEndType extends AbstractType
     {
         $builder
 //            ->add('nombre')
-            ->add('resultado')
+            ->add('resultado',null,array('required' => true))
 //            ->add('datetime', 'datetime')
-            ->add('cancelado','Symfony\Component\Form\Extension\Core\Type\CheckboxType', array('label' => 'Cancelar orden', 'required' => false))
-            ->add('motivoCancelado')
+//            ->add('cancelado','Symfony\Component\Form\Extension\Core\Type\CheckboxType', array('label' => 'Cancelar orden', 'required' => false))
+//            ->add('motivoCancelado')
 //            ->add('hojaMedico')
 //            ->add('laboratorista')
         ;

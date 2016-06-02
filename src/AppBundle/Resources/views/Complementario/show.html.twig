@@ -33,7 +33,7 @@
                         {% endif %}
                         {% if complementario.hojaMedico.consulta %}
                             <h5 class="widget-user-desc">Paciente: <a class="text-navy"
-                                                                      href="{{ path('paciente_show', {'id': complementario.hojaMedico.consulta.paciente}) }}">{{ complementario.hojaMedico.consulta.paciente.nombre }} {{ complementario.hojaMedico.consulta.paciente.primerApellido }} {{ complementario.hojaMedico.consulta.paciente.segundoApellido }}</a>
+                                                                      href="{{ path('paciente_show', {'id': complementario.hojaMedico.consulta.paciente.id}) }}">{{ complementario.hojaMedico.consulta.paciente.nombre }} {{ complementario.hojaMedico.consulta.paciente.primerApellido }} {{ complementario.hojaMedico.consulta.paciente.segundoApellido }}</a>
                             </h5>
                         {% endif %}
                         <h5 class="widget-user-desc">Laboratorista: {{ complementario.laboratorista.nombre }}</h5>
@@ -42,7 +42,10 @@
                     </div>
                     <div class="box-body">
                         <ul class="nav nav-stacked">
-                            <span>Resultado: <p class="pull-right">{{ complementario.resultado }}</p></span>
+                            <span>Resultado: <p class="pull-right"></p></span>
+                        </ul>
+                        <ul class="nav nav-stacked">
+                            <span><p class="pull-right">{{ complementario.resultado }}</p></span>
                         </ul>
                     </div>
                     <div class="box-footer no-padding">

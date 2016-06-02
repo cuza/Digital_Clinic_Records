@@ -31,7 +31,7 @@ class Complementario
     /**
      * @var string
      *
-     * @ORM\Column(name="Resultado", type="string", length=255, nullable=true)
+     * @ORM\Column(name="Resultado", type="text", nullable=true)
      */
     private $resultado;
 
@@ -61,7 +61,7 @@ class Complementario
     /**
      * @var string
      *
-     * @ORM\Column(name="MotivoCancelado", type="string", length=255, nullable=true)
+     * @ORM\Column(name="MotivoCancelado", type="text", nullable=true)
      */
     private $motivoCancelado;
 

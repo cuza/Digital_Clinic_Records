@@ -94,7 +94,7 @@ services:
   app.admin.paciente:
     class: AppBundle\Admin\PacienteAdmin
     tags:
-      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Paciente" }
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Pacientes" }
     arguments:
       - ~
       - AppBundle\Entity\Paciente
@@ -104,7 +104,7 @@ services:
   app.admin.consulta:
     class: AppBundle\Admin\ConsultaAdmin
     tags:
-      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Consulta" }
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Consultas" }
     arguments:
       - ~
       - AppBundle\Entity\Consulta
@@ -114,7 +114,7 @@ services:
   app.admin.ingreso:
     class: AppBundle\Admin\IngresoAdmin
     tags:
-      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Ingreso" }
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Ingresos" }
     arguments:
       - ~
       - AppBundle\Entity\Ingreso
@@ -124,23 +124,23 @@ services:
   app.admin.sala:
     class: AppBundle\Admin\SalaAdmin
     tags:
-      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Sala" }
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Salas" }
     arguments:
       - ~
       - AppBundle\Entity\Sala
       - ~
     calls:
       - [ setTranslationDomain, [AppBundle]]
-  app.admin.ingresosala:
-    class: AppBundle\Admin\IngresoSalaAdmin
-    tags:
-      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "IngresoSala" }
-    arguments:
-      - ~
-      - AppBundle\Entity\IngresoSala
-      - ~
-    calls:
-      - [ setTranslationDomain, [AppBundle]]
+#  app.admin.ingresosala:
+#    class: AppBundle\Admin\IngresoSalaAdmin
+#    tags:
+#      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "IngresoSala" }
+#    arguments:
+#      - ~
+#      - AppBundle\Entity\IngresoSala
+#      - ~
+#    calls:
+#      - [ setTranslationDomain, [AppBundle]]
   app.admin.complementario:
     class: AppBundle\Admin\ComplementarioAdmin
     tags:
@@ -154,7 +154,7 @@ services:
   app.admin.hojamedico:
     class: AppBundle\Admin\HojaMedicoAdmin
     tags:
-      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "HojaMedico" }
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Hoja de evolución" }
     arguments:
       - ~
       - AppBundle\Entity\HojaMedico
@@ -164,7 +164,7 @@ services:
   app.admin.hojaenfermeria:
     class: AppBundle\Admin\HojaEnfermeriaAdmin
     tags:
-      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "HojaEnfermeria" }
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Hoja de signos vitales" }
     arguments:
       - ~
       - AppBundle\Entity\HojaEnfermeria
@@ -174,7 +174,7 @@ services:
   app.admin.hojaenfermeria2:
     class: AppBundle\Admin\HojaEnfermeria2Admin
     tags:
-      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "HojaEnfermeria2" }
+      - { name: sonata.admin, manager_type: orm, group: "Datos", label: "Hoja de liquidos y deposiciones" }
     arguments:
       - ~
       - AppBundle\Entity\HojaEnfermeria2

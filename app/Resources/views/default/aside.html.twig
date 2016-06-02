@@ -1,13 +1,22 @@
 {% if(app.user) %}
 <div class="user-panel">
-    <div class="pull-left image">
-        <img src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}"
-             class="img-circle" alt="User Image">
-    </div>
-    <div class="pull-left info">
+    {#<div class="pull-left image">#}
+        {#<img src="{% if is_granted('ROLE_ENFERMERO') %}{{ asset('img/nurse-icon.jpg') }}{% endif %}{% if is_granted('ROLE_LABORATORIO') %}{{ asset('img/lab-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ESTUDIANTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_RESIDENTE') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_DOCTOR') %}{{ asset('img/doctor-icon.jpg') }}{% endif %}{% if is_granted('ROLE_ADMIN') %}{{ asset('img/user-icon.jpg') }}{% endif %}"#}
+             {#class="img-circle" alt="User Image">#}
+    {#</div>#}
+    <div class="pull-right info" style="
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    left: auto;
+    padding-bottom: 0px;
+    height: 34px;
+">
         <p>{{ app.user.nombre }}</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online {{ app.user.lastLogin|ago }}</a>
     </div>
+    <br>
+    <br>
 </div>
 
 {% if is_granted('ROLE_DOCTOR') or is_granted('ROLE_RESIDENTE') or is_granted('ROLE_ENFERMERO') or is_granted('ROLE_ESTUDIANTE') %}

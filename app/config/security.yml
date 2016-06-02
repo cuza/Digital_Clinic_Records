@@ -27,4 +27,7 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/paciente/edit/, roles: [ROLE_DOCTOR, ROLE_RESIDENTE] }
+        - { path: ^/consulta/new/, roles: [ROLE_DOCTOR, ROLE_RESIDENTE] }
+        - { path: ^/ingreso/, roles: [ROLE_DOCTOR, ROLE_RESIDENTE, ROLE_ESTUDIANTE, ROLE_ENFERMERO] }
         - { path: ^/, role: ROLE_USER }

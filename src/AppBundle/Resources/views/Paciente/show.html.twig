@@ -125,8 +125,10 @@
                     </div>
                 </div>
             </div>
+        {% if is_granted('ROLE_DOCTOR') or is_granted('ROLE_RESIDENTE') %}
             <a href="{{ path('app_paciente_edit', {'id':paciente.id}) }}" id="paciente_edit"
                class="btn btn-success">Editar</a>
+            {% endif %}
         </section>
 
     {% endblock %}
