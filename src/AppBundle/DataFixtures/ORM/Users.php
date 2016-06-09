@@ -51,8 +51,8 @@ class Users extends AbstractFixture implements OrderedFixtureInterface,
         $entity = new AdminUser();
 
         $entity->setUsername('admin')
-            ->setEmail("admin@gmail.com")
-            ->setPlainPassword('pp')
+            ->setEmail("admin_hospital@infonet.sld.cu")
+            ->setPlainPassword('h0sp1t4l_4dm1N')
             ->setEnabled(true);
         if (rand() % 2) {
             $entity->setNombre($this->getNombre('Masculino'));
@@ -63,120 +63,121 @@ class Users extends AbstractFixture implements OrderedFixtureInterface,
             $entity->setSexo('Femenino');
         }
         $manager->persist($entity);
-
-        for ($i = 0; $i < 3; $i++) {
-            $entity = new AdminUser();
-
-            $entity->setUsername('admin #' . $i)
-                ->setEmail("admin$i@mail.com")
-                ->setPlainPassword('pp')
-                ->setEnabled(true);
-            if (rand() % 2) {
-                $entity->setNombre($this->getNombre('Masculino'));
-                $entity->setSexo('Masculino');
-
-            } else {
-                $entity->setNombre($this->getNombre('Femenino'));
-                $entity->setSexo('Femenino');
-            }
-
-            $manager->persist($entity);
-        }
-
-        for ($i = 0; $i < 3; $i++) {
-            $entity = new ResidenteUser();
-
-            $entity->setUsername('residente #' . $i)
-                ->setEmail("residente$i@mail.com")
-                ->setPlainPassword('pp')
-                ->setEnabled(true);
-            if (rand() % 2) {
-                $entity->setNombre($this->getNombre('Masculino'));
-                $entity->setSexo('Masculino');
-
-            } else {
-                $entity->setNombre($this->getNombre('Femenino'));
-                $entity->setSexo('Femenino');
-            }
-
-            $manager->persist($entity);
-        }
-
-        for ($i = 0; $i < 3; $i++) {
-            $entity = new EstudianteUser();
-
-            $entity->setUsername('estudiante #' . $i)
-                ->setEmail("estudiante$i@mail.com")
-                ->setPlainPassword('pp')
-                ->setEnabled(true);
-            if (rand() % 2) {
-                $entity->setNombre($this->getNombre('Masculino'));
-                $entity->setSexo('Masculino');
-
-            } else {
-                $entity->setNombre($this->getNombre('Femenino'));
-                $entity->setSexo('Femenino');
-            }
-
-            $manager->persist($entity);
-        }
-
-        for ($i = 0; $i < 3; $i++) {
-            $entity = new DoctorUser();
-
-            $entity->setUsername('doctor #' . $i)
-                ->setEmail("doctor$i@mail.com")
-                ->setPlainPassword('pp')
-                ->setEnabled(true);
-            if (rand() % 2) {
-                $entity->setNombre($this->getNombre('Masculino'));
-                $entity->setSexo('Masculino');
-
-            } else {
-                $entity->setNombre($this->getNombre('Femenino'));
-                $entity->setSexo('Femenino');
-            }
-
-            $manager->persist($entity);
-        }
-
-        for ($i = 0; $i < 3; $i++) {
-            $entity = new LaboratorioUser();
-
-            $entity->setUsername('laboratorista #' . $i)
-                ->setEmail("laboratorista$i@mail.com")
-                ->setPlainPassword('pp')
-                ->setEnabled(true);
-            if (rand() % 2) {
-                $entity->setNombre($this->getNombre('Masculino'));
-                $entity->setSexo('Masculino');
-
-            } else {
-                $entity->setNombre($this->getNombre('Femenino'));
-                $entity->setSexo('Femenino');
-            }
-
-            $manager->persist($entity);
-        }
-
-        for ($i = 0; $i < 3; $i++) {
-            $entity = new EnfermeroUser();
-
-            $entity->setUsername('enfermero #' . $i)
-                ->setEmail("enfermero$i@mail.com")
-                ->setPlainPassword('pp')
-                ->setEnabled(true);
-            if (rand() % 2) {
-                $entity->setNombre($this->getNombre('Masculino'));
-                $entity->setSexo('Masculino');
-
-            } else {
-                $entity->setNombre($this->getNombre('Femenino'));
-                $entity->setSexo('Femenino');
-            }
-
-            $manager->persist($entity);
-        }
+        
+////        Generar 3 administradores aleatorios de ejemplo
+//        for ($i = 0; $i < 3; $i++) {
+//            $entity = new AdminUser();
+//
+//            $entity->setUsername('admin #' . $i)
+//                ->setEmail("admin$i@mail.com")
+//                ->setPlainPassword('pp')
+//                ->setEnabled(true);
+//            if (rand() % 2) {
+//                $entity->setNombre($this->getNombre('Masculino'));
+//                $entity->setSexo('Masculino');
+//
+//            } else {
+//                $entity->setNombre($this->getNombre('Femenino'));
+//                $entity->setSexo('Femenino');
+//            }
+//
+//            $manager->persist($entity);
+//        }
+////        Generar 3 residentes aleatorios de ejemplo
+//        for ($i = 0; $i < 3; $i++) {
+//            $entity = new ResidenteUser();
+//
+//            $entity->setUsername('residente #' . $i)
+//                ->setEmail("residente$i@mail.com")
+//                ->setPlainPassword('pp')
+//                ->setEnabled(true);
+//            if (rand() % 2) {
+//                $entity->setNombre($this->getNombre('Masculino'));
+//                $entity->setSexo('Masculino');
+//
+//            } else {
+//                $entity->setNombre($this->getNombre('Femenino'));
+//                $entity->setSexo('Femenino');
+//            }
+//
+//            $manager->persist($entity);
+//        }
+////        Generar 3 estudiantes aleatorios de ejemplo
+//        for ($i = 0; $i < 3; $i++) {
+//            $entity = new EstudianteUser();
+//
+//            $entity->setUsername('estudiante #' . $i)
+//                ->setEmail("estudiante$i@mail.com")
+//                ->setPlainPassword('pp')
+//                ->setEnabled(true);
+//            if (rand() % 2) {
+//                $entity->setNombre($this->getNombre('Masculino'));
+//                $entity->setSexo('Masculino');
+//
+//            } else {
+//                $entity->setNombre($this->getNombre('Femenino'));
+//                $entity->setSexo('Femenino');
+//            }
+//
+//            $manager->persist($entity);
+//        }
+////        Generar 3 doctores aleatorios de ejemplo
+//        for ($i = 0; $i < 3; $i++) {
+//            $entity = new DoctorUser();
+//
+//            $entity->setUsername('doctor #' . $i)
+//                ->setEmail("doctor$i@mail.com")
+//                ->setPlainPassword('pp')
+//                ->setEnabled(true);
+//            if (rand() % 2) {
+//                $entity->setNombre($this->getNombre('Masculino'));
+//                $entity->setSexo('Masculino');
+//
+//            } else {
+//                $entity->setNombre($this->getNombre('Femenino'));
+//                $entity->setSexo('Femenino');
+//            }
+//
+//            $manager->persist($entity);
+//        }
+////        Generar 3 laboratoristas aleatorios de ejemplo
+//        for ($i = 0; $i < 3; $i++) {
+//            $entity = new LaboratorioUser();
+//
+//            $entity->setUsername('laboratorista #' . $i)
+//                ->setEmail("laboratorista$i@mail.com")
+//                ->setPlainPassword('pp')
+//                ->setEnabled(true);
+//            if (rand() % 2) {
+//                $entity->setNombre($this->getNombre('Masculino'));
+//                $entity->setSexo('Masculino');
+//
+//            } else {
+//                $entity->setNombre($this->getNombre('Femenino'));
+//                $entity->setSexo('Femenino');
+//            }
+//
+//            $manager->persist($entity);
+//        }
+////        Generar 3 enfermeros aleatorios de ejemplo
+//        for ($i = 0; $i < 3; $i++) {
+//            $entity = new EnfermeroUser();
+//
+//            $entity->setUsername('enfermero #' . $i)
+//                ->setEmail("enfermero$i@mail.com")
+//                ->setPlainPassword('pp')
+//                ->setEnabled(true);
+//            if (rand() % 2) {
+//                $entity->setNombre($this->getNombre('Masculino'));
+//                $entity->setSexo('Masculino');
+//
+//            } else {
+//                $entity->setNombre($this->getNombre('Femenino'));
+//                $entity->setSexo('Femenino');
+//            }
+//
+//            $manager->persist($entity);
+//        }
 
         $manager->flush();
     }
